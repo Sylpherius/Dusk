@@ -13,15 +13,18 @@ enum FuzzColor {
 }
 class Gameplay: CCNode {
     weak var fuzz: Fuzz!
-    var correctColor = false
     weak var gamePhysicsNode : CCPhysicsNode!
+    var fuzzies: [Fuzz] = [] //FOR FUTURE IMPLEMENTATION
     
-    func didLoadFromCCB() {
+    func didLoadFromCCB(){
         userInteractionEnabled = true
         changeColor()
     }
     func changeColor(){
         var whichColor = Int(CCRANDOM_0_1() * 4)
+        var horizMove = CGFloat(CCRANDOM_0_1() * 100 - 50)
+        fuzz.physicsBody.velocity = ccp(0,200)
+        fuzz.physicsBody.velocity = ccp(horizMove, fuzz.physicsBody.velocity.y)
         if whichColor == 0{
             fuzz.blue()
         } else if whichColor == 1{
@@ -32,56 +35,38 @@ class Gameplay: CCNode {
             fuzz.yellow()
         }
     }
+    override func update(delta: CCTime) {
+        fuzz.physicsBody.applyImpulse(ccp(0,-70))
+    }
     func pressBlue(){
         if fuzz.fuzzColor == .Blue {
-            correctColor = true
-        }
-        if correctColor == true {
-            fuzz.physicsBody.applyImpulse(ccp(0,500))
-            gamePhysicsNode.position = ccp(gamePhysicsNode.position.x + 50, gamePhysicsNode.position.y)
             changeColor()
-            correctColor = false
         } else {
-            //death to-be-implemented
+            //FOR FUTURE IMPLEMENTATION
             fuzz.physicsBody.applyImpulse(ccp(0,0))
         }
     }
     func pressGreen(){
         if fuzz.fuzzColor == .Green {
-            correctColor = true
-        }
-        if correctColor == true {
-            fuzz.physicsBody.applyImpulse(ccp(0,500))
             changeColor()
-            correctColor = false
         } else {
-            //death to-be-implemented
+            //FOR FUTURE IMPLEMENTATION
             fuzz.physicsBody.applyImpulse(ccp(0,0))
         }
     }
     func pressRed(){
         if fuzz.fuzzColor == .Red {
-            correctColor = true
-        }
-        if correctColor == true {
-            fuzz.physicsBody.applyImpulse(ccp(0,500))
             changeColor()
-            correctColor = false
         } else {
-            //death to-be-implemented
+            //FOR FUTURE IMPLEMENTATION
             fuzz.physicsBody.applyImpulse(ccp(0,0))
         }
     }
     func pressYellow(){
         if fuzz.fuzzColor == .Yellow {
-            correctColor = true
-        }
-        if correctColor == true {
-            fuzz.physicsBody.applyImpulse(ccp(0,500))
             changeColor()
-            correctColor = false
         } else {
-            //death to-be-implemented
+            //FOR FUTURE IMPLEMENTATION
             fuzz.physicsBody.applyImpulse(ccp(0,0))
         }
     }

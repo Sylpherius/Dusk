@@ -179,7 +179,7 @@
 		<key>physicsBody</key>
 		<dict>
 			<key>affectedByGravity</key>
-			<true/>
+			<false/>
 			<key>allowsRotation</key>
 			<true/>
 			<key>bodyShape</key>
@@ -362,9 +362,9 @@
 			<key>length</key>
 			<real>1</real>
 			<key>name</key>
-			<string>Default Timeline</string>
+			<string>turnWhite</string>
 			<key>offset</key>
-			<real>0.11510419845581055</real>
+			<real>0.0</real>
 			<key>position</key>
 			<real>0.13333334028720856</real>
 			<key>resolution</key>

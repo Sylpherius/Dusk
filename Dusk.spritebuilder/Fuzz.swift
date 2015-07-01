@@ -26,4 +26,11 @@ class Fuzz: CCSprite {
         self.animationManager.runAnimationsForSequenceNamed("turnYellow")
         fuzzColor = .Yellow
     }
+    func white(){
+        self.animationManager.runAnimationsForSequenceNamed("turnWhite")
+        fuzzColor = .White
+    }
+    func getColor(var givenFuzz: Fuzz) -> FuzzColor{
+        return givenFuzz.fuzzColor
+    }
 }
