@@ -14,18 +14,28 @@ enum FuzzColor {
 class Gameplay: CCNode, CCPhysicsCollisionDelegate {
     weak var fuzz: Fuzz!
     weak var gamePhysicsNode : CCPhysicsNode!
-    weak var ground: CCNode!
     weak var scoreLabel: CCLabelTTF!
+    weak var restartButton: CCButton!
     var fuzzies: [Fuzz] = [] //FOR FUTURE IMPLEMENTATION
     var gameOver = false
-    var points : NSInteger = 0
+    var points : NSInteger = -1
     
-    
-    func ccPhysicsCollisionBegin(pair: CCPhysicsCollisionPair!, fuzz: CCNode!, ground: CCNode!) -> Bool {
-        
+    func triggerGameOver(){
+        restartButton.visible = true
+    }
+    func restart(){
+        let gameplayScene = CCBReader.loadAsScene("Gameplay")
+        CCDirector.sharedDirector().presentScene(gameplayScene)
+        points = -1
+    }
+    func ccPhysicsCollisionBegin(pair: CCPhysicsCollisionPair!, ball: CCNode!, level: CCNode!) -> Bool {
+        triggerGameOver()
+        gameOver = true
+        fuzz.white()
         return true
     }
     func didLoadFromCCB(){
+        gamePhysicsNode.collisionDelegate = self
         userInteractionEnabled = true
         changeColor()
     }
@@ -54,7 +64,7 @@ class Gameplay: CCNode, CCPhysicsCollisionDelegate {
             if fuzz.fuzzColor == .Blue {
                 changeColor()
             } else {
-                //FOR FUTURE IMPLEMENTATION
+                fuzz.white()
                 gameOver = true
             }
         }
@@ -64,7 +74,7 @@ class Gameplay: CCNode, CCPhysicsCollisionDelegate {
             if fuzz.fuzzColor == .Green {
                 changeColor()
             } else {
-                //FOR FUTURE IMPLEMENTATION
+                fuzz.white()
                 gameOver = true
             }
         }
@@ -74,7 +84,7 @@ class Gameplay: CCNode, CCPhysicsCollisionDelegate {
             if fuzz.fuzzColor == .Red {
                 changeColor()
             } else {
-                //FOR FUTURE IMPLEMENTATION
+                fuzz.white()
                 gameOver = true
             }
         }
@@ -84,7 +94,7 @@ class Gameplay: CCNode, CCPhysicsCollisionDelegate {
             if fuzz.fuzzColor == .Yellow {
                 changeColor()
             } else {
-                //FOR FUTURE IMPLEMENTATION
+                fuzz.white()
                 gameOver = true
             }
         }
