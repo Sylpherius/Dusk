@@ -16,17 +16,21 @@ class Gameplay: CCNode, CCPhysicsCollisionDelegate {
     weak var gamePhysicsNode : CCPhysicsNode!
     weak var scoreLabel: CCLabelTTF!
     weak var restartButton: CCButton!
+    weak var restartScreen: CCSprite!
+    weak var restartScore: CCLabelTTF!
     var fuzzies: [Fuzz] = [] //FOR FUTURE IMPLEMENTATION
     var gameOver = false
-    var points : NSInteger = -1
+    var points : NSInteger = 0
     
     func triggerGameOver(){
         restartButton.visible = true
+        restartScreen.visible = true
+        restartScore.visible = true
     }
     func restart(){
         let gameplayScene = CCBReader.loadAsScene("Gameplay")
         CCDirector.sharedDirector().presentScene(gameplayScene)
-        points = -1
+        points = 0
     }
     func ccPhysicsCollisionBegin(pair: CCPhysicsCollisionPair!, ball: CCNode!, level: CCNode!) -> Bool {
         triggerGameOver()
@@ -46,6 +50,7 @@ class Gameplay: CCNode, CCPhysicsCollisionDelegate {
         fuzz.physicsBody.velocity = ccp(horizMove, fuzz.physicsBody.velocity.y)
         points++
         scoreLabel.string = String(points)
+        restartScore.string = String(points)
         if whichColor == 0{
             fuzz.blue()
         } else if whichColor == 1{
