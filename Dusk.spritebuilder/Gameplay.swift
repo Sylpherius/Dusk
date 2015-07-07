@@ -119,6 +119,7 @@ enum FuzzColor {
 class Gameplay: CCNode, CCPhysicsCollisionDelegate {
     weak var fuzz1: Fuzz!
     weak var fuzz2: Fuzz!
+    weak var tapToStart: CCLabelTTF!
     weak var gamePhysicsNode : CCPhysicsNode!
     weak var scoreLabel: CCLabelTTF!
     weak var restartButton: CCButton!
@@ -130,7 +131,15 @@ class Gameplay: CCNode, CCPhysicsCollisionDelegate {
     var currentFuzz: Fuzz!
     var bothFuzz = false
     var oneGameOver = false
+    var firstTap = false
+    var firstFirst = false
     
+    override func touchBegan(touch: CCTouch!, withEvent event: CCTouchEvent!) {
+        if firstFirst == false{
+            firstTap = true
+            firstFirst = true
+        }
+    }
     func triggerGameOver(){
         restartButton.visible = true
         restartScreen.visible = true
@@ -153,15 +162,21 @@ class Gameplay: CCNode, CCPhysicsCollisionDelegate {
         }
         return true
     }
-    func didLoadFromCCB(){
-        gamePhysicsNode.collisionDelegate = self
-        userInteractionEnabled = true
+    func veryBeginning(){
+        tapToStart.visible = false
+        self.animationManager.runAnimationsForSequenceNamed("Main")
         fuzzies.append(fuzz1)
         currentFuzz = fuzz1
         changeColor()
         fuzzies.append(fuzz2)
         currentFuzz = fuzz2
         changeColor()
+        firstTap = false
+    }
+    func didLoadFromCCB(){
+        userInteractionEnabled = true
+        gamePhysicsNode.collisionDelegate = self
+        self.animationManager.runAnimationsForSequenceNamed("Beginning")
     }
     func changeColor(){
         var whichColor = Int(CCRANDOM_0_1() * 4)
@@ -187,6 +202,9 @@ class Gameplay: CCNode, CCPhysicsCollisionDelegate {
     override func update(delta: CCTime) {
         for fuzz in fuzzies {
             fuzz.physicsBody.applyImpulse(ccp(0,-70))
+        }
+        if firstTap {
+            veryBeginning()
         }
     }
     func pressBlue(){
