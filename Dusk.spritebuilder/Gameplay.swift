@@ -30,6 +30,7 @@ class Gameplay: CCNode, CCPhysicsCollisionDelegate {
     var firstTap = false
     var firstFirst = false
     
+    
     override func touchBegan(touch: CCTouch!, withEvent event: CCTouchEvent!) {
         if firstFirst == false{
             firstTap = true

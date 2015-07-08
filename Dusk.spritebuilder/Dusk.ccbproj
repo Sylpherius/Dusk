@@ -82,6 +82,11 @@
 		<dict/>
 		<key>Dusk Assets</key>
 		<dict/>
+		<key>Sound/87289_spleencast_tree-leaves-rustling.wav</key>
+		<dict>
+			<key>format_ios_sound</key>
+			<integer>1</integer>
+		</dict>
 		<key>Sprites</key>
 		<dict/>
 		<key>ccbResources</key>
