@@ -5,7 +5,5 @@ class MainScene: CCNode {
         OALSimpleAudio.sharedInstance().playBgWithLoop(true)
         let tutorialScene = CCBReader.loadAsScene("Tutorial")
         CCDirector.sharedDirector().presentScene(tutorialScene)
-        
-        
     }
 }
