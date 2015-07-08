@@ -20,6 +20,7 @@ class Gameplay: CCNode, CCPhysicsCollisionDelegate {
     weak var restartButton: CCButton!
     weak var restartScreen: CCSprite!
     weak var restartScore: CCLabelTTF!
+    weak var highscoreLabel: CCLabelTTF!
     var fuzzies: [Fuzz] = []
     var gameOver = false
     var points : NSInteger = 0
@@ -35,10 +36,25 @@ class Gameplay: CCNode, CCPhysicsCollisionDelegate {
             firstFirst = true
         }
     }
+    override func observeValueForKeyPath(keyPath: String, ofObject object: AnyObject, change: [NSObject : AnyObject], context: UnsafeMutablePointer<Void>) {
+        if keyPath == "highscore" {
+            updateHighscore()
+        }
+    }
+    func updateHighscore() {
+        var newHighscore = NSUserDefaults.standardUserDefaults().integerForKey("highscore")
+        highscoreLabel.string = "\(newHighscore)"
+    }
     func triggerGameOver(){
+        let defaults = NSUserDefaults.standardUserDefaults()
+        var highscore = defaults.integerForKey("highscore")
+        if points > highscore {
+            defaults.setInteger(points, forKey: "highscore")
+        }
         restartButton.visible = true
         restartScreen.visible = true
         restartScore.visible = true
+        highscoreLabel.visible = true
         self.animationManager.runAnimationsForSequenceNamed("FadeIn")
     }
     func restart(){
@@ -72,6 +88,8 @@ class Gameplay: CCNode, CCPhysicsCollisionDelegate {
         userInteractionEnabled = true
         gamePhysicsNode.collisionDelegate = self
         self.animationManager.runAnimationsForSequenceNamed("Beginning")
+        NSUserDefaults.standardUserDefaults().addObserver(self, forKeyPath: "highscore", options: .allZeros, context: nil)
+        updateHighscore()
     }
     func changeColor(){
         var whichColor = Int(CCRANDOM_0_1() * 4)
