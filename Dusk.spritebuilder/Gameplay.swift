@@ -21,6 +21,7 @@ class Gameplay: CCNode, CCPhysicsCollisionDelegate {
     weak var restartScreen: CCSprite!
     weak var restartScore: CCLabelTTF!
     weak var highscoreLabel: CCLabelTTF!
+    var sapling: Sapling?
     var fuzzies: [Fuzz] = []
     var gameOver = false
     var points : NSInteger = 0
@@ -29,6 +30,7 @@ class Gameplay: CCNode, CCPhysicsCollisionDelegate {
     var oneGameOver = false
     var firstTap = false
     var firstFirst = false
+    var whichFuzz = 0
     
     
     override func touchBegan(touch: CCTouch!, withEvent event: CCTouchEvent!) {
@@ -52,18 +54,20 @@ class Gameplay: CCNode, CCPhysicsCollisionDelegate {
         if points > highscore {
             defaults.setInteger(points, forKey: "highscore")
         }
+        /*
         restartButton.visible = true
         restartScreen.visible = true
         restartScore.visible = true
         highscoreLabel.visible = true
         self.animationManager.runAnimationsForSequenceNamed("FadeIn")
+        */
     }
     func restart(){
         let gameplayScene = CCBReader.loadAsScene("Gameplay")
         CCDirector.sharedDirector().presentScene(gameplayScene)
         points = 0
     }
-    func ccPhysicsCollisionBegin(pair: CCPhysicsCollisionPair!, ball: CCNode!, level: CCNode!) -> Bool {
+    func ccPhysicsCollisionBegin(pair: CCPhysicsCollisionPair!, ball: Fuzz!, level: CCNode!) -> Bool {
         if oneGameOver == false{
             triggerGameOver()
             gameOver = true
@@ -72,8 +76,29 @@ class Gameplay: CCNode, CCPhysicsCollisionDelegate {
             }
             oneGameOver = true
         }
+        //add the sapling animation
+        sapling = CCBReader.load("Sapling") as! Sapling?
+        if let sapling = sapling{
+            var curPos = ball.convertToWorldSpace(CGPoint(x: 0, y: 0))
+            sapling.position = gamePhysicsNode.convertToNodeSpace(curPos)
+        }
         return true
     }
+    func ccPhysicsCollisionPostSolve(pair: CCPhysicsCollisionPair!, ball: Fuzz!, level: CCNode!) {
+        gamePhysicsNode.space.addPostStepBlock({
+            ball.ground()
+            for fuzz in self.fuzzies{
+                if fuzz.touchGround == true{
+                    self.fuzzies.removeAtIndex(self.whichFuzz)
+                    break
+                }
+                self.whichFuzz++
+            }
+            self.whichFuzz = 0
+            ball.removeFromParent()
+            }, key: ball)
+    }
+  
     func veryBeginning(){
         tapToStart.visible = false
         self.animationManager.runAnimationsForSequenceNamed("Main")
@@ -114,8 +139,13 @@ class Gameplay: CCNode, CCPhysicsCollisionDelegate {
         }
     }
     override func update(delta: CCTime) {
-        for fuzz in fuzzies {
-            fuzz.physicsBody.applyImpulse(ccp(0,-70))
+        if fuzzies.count == 2 {
+            for fuzz in fuzzies {
+                fuzz.physicsBody.applyImpulse(ccp(0,-70))
+            }
+        }
+        if fuzzies.count == 1{
+            fuzzies[0].physicsBody.applyImpulse(ccp(0,-70))
         }
         if firstTap {
             veryBeginning()

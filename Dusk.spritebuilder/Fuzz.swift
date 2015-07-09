@@ -9,6 +9,7 @@
 import UIKit
 
 class Fuzz: CCSprite {
+    var touchGround = false
     var fuzzColor: FuzzColor = .White
     func blue(){
         self.animationManager.runAnimationsForSequenceNamed("turnBlue")
@@ -32,5 +33,11 @@ class Fuzz: CCSprite {
     }
     func getColor(var givenFuzz: Fuzz) -> FuzzColor{
         return givenFuzz.fuzzColor
+    }
+    func ground(){
+        touchGround = true
+    }
+    func getGround() -> Bool{
+        return touchGround
     }
 }
