@@ -81,6 +81,7 @@ class Gameplay: CCNode, CCPhysicsCollisionDelegate {
         if let sapling = sapling{
             var curPos = ball.convertToWorldSpace(CGPoint(x: 0, y: 0))
             sapling.position = gamePhysicsNode.convertToNodeSpace(curPos)
+            gamePhysicsNode.addChild(sapling)
         }
         return true
     }
