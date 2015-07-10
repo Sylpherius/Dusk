@@ -21,6 +21,12 @@ class Gameplay: CCNode, CCPhysicsCollisionDelegate {
     weak var restartScreen: CCSprite!
     weak var restartScore: CCLabelTTF!
     weak var highscoreLabel: CCLabelTTF!
+    weak var colorGrass: CCSprite!
+    weak var colorPlants: CCSprite!
+    weak var colorTree: CCSprite!
+    weak var colorSecond: CCSprite!
+    weak var colorBG: CCSprite!
+    weak var colorSky: CCSprite!
     var sapling: Sapling?
     var fuzzies: [Fuzz] = []
     var gameOver = false
@@ -31,8 +37,51 @@ class Gameplay: CCNode, CCPhysicsCollisionDelegate {
     var firstTap = false
     var firstFirst = false
     var whichFuzz = 0
+    var doParticle = false
+    var doItOnce = 0
     
     
+    func addColors(){
+        if points >= 5 && doItOnce == 0{
+            colorGrass.visible = true
+            doParticle = true
+            doItOnce++
+        }
+        if points >= 10 && doItOnce == 1{
+            colorPlants.visible = true
+            doParticle = true
+            doItOnce++
+        }
+        if points >= 25 && doItOnce == 2{
+            colorTree.visible = true
+            doParticle = true
+            doItOnce++
+        }
+        if points >= 40 && doItOnce == 3{
+            colorSecond.visible = true
+            doParticle = true
+            doItOnce++
+        }
+        if points >= 70 && doItOnce == 4{
+            colorBG.visible = true
+            doParticle = true
+            doItOnce++
+        }
+        if points >= 100 && doItOnce == 5{
+            colorSky.visible = true
+            doParticle = true
+            doItOnce++
+        }
+        if doParticle == true{
+            // load particle effect
+            let explosion = CCBReader.load("NewColor") as! CCParticleSystem
+            // make the particle effect clean itself up, once it is completed
+            explosion.autoRemoveOnFinish = true;
+            // place the particle effect on the seals position
+            explosion.position = colorGrass.position
+            doParticle = false
+        }
+    }
     override func touchBegan(touch: CCTouch!, withEvent event: CCTouchEvent!) {
         if firstFirst == false{
             firstTap = true
@@ -65,6 +114,7 @@ class Gameplay: CCNode, CCPhysicsCollisionDelegate {
         CCDirector.sharedDirector().presentScene(gameplayScene)
         points = 0
     }
+    /*
     func ccPhysicsCollisionBegin(pair: CCPhysicsCollisionPair!, ball: Fuzz!, level: CCNode!) -> Bool {
         if oneGameOver == false{
             triggerGameOver()
@@ -97,7 +147,7 @@ class Gameplay: CCNode, CCPhysicsCollisionDelegate {
             ball.removeFromParent()
             }, key: ball)
     }
-  
+    */
     func veryBeginning(){
         tapToStart.visible = false
         self.animationManager.runAnimationsForSequenceNamed("Main")
@@ -127,6 +177,7 @@ class Gameplay: CCNode, CCPhysicsCollisionDelegate {
         scoreLabel.string = String(points)
         restartScore.string = String(points)
         //changes the color of the fuzz
+        addColors()
         if whichColor == 0{
             currentFuzz.blue()
         } else if whichColor == 1{
