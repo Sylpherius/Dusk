@@ -37,49 +37,25 @@ class Gameplay: CCNode, CCPhysicsCollisionDelegate {
     var firstTap = false
     var firstFirst = false
     var whichFuzz = 0
-    var doParticle = false
-    var doItOnce = 0
-    
     
     func addColors(){
-        if points >= 5 && doItOnce == 0{
+        if points >= 5 {
             colorGrass.visible = true
-            doParticle = true
-            doItOnce++
         }
-        if points >= 10 && doItOnce == 1{
+        if points >= 10 {
             colorPlants.visible = true
-            doParticle = true
-            doItOnce++
         }
-        if points >= 25 && doItOnce == 2{
+        if points >= 25{
             colorTree.visible = true
-            doParticle = true
-            doItOnce++
         }
-        if points >= 40 && doItOnce == 3{
+        if points >= 40{
             colorSecond.visible = true
-            doParticle = true
-            doItOnce++
         }
-        if points >= 70 && doItOnce == 4{
+        if points >= 70{
             colorBG.visible = true
-            doParticle = true
-            doItOnce++
         }
-        if points >= 100 && doItOnce == 5{
+        if points >= 100{
             colorSky.visible = true
-            doParticle = true
-            doItOnce++
-        }
-        if doParticle == true{
-            // load particle effect
-            let explosion = CCBReader.load("NewColor") as! CCParticleSystem
-            // make the particle effect clean itself up, once it is completed
-            explosion.autoRemoveOnFinish = true;
-            // place the particle effect on the seals position
-            explosion.position = colorGrass.position
-            doParticle = false
         }
     }
     override func touchBegan(touch: CCTouch!, withEvent event: CCTouchEvent!) {
