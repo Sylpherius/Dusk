@@ -21,12 +21,12 @@ class Gameplay: CCNode, CCPhysicsCollisionDelegate {
     weak var restartScreen: CCSprite!
     weak var restartScore: CCLabelTTF!
     weak var highscoreLabel: CCLabelTTF!
-    weak var colorGrass: CCSprite!
-    weak var colorPlants: CCSprite!
-    weak var colorTree: CCSprite!
-    weak var colorSecond: CCSprite!
-    weak var colorBG: CCSprite!
-    weak var colorSky: CCSprite!
+    weak var theGrass: CCSprite!
+    weak var theTree: CCSprite!
+    weak var thePlants: CCSprite!
+    weak var theSecond: CCSprite!
+    weak var theBG: CCSprite!
+    weak var theSky: CCSprite!
     var sapling: Sapling?
     var fuzzies: [Fuzz] = []
     var gameOver = false
@@ -37,25 +37,32 @@ class Gameplay: CCNode, CCPhysicsCollisionDelegate {
     var firstTap = false
     var firstFirst = false
     var whichFuzz = 0
+    var once = 0
     
     func addColors(){
-        if points >= 5 {
-            colorGrass.visible = true
+        if points >= 5 && once == 0{
+            theGrass.animationManager.runAnimationsForSequenceNamed("Untitled Timeline")
+            once++
         }
-        if points >= 10 {
-            colorPlants.visible = true
+        if points >= 10 && once == 1{
+            theTree.animationManager.runAnimationsForSequenceNamed("Untitled Timeline")
+            once++
         }
-        if points >= 25{
-            colorTree.visible = true
+        if points >= 25 && once == 2{
+            thePlants.animationManager.runAnimationsForSequenceNamed("Untitled Timeline")
+            once++
         }
-        if points >= 40{
-            colorSecond.visible = true
+        if points >= 40 && once == 3{
+            theSecond.animationManager.runAnimationsForSequenceNamed("Untitled Timeline")
+            once++
         }
-        if points >= 70{
-            colorBG.visible = true
+        if points >= 70 && once == 4{
+            theBG.animationManager.runAnimationsForSequenceNamed("Untitled Timeline")
+            once++
         }
-        if points >= 100{
-            colorSky.visible = true
+        if points >= 100 && once == 5{
+            theSky.animationManager.runAnimationsForSequenceNamed("Untitled Timeline")
+            once++
         }
     }
     override func touchBegan(touch: CCTouch!, withEvent event: CCTouchEvent!) {
