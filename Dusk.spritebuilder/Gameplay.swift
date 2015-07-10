@@ -54,13 +54,11 @@ class Gameplay: CCNode, CCPhysicsCollisionDelegate {
         if points > highscore {
             defaults.setInteger(points, forKey: "highscore")
         }
-        /*
         restartButton.visible = true
         restartScreen.visible = true
         restartScore.visible = true
         highscoreLabel.visible = true
         self.animationManager.runAnimationsForSequenceNamed("FadeIn")
-        */
     }
     func restart(){
         let gameplayScene = CCBReader.loadAsScene("Gameplay")
@@ -221,111 +219,3 @@ class Gameplay: CCNode, CCPhysicsCollisionDelegate {
         }
     }
 }
-
-/*
-import UIKit
-
-enum FuzzColor {
-case Blue, Green, Red, Yellow, White
-}
-class Gameplay: CCNode, CCPhysicsCollisionDelegate {
-weak var fuzz: Fuzz!
-weak var gamePhysicsNode : CCPhysicsNode!
-weak var scoreLabel: CCLabelTTF!
-weak var restartButton: CCButton!
-weak var restartScreen: CCSprite!
-weak var restartScore: CCLabelTTF!
-var fuzzies: [Fuzz] = [] //CURRENTLY BEING WORKED ON
-var gameOver = false
-var points : NSInteger = 0
-
-func triggerGameOver(){
-restartButton.visible = true
-restartScreen.visible = true
-restartScore.visible = true
-self.animationManager.runAnimationsForSequenceNamed("FadeIn")
-}
-func restart(){
-let gameplayScene = CCBReader.loadAsScene("Gameplay")
-CCDirector.sharedDirector().presentScene(gameplayScene)
-points = 0
-}
-func ccPhysicsCollisionBegin(pair: CCPhysicsCollisionPair!, ball: CCNode!, level: CCNode!) -> Bool {
-triggerGameOver()
-gameOver = true
-fuzz.white()
-return true
-}
-func didLoadFromCCB(){
-gamePhysicsNode.collisionDelegate = self
-userInteractionEnabled = true
-changeColor()
-}
-func changeColor(){
-var whichColor = Int(CCRANDOM_0_1() * 4)
-var horizMove = CGFloat(CCRANDOM_0_1() * 100 - 50)
-//applies the "bounce" the fuzz does
-fuzz.physicsBody.velocity = ccp(0,200)
-fuzz.physicsBody.velocity = ccp(horizMove, fuzz.physicsBody.velocity.y)
-//updates the score
-points++
-scoreLabel.string = String(points)
-restartScore.string = String(points)
-//changes the color of the fuzz
-if whichColor == 0{
-fuzz.blue()
-} else if whichColor == 1{
-fuzz.green()
-} else if whichColor == 2{
-fuzz.red()
-} else {
-fuzz.yellow()
-}
-}
-override func update(delta: CCTime) {
-fuzz.physicsBody.applyImpulse(ccp(0,-70))
-}
-func pressBlue(){
-if gameOver == false{
-if fuzz.fuzzColor == .Blue {
-changeColor()
-} else {
-fuzz.white()
-gameOver = true
-}
-}
-}
-func pressGreen(){
-if gameOver == false{
-if fuzz.fuzzColor == .Green {
-changeColor()
-} else {
-fuzz.white()
-gameOver = true
-}
-}
-}
-func pressRed(){
-if gameOver == false{
-if fuzz.fuzzColor == .Red {
-changeColor()
-} else {
-fuzz.white()
-gameOver = true
-}
-}
-}
-func pressYellow(){
-if gameOver == false{
-if fuzz.fuzzColor == .Yellow {
-changeColor()
-} else {
-fuzz.white()
-gameOver = true
-}
-}
-}
-}
-*/
-
-
