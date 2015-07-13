@@ -31,6 +31,8 @@ class Gameplay: CCNode, CCPhysicsCollisionDelegate {
     weak var yButton: CCButton!
     weak var rButton: CCButton!
     weak var gButton: CCButton!
+    weak var settingsButton: CCButton!
+    weak var settingsIcon: CCSprite!
     var sapling: Sapling?
     var fuzzies: [Fuzz] = []
     var gameOver = false
@@ -87,17 +89,22 @@ class Gameplay: CCNode, CCPhysicsCollisionDelegate {
             defaults.synchronize()
             updateHighscore()
         }
-        
         restartButton.visible = true
         restartScreen.visible = true
         restartScore.visible = true
         highscoreLabel.visible = true
+        settingsIcon.visible = true
+        settingsButton.visible = true
         self.animationManager.runAnimationsForSequenceNamed("FadeIn")
     }
     func restart(){
         let gameplayScene = CCBReader.loadAsScene("Gameplay")
         CCDirector.sharedDirector().presentScene(gameplayScene)
         points = 0
+    }
+    func settings(){
+        let settingsScene = CCBReader.loadAsScene("Settings")
+        CCDirector.sharedDirector().presentScene(settingsScene)
     }
     func ccPhysicsCollisionBegin(pair: CCPhysicsCollisionPair!, ball: Fuzz!, level: CCNode!) -> Bool {
         if oneGameOver == false{
