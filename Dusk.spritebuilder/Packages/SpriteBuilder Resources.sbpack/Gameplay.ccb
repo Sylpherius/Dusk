@@ -219,8 +219,6 @@
 						<array/>
 					</dict>
 				</array>
-				<key>selected</key>
-				<true/>
 			</dict>
 			<dict>
 				<key>UUID</key>
@@ -2189,7 +2187,7 @@
 						<key>value</key>
 						<array>
 							<real>0.0</real>
-							<real>-50</real>
+							<real>-10</real>
 						</array>
 					</dict>
 					<dict>
@@ -2276,7 +2274,7 @@
 				<key>displayName</key>
 				<string>BlueButton</string>
 				<key>memberVarAssignmentName</key>
-				<string></string>
+				<string>bButton</string>
 				<key>memberVarAssignmentType</key>
 				<integer>1</integer>
 				<key>properties</key>
@@ -2589,6 +2587,8 @@
 						</array>
 					</dict>
 				</array>
+				<key>selected</key>
+				<true/>
 			</dict>
 			<dict>
 				<key>UUID</key>
@@ -2602,7 +2602,7 @@
 				<key>displayName</key>
 				<string>GreenButton</string>
 				<key>memberVarAssignmentName</key>
-				<string></string>
+				<string>gButton</string>
 				<key>memberVarAssignmentType</key>
 				<integer>1</integer>
 				<key>properties</key>
@@ -2928,7 +2928,7 @@
 				<key>displayName</key>
 				<string>RedButton</string>
 				<key>memberVarAssignmentName</key>
-				<string></string>
+				<string>rButton</string>
 				<key>memberVarAssignmentType</key>
 				<integer>1</integer>
 				<key>properties</key>
@@ -3254,7 +3254,7 @@
 				<key>displayName</key>
 				<string>YellowButton</string>
 				<key>memberVarAssignmentName</key>
-				<string></string>
+				<string>yButton</string>
 				<key>memberVarAssignmentType</key>
 				<integer>1</integer>
 				<key>properties</key>
@@ -3850,12 +3850,12 @@
 									<key>name</key>
 									<string>scale</string>
 									<key>time</key>
-									<real>0.3333333432674408</real>
+									<real>0.0</real>
 									<key>type</key>
 									<integer>4</integer>
 									<key>value</key>
 									<array>
-										<real>0.5</real>
+										<real>0.55000001192092896</real>
 										<real>0.43000000715255737</real>
 									</array>
 								</dict>
@@ -3873,7 +3873,7 @@
 									<integer>4</integer>
 									<key>value</key>
 									<array>
-										<real>0.49000000953674316</real>
+										<real>0.51999998092651367</real>
 										<real>0.42500001192092896</real>
 									</array>
 								</dict>
@@ -3891,7 +3891,7 @@
 									<integer>4</integer>
 									<key>value</key>
 									<array>
-										<real>0.5</real>
+										<real>0.55000001192092896</real>
 										<real>0.43000000715255737</real>
 									</array>
 								</dict>
@@ -4139,7 +4139,7 @@
 					<dict>
 						<key>baseValue</key>
 						<array>
-							<real>0.5</real>
+							<real>0.55000001192092896</real>
 							<real>0.43000000715255737</real>
 						</array>
 						<key>name</key>
@@ -4148,7 +4148,7 @@
 						<string>ScaleLock</string>
 						<key>value</key>
 						<array>
-							<real>0.5</real>
+							<real>0.55000001192092896</real>
 							<real>0.43000000715255737</real>
 							<false/>
 							<integer>0</integer>
@@ -4208,6 +4208,8 @@
 						<array/>
 					</dict>
 				</array>
+				<key>seqExpanded</key>
+				<true/>
 			</dict>
 			<dict>
 				<key>UUID</key>

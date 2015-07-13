@@ -27,6 +27,10 @@ class Gameplay: CCNode, CCPhysicsCollisionDelegate {
     weak var theSecond: CCSprite!
     weak var theBG: CCSprite!
     weak var theSky: CCSprite!
+    weak var bButton: CCButton!
+    weak var yButton: CCButton!
+    weak var rButton: CCButton!
+    weak var gButton: CCButton!
     var sapling: Sapling?
     var fuzzies: [Fuzz] = []
     var gameOver = false
@@ -141,6 +145,10 @@ class Gameplay: CCNode, CCPhysicsCollisionDelegate {
     func didLoadFromCCB(){
         userInteractionEnabled = true
         multipleTouchEnabled = true
+        bButton.exclusiveTouch = false
+        gButton.exclusiveTouch = false
+        rButton.exclusiveTouch = false
+        yButton.exclusiveTouch = false
         gamePhysicsNode.collisionDelegate = self
         self.animationManager.runAnimationsForSequenceNamed("Beginning")
         //NSUserDefaults.standardUserDefaults().addObserver(self, forKeyPath: "highscore", options: .allZeros, context: nil)
@@ -196,6 +204,7 @@ class Gameplay: CCNode, CCPhysicsCollisionDelegate {
                     gameOver = true
                 }
             }
+            bothFuzz = false
         }
     }
     func pressGreen(){
@@ -213,6 +222,7 @@ class Gameplay: CCNode, CCPhysicsCollisionDelegate {
                     gameOver = true
                 }
             }
+            bothFuzz = false
         }
     }
     func pressRed(){
@@ -230,6 +240,7 @@ class Gameplay: CCNode, CCPhysicsCollisionDelegate {
                     gameOver = true
                 }
             }
+            bothFuzz = false
         }
     }
     func pressYellow(){
@@ -247,6 +258,7 @@ class Gameplay: CCNode, CCPhysicsCollisionDelegate {
                     gameOver = true
                 }
             }
+            bothFuzz = false
         }
     }
 }
