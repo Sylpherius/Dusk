@@ -219,6 +219,8 @@
 						<array/>
 					</dict>
 				</array>
+				<key>selected</key>
+				<true/>
 			</dict>
 			<dict>
 				<key>UUID</key>
@@ -232,7 +234,7 @@
 				<key>displayName</key>
 				<string>ColorSky</string>
 				<key>memberVarAssignmentName</key>
-				<string></string>
+				<string>theSky</string>
 				<key>memberVarAssignmentType</key>
 				<integer>1</integer>
 				<key>properties</key>
@@ -294,7 +296,7 @@
 				<key>displayName</key>
 				<string>ColorBG</string>
 				<key>memberVarAssignmentName</key>
-				<string></string>
+				<string>theBG</string>
 				<key>memberVarAssignmentType</key>
 				<integer>1</integer>
 				<key>properties</key>
@@ -356,7 +358,7 @@
 				<key>displayName</key>
 				<string>ColorSecond</string>
 				<key>memberVarAssignmentName</key>
-				<string></string>
+				<string>theSecond</string>
 				<key>memberVarAssignmentType</key>
 				<integer>1</integer>
 				<key>properties</key>
@@ -418,7 +420,7 @@
 				<key>displayName</key>
 				<string>ColorTree</string>
 				<key>memberVarAssignmentName</key>
-				<string></string>
+				<string>theTree</string>
 				<key>memberVarAssignmentType</key>
 				<integer>1</integer>
 				<key>properties</key>
@@ -1320,7 +1322,7 @@
 				<key>displayName</key>
 				<string>ColorPlants</string>
 				<key>memberVarAssignmentName</key>
-				<string></string>
+				<string>thePlants</string>
 				<key>memberVarAssignmentType</key>
 				<integer>1</integer>
 				<key>properties</key>
@@ -1369,8 +1371,6 @@
 						<string>ColorPlants.ccb</string>
 					</dict>
 				</array>
-				<key>selected</key>
-				<true/>
 			</dict>
 			<dict>
 				<key>UUID</key>
@@ -2189,7 +2189,7 @@
 						<key>value</key>
 						<array>
 							<real>0.0</real>
-							<real>-100</real>
+							<real>-50</real>
 						</array>
 					</dict>
 					<dict>
@@ -2214,7 +2214,7 @@
 				<key>displayName</key>
 				<string>ColorGrass</string>
 				<key>memberVarAssignmentName</key>
-				<string></string>
+				<string>theGrass</string>
 				<key>memberVarAssignmentType</key>
 				<integer>1</integer>
 				<key>properties</key>

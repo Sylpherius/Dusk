@@ -71,21 +71,19 @@ class Gameplay: CCNode, CCPhysicsCollisionDelegate {
             firstFirst = true
         }
     }
-    override func observeValueForKeyPath(keyPath: String, ofObject object: AnyObject, change: [NSObject : AnyObject], context: UnsafeMutablePointer<Void>) {
-        if keyPath == "highscore" {
-            updateHighscore()
-        }
-    }
     func updateHighscore() {
         var newHighscore = NSUserDefaults.standardUserDefaults().integerForKey("highscore")
         highscoreLabel.string = "\(newHighscore)"
     }
     func triggerGameOver(){
         let defaults = NSUserDefaults.standardUserDefaults()
-        var highscore = defaults.integerForKey("highscore")
-        if points > highscore {
-            defaults.setInteger(points, forKey: "highscore")
+        var highscore: Int = defaults.integerForKey("highscore")
+        if self.points > highscore {
+            defaults.setObject(Int(self.points), forKey: "highscore")
+            defaults.synchronize()
+            updateHighscore()
         }
+        
         restartButton.visible = true
         restartScreen.visible = true
         restartScore.visible = true
@@ -97,7 +95,6 @@ class Gameplay: CCNode, CCPhysicsCollisionDelegate {
         CCDirector.sharedDirector().presentScene(gameplayScene)
         points = 0
     }
-    /*
     func ccPhysicsCollisionBegin(pair: CCPhysicsCollisionPair!, ball: Fuzz!, level: CCNode!) -> Bool {
         if oneGameOver == false{
             triggerGameOver()
@@ -130,7 +127,6 @@ class Gameplay: CCNode, CCPhysicsCollisionDelegate {
             ball.removeFromParent()
             }, key: ball)
     }
-    */
     func veryBeginning(){
         tapToStart.visible = false
         self.animationManager.runAnimationsForSequenceNamed("Main")
@@ -144,9 +140,10 @@ class Gameplay: CCNode, CCPhysicsCollisionDelegate {
     }
     func didLoadFromCCB(){
         userInteractionEnabled = true
+        multipleTouchEnabled = true
         gamePhysicsNode.collisionDelegate = self
         self.animationManager.runAnimationsForSequenceNamed("Beginning")
-        NSUserDefaults.standardUserDefaults().addObserver(self, forKeyPath: "highscore", options: .allZeros, context: nil)
+        //NSUserDefaults.standardUserDefaults().addObserver(self, forKeyPath: "highscore", options: .allZeros, context: nil)
         updateHighscore()
     }
     func changeColor(){
@@ -174,11 +171,11 @@ class Gameplay: CCNode, CCPhysicsCollisionDelegate {
     override func update(delta: CCTime) {
         if fuzzies.count == 2 {
             for fuzz in fuzzies {
-                fuzz.physicsBody.applyImpulse(ccp(0,-70))
+                fuzz.physicsBody.applyImpulse(ccp(0,-10))
             }
         }
         if fuzzies.count == 1{
-            fuzzies[0].physicsBody.applyImpulse(ccp(0,-70))
+            fuzzies[0].physicsBody.applyImpulse(ccp(0,-10))
         }
         if firstTap {
             veryBeginning()
