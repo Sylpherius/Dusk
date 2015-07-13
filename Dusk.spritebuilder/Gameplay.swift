@@ -44,27 +44,27 @@ class Gameplay: CCNode, CCPhysicsCollisionDelegate {
     var once = 0
     
     func addColors(){
-        if points >= 5 && once == 0{
+        if points >= 10 && once == 0{
             theGrass.animationManager.runAnimationsForSequenceNamed("Untitled Timeline")
             once++
         }
-        if points >= 10 && once == 1{
+        if points >= 25 && once == 1{
             theTree.animationManager.runAnimationsForSequenceNamed("Untitled Timeline")
             once++
         }
-        if points >= 25 && once == 2{
+        if points >= 40 && once == 2{
             thePlants.animationManager.runAnimationsForSequenceNamed("Untitled Timeline")
             once++
         }
-        if points >= 40 && once == 3{
+        if points >= 70 && once == 3{
             theSecond.animationManager.runAnimationsForSequenceNamed("Untitled Timeline")
             once++
         }
-        if points >= 70 && once == 4{
+        if points >= 100 && once == 4{
             theBG.animationManager.runAnimationsForSequenceNamed("Untitled Timeline")
             once++
         }
-        if points >= 100 && once == 5{
+        if points >= 150 && once == 5{
             theSky.animationManager.runAnimationsForSequenceNamed("Untitled Timeline")
             once++
         }

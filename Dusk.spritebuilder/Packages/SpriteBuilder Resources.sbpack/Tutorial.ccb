@@ -827,8 +827,8 @@
 						<string>Position</string>
 						<key>value</key>
 						<array>
-							<real>362.89950561523438</real>
-							<real>165.70358276367188</real>
+							<real>297.44293212890625</real>
+							<real>172.70358276367188</real>
 							<integer>0</integer>
 							<integer>0</integer>
 							<integer>0</integer>
@@ -852,8 +852,8 @@
 						<string>ScaleLock</string>
 						<key>value</key>
 						<array>
-							<real>0.97008633613586426</real>
-							<real>1</real>
+							<real>0.80493521690368652</real>
+							<real>1.1290897130966187</real>
 							<false/>
 							<integer>0</integer>
 						</array>
@@ -865,7 +865,7 @@
 						<string>Text</string>
 						<key>value</key>
 						<array>
-							<string>tap the mushroom corresponding to the color in their eyes</string>
+							<string>tap the mushroom corresponding to the color in their eyes when its in the air</string>
 							<false/>
 						</array>
 					</dict>
