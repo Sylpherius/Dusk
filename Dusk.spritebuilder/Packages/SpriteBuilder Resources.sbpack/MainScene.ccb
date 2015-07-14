@@ -96,8 +96,8 @@
 						<string>ScaleLock</string>
 						<key>value</key>
 						<array>
-							<real>0.5</real>
-							<real>0.43000000715255737</real>
+							<real>1</real>
+							<real>0.86000001430511475</real>
 							<false/>
 							<integer>0</integer>
 						</array>
@@ -146,6 +146,8 @@
 						<array/>
 					</dict>
 				</array>
+				<key>selected</key>
+				<true/>
 			</dict>
 			<dict>
 				<key>UUID</key>
@@ -612,8 +614,8 @@
 						<string>ScaleLock</string>
 						<key>value</key>
 						<array>
-							<real>1</real>
-							<real>1</real>
+							<real>1.9947078227996826</real>
+							<real>2.044344425201416</real>
 							<false/>
 							<integer>0</integer>
 						</array>
@@ -675,7 +677,7 @@
 				<key>customClass</key>
 				<string></string>
 				<key>displayName</key>
-				<string>CCBFile</string>
+				<string>Blue</string>
 				<key>memberVarAssignmentName</key>
 				<string></string>
 				<key>memberVarAssignmentType</key>
@@ -737,7 +739,7 @@
 				<key>customClass</key>
 				<string></string>
 				<key>displayName</key>
-				<string>CCBFile</string>
+				<string>Green</string>
 				<key>memberVarAssignmentName</key>
 				<string></string>
 				<key>memberVarAssignmentType</key>
@@ -799,7 +801,7 @@
 				<key>customClass</key>
 				<string></string>
 				<key>displayName</key>
-				<string>CCBFile</string>
+				<string>Red</string>
 				<key>memberVarAssignmentName</key>
 				<string></string>
 				<key>memberVarAssignmentType</key>
@@ -861,7 +863,7 @@
 				<key>customClass</key>
 				<string></string>
 				<key>displayName</key>
-				<string>CCBFile</string>
+				<string>Yellow</string>
 				<key>memberVarAssignmentName</key>
 				<string></string>
 				<key>memberVarAssignmentType</key>
@@ -945,8 +947,8 @@
 						<string>Position</string>
 						<key>value</key>
 						<array>
-							<real>40.841392517089844</real>
-							<real>0.0</real>
+							<real>105.06331634521484</real>
+							<real>-9.8802957534790039</real>
 							<integer>0</integer>
 							<integer>0</integer>
 							<integer>0</integer>
@@ -974,8 +976,6 @@
 						<string>Sapling.ccb</string>
 					</dict>
 				</array>
-				<key>selected</key>
-				<true/>
 			</dict>
 			<dict>
 				<key>UUID</key>
@@ -1010,7 +1010,7 @@
 						<key>value</key>
 						<array>
 							<real>468.7462158203125</real>
-							<real>0.0</real>
+							<real>-15.497013092041016</real>
 							<integer>0</integer>
 							<integer>0</integer>
 							<integer>0</integer>
