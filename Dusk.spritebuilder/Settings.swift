@@ -9,19 +9,24 @@
 import UIKit
 
 class Settings: CCNode {
-    var sounds = 0
+    weak var soundOn: CCSprite!
     func back(){
         let gameplayScene = CCBReader.loadAsScene("Gameplay")
         CCDirector.sharedDirector().presentScene(gameplayScene)
     }
-    func sound(){
-        if sounds == 0{
-            self.animationManager.runAnimationsForSequenceNamed("Untitled Timeline")
-            sounds++
+    func didLoadFromCCB(){
+        if whichMode.soundIsOn == true{
+            soundOn.visible = true
+        } else{
+            soundOn.visible = false
         }
-        if sounds == 1{
-            self.animationManager.runAnimationsForSequenceNamed("Default Timeline")
-            sounds--
+    }
+    func sound(){
+        if soundOn.visible == true{
+            soundOn.visible = false
+        }
+        else{
+            soundOn.visible = true
         }
     }
 }

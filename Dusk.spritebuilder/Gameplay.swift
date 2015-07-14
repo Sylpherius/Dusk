@@ -11,6 +11,13 @@ import UIKit
 enum FuzzColor {
     case Blue, Green, Red, Yellow, White
 }
+enum Mode {
+    case Easy, Medium, Hard, Insane, Why
+}
+struct whichMode {
+    static var theMode: Mode = .Easy
+    static var soundIsOn = true
+}
 class Gameplay: CCNode, CCPhysicsCollisionDelegate {
     weak var fuzz1: Fuzz!
     weak var fuzz2: Fuzz!
@@ -33,6 +40,7 @@ class Gameplay: CCNode, CCPhysicsCollisionDelegate {
     weak var gButton: CCButton!
     weak var settingsButton: CCButton!
     weak var settingsIcon: CCSprite!
+    weak var modeButton: CCButton!
     var sapling: Sapling?
     var fuzzies: [Fuzz] = []
     var gameOver = false
@@ -44,7 +52,40 @@ class Gameplay: CCNode, CCPhysicsCollisionDelegate {
     var firstFirst = false
     var whichFuzz = 0
     var once = 0
+    var mode: Mode = whichMode.theMode
+    var modeWord = ""
     
+    func modes(){
+        if whichMode.theMode == .Easy{
+            whichMode.theMode = .Medium
+            modeWord = "Medium"
+            modeButton.title = "\(modeWord)"
+        } else{
+            if whichMode.theMode == .Medium{
+                whichMode.theMode = .Hard
+                modeWord = "Hard"
+                modeButton.title = "\(modeWord)"
+            } else{
+                if whichMode.theMode == .Hard{
+                    whichMode.theMode = .Insane
+                    modeWord = "Insane"
+                    modeButton.title = "\(modeWord)"
+                } else{
+                    if whichMode.theMode == .Insane{
+                        whichMode.theMode = .Why
+                        modeWord = "Why"
+                        modeButton.title = "\(modeWord)"
+                    } else{
+                        if whichMode.theMode == .Why{
+                            whichMode.theMode = .Easy
+                            modeWord = "Easy"
+                            modeButton.title = "\(modeWord)"
+                        }
+                    }
+                }
+            }
+        }
+    }
     func addColors(){
         if points >= 10 && once == 0{
             theGrass.animationManager.runAnimationsForSequenceNamed("Untitled Timeline")
@@ -95,6 +136,7 @@ class Gameplay: CCNode, CCPhysicsCollisionDelegate {
         highscoreLabel.visible = true
         settingsIcon.visible = true
         settingsButton.visible = true
+        modeButton.visible = true
         self.animationManager.runAnimationsForSequenceNamed("FadeIn")
     }
     func restart(){
@@ -165,7 +207,13 @@ class Gameplay: CCNode, CCPhysicsCollisionDelegate {
         var whichColor = Int(CCRANDOM_0_1() * 4)
         var horizMove = CGFloat(CCRANDOM_0_1() * 100 - 50)
         //applies the "bounce" the fuzz does
-        currentFuzz.physicsBody.velocity = ccp(0,200)
+        if whichMode.theMode == .Easy || whichMode.theMode == .Medium{
+            currentFuzz.physicsBody.velocity = ccp(0,200)
+        } else if whichMode.theMode == .Hard{
+            currentFuzz.physicsBody.velocity = ccp(0,300)
+        } else if whichMode.theMode == .Insane || whichMode.theMode == .Why{
+            currentFuzz.physicsBody.velocity = ccp(0,400)
+        }
         currentFuzz.physicsBody.velocity = ccp(horizMove, currentFuzz.physicsBody.velocity.y)
         //updates the score
         points++
@@ -186,14 +234,61 @@ class Gameplay: CCNode, CCPhysicsCollisionDelegate {
     override func update(delta: CCTime) {
         if fuzzies.count == 2 {
             for fuzz in fuzzies {
-                fuzz.physicsBody.applyImpulse(ccp(0,-10))
+                if mode == .Easy{
+                    fuzz.physicsBody.applyImpulse(ccp(0,-5))
+                }
+                if mode == .Medium{
+                    fuzz.physicsBody.applyImpulse(ccp(0,-10))
+                }
+                if mode == .Hard{
+                    fuzz.physicsBody.applyImpulse(ccp(0,-15))
+                }
+                if mode == .Insane{
+                    fuzz.physicsBody.applyImpulse(ccp(0,-20))
+                }
+                if mode == .Why{
+                    fuzz.physicsBody.applyImpulse(ccp(0,-30))
+                }
             }
         }
         if fuzzies.count == 1{
-            fuzzies[0].physicsBody.applyImpulse(ccp(0,-10))
+            if mode == .Easy{
+                fuzzies[0].physicsBody.applyImpulse(ccp(0,-5))
+            }
+            if mode == .Medium{
+                fuzzies[0].physicsBody.applyImpulse(ccp(0,-10))
+            }
+            if mode == .Hard{
+                fuzzies[0].physicsBody.applyImpulse(ccp(0,-15))
+            }
+            if mode == .Insane{
+                fuzzies[0].physicsBody.applyImpulse(ccp(0,-20))
+            }
+            if mode == .Why{
+                fuzzies[0].physicsBody.applyImpulse(ccp(0,-30))
+            }
         }
         if firstTap {
             veryBeginning()
+        }
+        if whichMode.theMode == .Easy{
+            modeButton.title = "Easy"
+        } else{
+            if whichMode.theMode == .Medium{
+                modeButton.title = "Medium"
+            } else{
+                if whichMode.theMode == .Hard{
+                    modeButton.title = "Hard"
+                } else{
+                    if whichMode.theMode == .Insane{
+                        modeButton.title = "Insane"
+                    } else{
+                        if whichMode.theMode == .Why{
+                            modeButton.title = "Why"
+                        }
+                    }
+                }
+            }
         }
     }
     func pressBlue(){
