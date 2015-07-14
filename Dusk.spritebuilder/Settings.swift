@@ -24,9 +24,15 @@ class Settings: CCNode {
     func sound(){
         if soundOn.visible == true{
             soundOn.visible = false
+            whichMode.soundIsOn = false
         }
         else{
             soundOn.visible = true
+            whichMode.soundIsOn = true
         }
+    }
+    func tutorial(){
+        let tutorialScene = CCBReader.loadAsScene("Tutorial")
+        CCDirector.sharedDirector().presentScene(tutorialScene)
     }
 }

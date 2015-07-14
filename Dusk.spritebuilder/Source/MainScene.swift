@@ -6,7 +6,12 @@ class MainScene: CCNode {
 
     }
     func start(){
-        let tutorialScene = CCBReader.loadAsScene("Tutorial")
-        CCDirector.sharedDirector().presentScene(tutorialScene)
+        if NSUserDefaults.standardUserDefaults().integerForKey("highscore") == 0{
+            let tutorialScene = CCBReader.loadAsScene("Tutorial")
+            CCDirector.sharedDirector().presentScene(tutorialScene)
+        } else {
+            let gameplayScene = CCBReader.loadAsScene("Gameplay")
+            CCDirector.sharedDirector().presentScene(gameplayScene)
+        }
     }
 }
