@@ -243,12 +243,16 @@ class Gameplay: CCNode, CCPhysicsCollisionDelegate {
         var whichColor = Int(CCRANDOM_0_1() * 4)
         var horizMove = CGFloat(CCRANDOM_0_1() * 100 - 50)
         //applies the "bounce" the fuzz does
-        if whichMode.theMode == .Easy || whichMode.theMode == .Medium{
-            currentFuzz.physicsBody.velocity = ccp(0,200)
+        if whichMode.theMode == .Easy{
+            currentFuzz.physicsBody.velocity = ccp(0,250)
+        } else if whichMode.theMode == .Medium{
+            currentFuzz.physicsBody.velocity = ccp(0,340)
         } else if whichMode.theMode == .Hard{
-            currentFuzz.physicsBody.velocity = ccp(0,300)
-        } else if whichMode.theMode == .Insane || whichMode.theMode == .Why{
             currentFuzz.physicsBody.velocity = ccp(0,400)
+        } else if whichMode.theMode == .Insane{
+            currentFuzz.physicsBody.velocity = ccp(0,470)
+        } else{
+            currentFuzz.physicsBody.velocity = ccp(0,560)
         }
         currentFuzz.physicsBody.velocity = ccp(horizMove, currentFuzz.physicsBody.velocity.y)
         //updates the score
@@ -271,19 +275,19 @@ class Gameplay: CCNode, CCPhysicsCollisionDelegate {
         if fuzzies.count == 2 {
             for fuzz in fuzzies {
                 if mode == .Easy{
-                    fuzz.physicsBody.applyImpulse(ccp(0,-5))
+                    fuzz.physicsBody.applyImpulse(ccp(0,-3))
                 }
                 if mode == .Medium{
-                    fuzz.physicsBody.applyImpulse(ccp(0,-10))
+                    fuzz.physicsBody.applyImpulse(ccp(0,-6))
                 }
                 if mode == .Hard{
-                    fuzz.physicsBody.applyImpulse(ccp(0,-15))
+                    fuzz.physicsBody.applyImpulse(ccp(0,-9))
                 }
                 if mode == .Insane{
-                    fuzz.physicsBody.applyImpulse(ccp(0,-20))
+                    fuzz.physicsBody.applyImpulse(ccp(0,-12))
                 }
                 if mode == .Why{
-                    fuzz.physicsBody.applyImpulse(ccp(0,-30))
+                    fuzz.physicsBody.applyImpulse(ccp(0,-15))
                 }
             }
         }
