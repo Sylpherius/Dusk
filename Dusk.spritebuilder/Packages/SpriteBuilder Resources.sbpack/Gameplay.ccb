@@ -103,6 +103,232 @@
 							<key>type</key>
 							<integer>10</integer>
 						</dict>
+						<key>spriteFrame</key>
+						<dict>
+							<key>keyframes</key>
+							<array>
+								<dict>
+									<key>easing</key>
+									<dict>
+										<key>type</key>
+										<integer>0</integer>
+									</dict>
+									<key>name</key>
+									<string>spriteFrame</string>
+									<key>time</key>
+									<real>0.0</real>
+									<key>type</key>
+									<integer>7</integer>
+									<key>value</key>
+									<array>
+										<string>Dusk Assets/Dusk Background.png</string>
+										<string>Use regular file</string>
+									</array>
+								</dict>
+								<dict>
+									<key>easing</key>
+									<dict>
+										<key>type</key>
+										<integer>0</integer>
+									</dict>
+									<key>name</key>
+									<string>spriteFrame</string>
+									<key>time</key>
+									<real>0.1666666716337204</real>
+									<key>type</key>
+									<integer>7</integer>
+									<key>value</key>
+									<array>
+										<string>Dusk Animations/Dusk Background_A1.png</string>
+										<string>Use regular file</string>
+									</array>
+								</dict>
+								<dict>
+									<key>easing</key>
+									<dict>
+										<key>type</key>
+										<integer>0</integer>
+									</dict>
+									<key>name</key>
+									<string>spriteFrame</string>
+									<key>time</key>
+									<real>0.3333333432674408</real>
+									<key>type</key>
+									<integer>7</integer>
+									<key>value</key>
+									<array>
+										<string>Dusk Animations/Dusk Background_A2.png</string>
+										<string>Use regular file</string>
+									</array>
+								</dict>
+								<dict>
+									<key>easing</key>
+									<dict>
+										<key>type</key>
+										<integer>0</integer>
+									</dict>
+									<key>name</key>
+									<string>spriteFrame</string>
+									<key>time</key>
+									<real>0.5</real>
+									<key>type</key>
+									<integer>7</integer>
+									<key>value</key>
+									<array>
+										<string>Dusk Assets/Dusk Background.png</string>
+										<string>Use regular file</string>
+									</array>
+								</dict>
+								<dict>
+									<key>easing</key>
+									<dict>
+										<key>type</key>
+										<integer>0</integer>
+									</dict>
+									<key>name</key>
+									<string>spriteFrame</string>
+									<key>time</key>
+									<real>0.66666668653488159</real>
+									<key>type</key>
+									<integer>7</integer>
+									<key>value</key>
+									<array>
+										<string>Dusk Animations/Dusk Background_A1.png</string>
+										<string>Use regular file</string>
+									</array>
+								</dict>
+								<dict>
+									<key>easing</key>
+									<dict>
+										<key>type</key>
+										<integer>0</integer>
+									</dict>
+									<key>name</key>
+									<string>spriteFrame</string>
+									<key>time</key>
+									<real>0.83333331346511841</real>
+									<key>type</key>
+									<integer>7</integer>
+									<key>value</key>
+									<array>
+										<string>Dusk Animations/Dusk Background_A2.png</string>
+										<string>Use regular file</string>
+									</array>
+								</dict>
+								<dict>
+									<key>easing</key>
+									<dict>
+										<key>type</key>
+										<integer>0</integer>
+									</dict>
+									<key>name</key>
+									<string>spriteFrame</string>
+									<key>time</key>
+									<real>1</real>
+									<key>type</key>
+									<integer>7</integer>
+									<key>value</key>
+									<array>
+										<string>Dusk Assets/Dusk Background.png</string>
+										<string>Use regular file</string>
+									</array>
+								</dict>
+								<dict>
+									<key>easing</key>
+									<dict>
+										<key>type</key>
+										<integer>0</integer>
+									</dict>
+									<key>name</key>
+									<string>spriteFrame</string>
+									<key>time</key>
+									<real>1.1666666269302368</real>
+									<key>type</key>
+									<integer>7</integer>
+									<key>value</key>
+									<array>
+										<string>Dusk Animations/Dusk Background_A1.png</string>
+										<string>Use regular file</string>
+									</array>
+								</dict>
+								<dict>
+									<key>easing</key>
+									<dict>
+										<key>type</key>
+										<integer>0</integer>
+									</dict>
+									<key>name</key>
+									<string>spriteFrame</string>
+									<key>time</key>
+									<real>1.3333333730697632</real>
+									<key>type</key>
+									<integer>7</integer>
+									<key>value</key>
+									<array>
+										<string>Dusk Animations/Dusk Background_A2.png</string>
+										<string>Use regular file</string>
+									</array>
+								</dict>
+								<dict>
+									<key>easing</key>
+									<dict>
+										<key>type</key>
+										<integer>0</integer>
+									</dict>
+									<key>name</key>
+									<string>spriteFrame</string>
+									<key>time</key>
+									<real>1.5</real>
+									<key>type</key>
+									<integer>7</integer>
+									<key>value</key>
+									<array>
+										<string>Dusk Assets/Dusk Background.png</string>
+										<string>Use regular file</string>
+									</array>
+								</dict>
+								<dict>
+									<key>easing</key>
+									<dict>
+										<key>type</key>
+										<integer>0</integer>
+									</dict>
+									<key>name</key>
+									<string>spriteFrame</string>
+									<key>time</key>
+									<real>1.6666666269302368</real>
+									<key>type</key>
+									<integer>7</integer>
+									<key>value</key>
+									<array>
+										<string>Dusk Animations/Dusk Background_A1.png</string>
+										<string>Use regular file</string>
+									</array>
+								</dict>
+								<dict>
+									<key>easing</key>
+									<dict>
+										<key>type</key>
+										<integer>0</integer>
+									</dict>
+									<key>name</key>
+									<string>spriteFrame</string>
+									<key>time</key>
+									<real>1.8333333730697632</real>
+									<key>type</key>
+									<integer>7</integer>
+									<key>value</key>
+									<array>
+										<string>Dusk Animations/Dusk Background_A2.png</string>
+										<string>Use regular file</string>
+									</array>
+								</dict>
+							</array>
+							<key>name</key>
+							<string>spriteFrame</string>
+							<key>type</key>
+							<integer>7</integer>
+						</dict>
 					</dict>
 				</dict>
 				<key>baseClass</key>
@@ -166,6 +392,11 @@
 						</array>
 					</dict>
 					<dict>
+						<key>baseValue</key>
+						<array>
+							<string>Dusk Assets/Dusk Background.png</string>
+							<string>Use regular file</string>
+						</array>
 						<key>name</key>
 						<string>spriteFrame</string>
 						<key>type</key>
@@ -173,7 +404,7 @@
 						<key>value</key>
 						<array>
 							<string></string>
-							<string>Dusk Assets/Dusk Background.png</string>
+							<string>Dusk Animations/Dusk Background_A2.png</string>
 						</array>
 					</dict>
 					<dict>
@@ -219,6 +450,8 @@
 						<array/>
 					</dict>
 				</array>
+				<key>seqExpanded</key>
+				<true/>
 			</dict>
 			<dict>
 				<key>UUID</key>
@@ -2180,8 +2413,6 @@
 								<string>Fuzz.ccb</string>
 							</dict>
 						</array>
-						<key>selected</key>
-						<true/>
 					</dict>
 				</array>
 				<key>customClass</key>
@@ -3958,24 +4189,6 @@
 									<key>name</key>
 									<string>scale</string>
 									<key>time</key>
-									<real>1.6000000238418579</real>
-									<key>type</key>
-									<integer>4</integer>
-									<key>value</key>
-									<array>
-										<real>1.1000000238418579</real>
-										<real>0.89999997615814209</real>
-									</array>
-								</dict>
-								<dict>
-									<key>easing</key>
-									<dict>
-										<key>type</key>
-										<integer>1</integer>
-									</dict>
-									<key>name</key>
-									<string>scale</string>
-									<key>time</key>
 									<real>1.6666666269302368</real>
 									<key>type</key>
 									<integer>4</integer>
@@ -4238,8 +4451,8 @@
 						<string>ScaleLock</string>
 						<key>value</key>
 						<array>
-							<real>1.1000000238418579</real>
-							<real>0.89999997615814209</real>
+							<real>1.093999981880188</real>
+							<real>0.85900002717971802</real>
 							<false/>
 							<integer>0</integer>
 						</array>
@@ -4298,6 +4511,10 @@
 						<array/>
 					</dict>
 				</array>
+				<key>selected</key>
+				<true/>
+				<key>seqExpanded</key>
+				<true/>
 			</dict>
 			<dict>
 				<key>UUID</key>
@@ -6106,7 +6323,7 @@
 						<string>String</string>
 						<key>value</key>
 						<array>
-							<string>Easy</string>
+							<string>Calm</string>
 							<false/>
 						</array>
 					</dict>

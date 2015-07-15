@@ -58,27 +58,27 @@ class Gameplay: CCNode, CCPhysicsCollisionDelegate {
     func modes(){
         if whichMode.theMode == .Easy{
             whichMode.theMode = .Medium
-            modeWord = "Medium"
+            modeWord = "Normal"
             modeButton.title = "\(modeWord)"
         } else{
             if whichMode.theMode == .Medium{
                 whichMode.theMode = .Hard
-                modeWord = "Hard"
+                modeWord = "Fast"
                 modeButton.title = "\(modeWord)"
             } else{
                 if whichMode.theMode == .Hard{
                     whichMode.theMode = .Insane
-                    modeWord = "Insane"
+                    modeWord = "Frenzy"
                     modeButton.title = "\(modeWord)"
                 } else{
                     if whichMode.theMode == .Insane{
                         whichMode.theMode = .Why
-                        modeWord = "Why"
+                        modeWord = "Why :("
                         modeButton.title = "\(modeWord)"
                     } else{
                         if whichMode.theMode == .Why{
                             whichMode.theMode = .Easy
-                            modeWord = "Easy"
+                            modeWord = "Slow"
                             modeButton.title = "\(modeWord)"
                         }
                     }
@@ -182,7 +182,7 @@ class Gameplay: CCNode, CCPhysicsCollisionDelegate {
     }
     func settings(){
         let settingsScene = CCBReader.loadAsScene("Settings")
-        CCDirector.sharedDirector().presentScene(settingsScene)
+        CCDirector.sharedDirector().pushScene(settingsScene)
     }
     func ccPhysicsCollisionBegin(pair: CCPhysicsCollisionPair!, ball: Fuzz!, level: CCNode!) -> Bool {
         if oneGameOver == false{
@@ -315,22 +315,22 @@ class Gameplay: CCNode, CCPhysicsCollisionDelegate {
         var currentHighscore: Int
         if whichMode.theMode == .Easy{
             currentHighscore = defaults.integerForKey("highscoreE")
-            modeButton.title = "Easy"
+            modeButton.title = "Slow"
         } else{
             if whichMode.theMode == .Medium{
                 currentHighscore = defaults.integerForKey("highscoreM")
-                modeButton.title = "Medium"
+                modeButton.title = "Normal"
             } else{
                 if whichMode.theMode == .Hard{
                     currentHighscore = defaults.integerForKey("highscoreH")
-                    modeButton.title = "Hard"
+                    modeButton.title = "Fast"
                 } else{
                     if whichMode.theMode == .Insane{
                         currentHighscore = defaults.integerForKey("highscoreI")
-                        modeButton.title = "Insane"
+                        modeButton.title = "Frenzy"
                     } else{
                             currentHighscore = defaults.integerForKey("highscoreW")
-                            modeButton.title = "Why"
+                            modeButton.title = "Why :("
                     }
                 }
             }

@@ -11,8 +11,7 @@ import UIKit
 class Settings: CCNode {
     weak var soundOn: CCSprite!
     func back(){
-        let gameplayScene = CCBReader.loadAsScene("Gameplay")
-        CCDirector.sharedDirector().presentScene(gameplayScene)
+        CCDirector.sharedDirector().popScene()
     }
     func didLoadFromCCB(){
         if whichMode.soundIsOn == true{
