@@ -41,6 +41,7 @@ class Gameplay: CCNode, CCPhysicsCollisionDelegate {
     weak var settingsButton: CCButton!
     weak var settingsIcon: CCSprite!
     weak var modeButton: CCButton!
+    weak var modeArrows: CCSprite!
     var sapling: Sapling?
     var fuzzies: [Fuzz] = []
     var gameOver = false
@@ -55,6 +56,7 @@ class Gameplay: CCNode, CCPhysicsCollisionDelegate {
     var mode: Mode = whichMode.theMode
     var modeWord = ""
     
+    //Changes the game difficulty
     func modes(){
         if whichMode.theMode == .Easy{
             whichMode.theMode = .Medium
@@ -86,6 +88,7 @@ class Gameplay: CCNode, CCPhysicsCollisionDelegate {
             }
         }
     }
+    //Implements the feature that slowly adds color to the background
     func addColors(){
         if points >= 10 && once == 0{
             theGrass.animationManager.runAnimationsForSequenceNamed("Untitled Timeline")
@@ -112,12 +115,14 @@ class Gameplay: CCNode, CCPhysicsCollisionDelegate {
             once++
         }
     }
+    //Makes sure that the beginning change of colors in the Fuzz objects only occurs once
     override func touchBegan(touch: CCTouch!, withEvent event: CCTouchEvent!) {
         if firstFirst == false{
             firstTap = true
             firstFirst = true
         }
     }
+    //Updates the highscore
     func updateHighscore() {
         var newHighscore: Int
         if whichMode.theMode == .Easy{
@@ -133,6 +138,7 @@ class Gameplay: CCNode, CCPhysicsCollisionDelegate {
         }
         highscoreLabel.string = "\(newHighscore)"
     }
+    //Causes the game to end
     func triggerGameOver(){
         let defaults = NSUserDefaults.standardUserDefaults()
         var highscore: Int
@@ -173,17 +179,21 @@ class Gameplay: CCNode, CCPhysicsCollisionDelegate {
         settingsIcon.visible = true
         settingsButton.visible = true
         modeButton.visible = true
+        modeArrows.visible = true
         self.animationManager.runAnimationsForSequenceNamed("FadeIn")
     }
+    //Restarts the scene
     func restart(){
         let gameplayScene = CCBReader.loadAsScene("Gameplay")
         CCDirector.sharedDirector().presentScene(gameplayScene)
         points = 0
     }
+    //Sends the user to the settings (pushes the settings scene on)
     func settings(){
         let settingsScene = CCBReader.loadAsScene("Settings")
         CCDirector.sharedDirector().pushScene(settingsScene)
     }
+    //Triggers the game over scenario when the fuzz object hits the ground
     func ccPhysicsCollisionBegin(pair: CCPhysicsCollisionPair!, ball: Fuzz!, level: CCNode!) -> Bool {
         if oneGameOver == false{
             triggerGameOver()
@@ -202,6 +212,7 @@ class Gameplay: CCNode, CCPhysicsCollisionDelegate {
         }
         return true
     }
+    //Works with the above function
     func ccPhysicsCollisionPostSolve(pair: CCPhysicsCollisionPair!, ball: Fuzz!, level: CCNode!) {
         gamePhysicsNode.space.addPostStepBlock({
             ball.ground()
@@ -216,6 +227,7 @@ class Gameplay: CCNode, CCPhysicsCollisionDelegate {
             ball.removeFromParent()
             }, key: ball)
     }
+    //Sets the stage so the player can get ready to start the game
     func veryBeginning(){
         tapToStart.visible = false
         self.animationManager.runAnimationsForSequenceNamed("Main")
@@ -227,6 +239,7 @@ class Gameplay: CCNode, CCPhysicsCollisionDelegate {
         changeColor()
         firstTap = false
     }
+    //Loads in things at the very beginning
     func didLoadFromCCB(){
         userInteractionEnabled = true
         multipleTouchEnabled = true
@@ -236,9 +249,9 @@ class Gameplay: CCNode, CCPhysicsCollisionDelegate {
         yButton.exclusiveTouch = false
         gamePhysicsNode.collisionDelegate = self
         self.animationManager.runAnimationsForSequenceNamed("Beginning")
-        //NSUserDefaults.standardUserDefaults().addObserver(self, forKeyPath: "highscore", options: .allZeros, context: nil)
         updateHighscore()
     }
+    //Changes the color of the fuzz object when the correct mushroom object is tapped and also adds in the jump
     func changeColor(){
         var whichColor = Int(CCRANDOM_0_1() * 4)
         var horizMove = CGFloat(CCRANDOM_0_1() * 100 - 50)
@@ -250,7 +263,7 @@ class Gameplay: CCNode, CCPhysicsCollisionDelegate {
         } else if whichMode.theMode == .Hard{
             currentFuzz.physicsBody.velocity = ccp(0,400)
         } else if whichMode.theMode == .Insane{
-            currentFuzz.physicsBody.velocity = ccp(0,470)
+            currentFuzz.physicsBody.velocity = ccp(0,490)
         } else{
             currentFuzz.physicsBody.velocity = ccp(0,560)
         }
@@ -284,7 +297,7 @@ class Gameplay: CCNode, CCPhysicsCollisionDelegate {
                     fuzz.physicsBody.applyImpulse(ccp(0,-9))
                 }
                 if mode == .Insane{
-                    fuzz.physicsBody.applyImpulse(ccp(0,-12))
+                    fuzz.physicsBody.applyImpulse(ccp(0,-11))
                 }
                 if mode == .Why{
                     fuzz.physicsBody.applyImpulse(ccp(0,-15))
