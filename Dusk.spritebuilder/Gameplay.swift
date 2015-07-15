@@ -119,15 +119,51 @@ class Gameplay: CCNode, CCPhysicsCollisionDelegate {
         }
     }
     func updateHighscore() {
-        var newHighscore = NSUserDefaults.standardUserDefaults().integerForKey("highscore")
+        var newHighscore: Int
+        if whichMode.theMode == .Easy{
+            newHighscore = NSUserDefaults.standardUserDefaults().integerForKey("highscoreE")
+        } else if whichMode.theMode == .Medium{
+            newHighscore = NSUserDefaults.standardUserDefaults().integerForKey("highscoreM")
+        } else if whichMode.theMode == .Hard{
+            newHighscore = NSUserDefaults.standardUserDefaults().integerForKey("highscoreH")
+        } else if whichMode.theMode == .Insane{
+            newHighscore = NSUserDefaults.standardUserDefaults().integerForKey("highscoreI")
+        } else {
+            newHighscore = NSUserDefaults.standardUserDefaults().integerForKey("highscoreW")
+        }
         highscoreLabel.string = "\(newHighscore)"
     }
     func triggerGameOver(){
         let defaults = NSUserDefaults.standardUserDefaults()
-        var highscore: Int = defaults.integerForKey("highscore")
+        var highscore: Int
+        if whichMode.theMode == .Easy{
+            highscore = defaults.integerForKey("highscoreE")
+        } else if whichMode.theMode == .Easy{
+            highscore = defaults.integerForKey("highscoreM")
+        } else if whichMode.theMode == .Easy{
+            highscore = defaults.integerForKey("highscoreH")
+        } else if whichMode.theMode == .Easy{
+            highscore = defaults.integerForKey("highscoreI")
+        } else {
+            highscore = defaults.integerForKey("highscoreW")
+        }
         if self.points > highscore {
-            defaults.setObject(Int(self.points), forKey: "highscore")
-            defaults.synchronize()
+            if whichMode.theMode == .Easy{
+                defaults.setObject(Int(self.points), forKey: "highscoreE")
+                defaults.synchronize()
+            } else if whichMode.theMode == .Medium{
+                defaults.setObject(Int(self.points), forKey: "highscoreM")
+                defaults.synchronize()
+            } else if whichMode.theMode == .Hard{
+                defaults.setObject(Int(self.points), forKey: "highscoreH")
+                defaults.synchronize()
+            } else if whichMode.theMode == .Insane{
+                defaults.setObject(Int(self.points), forKey: "highscoreI")
+                defaults.synchronize()
+            } else {
+                defaults.setObject(Int(self.points), forKey: "highscoreW")
+                defaults.synchronize()
+            }
             updateHighscore()
         }
         restartButton.visible = true
@@ -271,25 +307,31 @@ class Gameplay: CCNode, CCPhysicsCollisionDelegate {
         if firstTap {
             veryBeginning()
         }
+        let defaults = NSUserDefaults.standardUserDefaults()
+        var currentHighscore: Int
         if whichMode.theMode == .Easy{
+            currentHighscore = defaults.integerForKey("highscoreE")
             modeButton.title = "Easy"
         } else{
             if whichMode.theMode == .Medium{
+                currentHighscore = defaults.integerForKey("highscoreM")
                 modeButton.title = "Medium"
             } else{
                 if whichMode.theMode == .Hard{
+                    currentHighscore = defaults.integerForKey("highscoreH")
                     modeButton.title = "Hard"
                 } else{
                     if whichMode.theMode == .Insane{
+                        currentHighscore = defaults.integerForKey("highscoreI")
                         modeButton.title = "Insane"
                     } else{
-                        if whichMode.theMode == .Why{
+                            currentHighscore = defaults.integerForKey("highscoreW")
                             modeButton.title = "Why"
-                        }
                     }
                 }
             }
         }
+        highscoreLabel.string = "\(currentHighscore)"
     }
     func pressBlue(){
         if gameOver == false{
