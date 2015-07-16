@@ -142,16 +142,21 @@ class Gameplay: CCNode, CCPhysicsCollisionDelegate {
     func triggerGameOver(){
         let defaults = NSUserDefaults.standardUserDefaults()
         var highscore: Int
+        var highscoreE: Int = defaults.integerForKey("highscoreE")
+        var highscoreM: Int = defaults.integerForKey("highscoreM")
+        var highscoreH: Int = defaults.integerForKey("highscoreH")
+        var highscoreI: Int = defaults.integerForKey("highscoreI")
+        var highscoreW: Int = defaults.integerForKey("highscoreW")
         if whichMode.theMode == .Easy{
-            highscore = defaults.integerForKey("highscoreE")
-        } else if whichMode.theMode == .Easy{
-            highscore = defaults.integerForKey("highscoreM")
-        } else if whichMode.theMode == .Easy{
-            highscore = defaults.integerForKey("highscoreH")
-        } else if whichMode.theMode == .Easy{
-            highscore = defaults.integerForKey("highscoreI")
+            highscore = highscoreE
+        } else if whichMode.theMode == .Medium{
+            highscore = highscoreM
+        } else if whichMode.theMode == .Hard{
+            highscore = highscoreH
+        } else if whichMode.theMode == .Insane{
+            highscore = highscoreI
         } else {
-            highscore = defaults.integerForKey("highscoreW")
+            highscore = highscoreW
         }
         if self.points > highscore {
             if whichMode.theMode == .Easy{

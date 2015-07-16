@@ -93,6 +93,7 @@
 		BC5399DA1A44DCC90063F482 /* GLActivityKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC5399D51A44DCC90063F482 /* GLActivityKit.framework */; };
 		BC5399DB1A44DCC90063F482 /* JavaFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC5399D61A44DCC90063F482 /* JavaFoundation.framework */; };
 		BC5399DC1A44DCC90063F482 /* JavaKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC5399D71A44DCC90063F482 /* JavaKit.framework */; };
+		E716D3851B58545600A26818 /* Wind.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = E716D3841B58545600A26818 /* Wind.mp3 */; };
 		E76DC44C1B546EDC00E9EBD2 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = E76DC44B1B546EDC00E9EBD2 /* Settings.swift */; };
 		E799B9621B4C479000B7A790 /* GameMusic.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = E799B9611B4C479000B7A790 /* GameMusic.mp3 */; };
 		E799B97A1B4DCDE000B7A790 /* Tutorial.swift in Sources */ = {isa = PBXBuildFile; fileRef = E799B9791B4DCDE000B7A790 /* Tutorial.swift */; };
@@ -217,6 +218,7 @@
 		BC5399D61A44DCC90063F482 /* JavaFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaFoundation.framework; path = "../../../../Library/Application Support/Developer/Shared/Xcode/Platforms/Android.platform/Developer/SDKs/SBAndroid.sdk/System/Library/Frameworks/JavaFoundation.framework"; sourceTree = "<group>"; };
 		BC5399D71A44DCC90063F482 /* JavaKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaKit.framework; path = "../../../../Library/Application Support/Developer/Shared/Xcode/Platforms/Android.platform/Developer/SDKs/SBAndroid.sdk/System/Library/Frameworks/JavaKit.framework"; sourceTree = "<group>"; };
 		D352B48019EC608A00829775 /* MetalShaders */ = {isa = PBXFileReference; lastKnownFileType = folder; name = MetalShaders; path = Source/MetalShaders; sourceTree = "<group>"; };
+		E716D3841B58545600A26818 /* Wind.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = Wind.mp3; path = ../../../../Sounds/Wind.mp3; sourceTree = "<group>"; };
 		E76DC44B1B546EDC00E9EBD2 /* Settings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		E799B9611B4C479000B7A790 /* GameMusic.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = GameMusic.mp3; path = ../../../../../Downloads/GameMusic.mp3; sourceTree = "<group>"; };
 		E799B9791B4DCDE000B7A790 /* Tutorial.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tutorial.swift; sourceTree = "<group>"; };
@@ -557,6 +559,7 @@
 		E799B95E1B4C474A00B7A790 /* Audio */ = {
 			isa = PBXGroup;
 			children = (
+				E716D3841B58545600A26818 /* Wind.mp3 */,
 				E799B9611B4C479000B7A790 /* GameMusic.mp3 */,
 			);
 			name = Audio;
@@ -764,6 +767,7 @@
 				B71F5917188484E7003F4D28 /* iPhone.png in Resources */,
 				B7378975180762440076A88C /* Default-568h@2x.png in Resources */,
 				B71F5918188484E7003F4D28 /* iPhone@2x.png in Resources */,
+				E716D3851B58545600A26818 /* Wind.mp3 in Resources */,
 				E799B9621B4C479000B7A790 /* GameMusic.mp3 in Resources */,
 				B7378977180762440076A88C /* Default.png in Resources */,
 				B71F5911188484E7003F4D28 /* iPad-old.png in Resources */,

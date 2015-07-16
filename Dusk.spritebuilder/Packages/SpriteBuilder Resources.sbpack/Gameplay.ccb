@@ -16,7 +16,7 @@
 	<key>currentResolution</key>
 	<integer>0</integer>
 	<key>currentSequenceId</key>
-	<integer>1</integer>
+	<integer>2</integer>
 	<key>docDimensionsType</key>
 	<integer>0</integer>
 	<key>fileType</key>
@@ -175,7 +175,7 @@
 									<integer>7</integer>
 									<key>value</key>
 									<array>
-										<string>Dusk Assets/Dusk Background.png</string>
+										<string>Dusk Animations/Dusk Background_A1.png</string>
 										<string>Use regular file</string>
 									</array>
 								</dict>
@@ -193,7 +193,7 @@
 									<integer>7</integer>
 									<key>value</key>
 									<array>
-										<string>Dusk Animations/Dusk Background_A1.png</string>
+										<string>Dusk Assets/Dusk Background.png</string>
 										<string>Use regular file</string>
 									</array>
 								</dict>
@@ -211,7 +211,7 @@
 									<integer>7</integer>
 									<key>value</key>
 									<array>
-										<string>Dusk Animations/Dusk Background_A2.png</string>
+										<string>Dusk Animations/Dusk Background_A1.png</string>
 										<string>Use regular file</string>
 									</array>
 								</dict>
@@ -229,7 +229,7 @@
 									<integer>7</integer>
 									<key>value</key>
 									<array>
-										<string>Dusk Assets/Dusk Background.png</string>
+										<string>Dusk Animations/Dusk Background_A2.png</string>
 										<string>Use regular file</string>
 									</array>
 								</dict>
@@ -265,7 +265,7 @@
 									<integer>7</integer>
 									<key>value</key>
 									<array>
-										<string>Dusk Animations/Dusk Background_A2.png</string>
+										<string>Dusk Assets/Dusk Background.png</string>
 										<string>Use regular file</string>
 									</array>
 								</dict>
@@ -283,7 +283,7 @@
 									<integer>7</integer>
 									<key>value</key>
 									<array>
-										<string>Dusk Assets/Dusk Background.png</string>
+										<string>Dusk Animations/Dusk Background_A1.png</string>
 										<string>Use regular file</string>
 									</array>
 								</dict>
@@ -301,7 +301,7 @@
 									<integer>7</integer>
 									<key>value</key>
 									<array>
-										<string>Dusk Animations/Dusk Background_A1.png</string>
+										<string>Dusk Animations/Dusk Background_A2.png</string>
 										<string>Use regular file</string>
 									</array>
 								</dict>
@@ -319,7 +319,7 @@
 									<integer>7</integer>
 									<key>value</key>
 									<array>
-										<string>Dusk Animations/Dusk Background_A2.png</string>
+										<string>Dusk Animations/Dusk Background_A1.png</string>
 										<string>Use regular file</string>
 									</array>
 								</dict>
@@ -404,7 +404,7 @@
 						<key>value</key>
 						<array>
 							<string></string>
-							<string>Dusk Animations/Dusk Background_A2.png</string>
+							<string>Dusk Animations/Dusk Background_A1.png</string>
 						</array>
 					</dict>
 					<dict>
@@ -4595,7 +4595,7 @@
 						<key>type</key>
 						<string>Float</string>
 						<key>value</key>
-						<real>0.89999997615814209</real>
+						<real>0.80000001192092896</real>
 					</dict>
 					<dict>
 						<key>name</key>
@@ -4607,7 +4607,7 @@
 							<real>1</real>
 							<real>1</real>
 							<real>1</real>
-							<real>0.89999997615814209</real>
+							<real>0.80000001192092896</real>
 						</array>
 					</dict>
 					<dict>
@@ -5253,20 +5253,7 @@
 						<key>type</key>
 						<string>Float</string>
 						<key>value</key>
-						<real>0.89999997615814209</real>
-					</dict>
-					<dict>
-						<key>name</key>
-						<string>color</string>
-						<key>type</key>
-						<string>Color3</string>
-						<key>value</key>
-						<array>
-							<real>1</real>
-							<real>1</real>
-							<real>1</real>
-							<real>0.89999997615814209</real>
-						</array>
+						<real>1</real>
 					</dict>
 					<dict>
 						<key>name</key>
@@ -5950,20 +5937,7 @@
 						<key>type</key>
 						<string>Float</string>
 						<key>value</key>
-						<real>0.89999997615814209</real>
-					</dict>
-					<dict>
-						<key>name</key>
-						<string>color</string>
-						<key>type</key>
-						<string>Color3</string>
-						<key>value</key>
-						<array>
-							<real>1</real>
-							<real>1</real>
-							<real>1</real>
-							<real>0.89999997615814209</real>
-						</array>
+						<real>1</real>
 					</dict>
 					<dict>
 						<key>name</key>
@@ -6070,8 +6044,6 @@
 						</array>
 					</dict>
 				</array>
-				<key>seqExpanded</key>
-				<true/>
 			</dict>
 			<dict>
 				<key>UUID</key>
@@ -6689,7 +6661,7 @@
 						<key>type</key>
 						<string>Float</string>
 						<key>value</key>
-						<real>0.89999997615814209</real>
+						<real>1</real>
 					</dict>
 					<dict>
 						<key>name</key>
@@ -6701,7 +6673,7 @@
 							<real>1</real>
 							<real>1</real>
 							<real>1</real>
-							<real>0.89999997615814209</real>
+							<real>1</real>
 						</array>
 					</dict>
 					<dict>
@@ -7115,8 +7087,8 @@
 						<string>ScaleLock</string>
 						<key>value</key>
 						<array>
-							<real>1.5702874660491943</real>
-							<real>1.5691252946853638</real>
+							<real>1.189842700958252</real>
+							<real>1.5520251989364624</real>
 							<false/>
 							<integer>0</integer>
 						</array>
@@ -7165,8 +7137,6 @@
 						<array/>
 					</dict>
 				</array>
-				<key>selected</key>
-				<true/>
 				<key>seqExpanded</key>
 				<true/>
 			</dict>
@@ -7346,7 +7316,7 @@
 			<key>offset</key>
 			<real>0.0</real>
 			<key>position</key>
-			<real>1.5</real>
+			<real>0.5</real>
 			<key>resolution</key>
 			<real>30</real>
 			<key>scale</key>
@@ -7382,7 +7352,7 @@
 			<key>offset</key>
 			<real>0.0</real>
 			<key>position</key>
-			<real>0.3333333432674408</real>
+			<real>0.0</real>
 			<key>resolution</key>
 			<real>30</real>
 			<key>scale</key>
