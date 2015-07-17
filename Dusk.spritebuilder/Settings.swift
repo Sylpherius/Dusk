@@ -24,10 +24,13 @@ class Settings: CCNode {
         if soundOn.visible == true{
             soundOn.visible = false
             whichMode.soundIsOn = false
+            OALSimpleAudio.sharedInstance().stopBg()
         }
         else{
             soundOn.visible = true
             whichMode.soundIsOn = true
+            OALSimpleAudio.sharedInstance().playBg("GameMusic.mp3")
+            OALSimpleAudio.sharedInstance().playBgWithLoop(true)
         }
     }
     func tutorial(){

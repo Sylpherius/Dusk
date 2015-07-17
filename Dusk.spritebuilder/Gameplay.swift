@@ -138,7 +138,6 @@ class Gameplay: CCNode, CCPhysicsCollisionDelegate {
     }
     //Causes the game to end
     func triggerGameOver(){
-        OALSimpleAudio.sharedInstance().playEffect("Sound/Wind.wav")
         let defaults = NSUserDefaults.standardUserDefaults()
         var highscore: Int
         var highscoreE: Int = defaults.integerForKey("highscoreE")
@@ -196,6 +195,10 @@ class Gameplay: CCNode, CCPhysicsCollisionDelegate {
     func settings(){
         let settingsScene = CCBReader.loadAsScene("Settings")
         CCDirector.sharedDirector().pushScene(settingsScene)
+    }
+    func ccPhysicsCollisionBegin(pair: CCPhysicsCollisionPair!, ball: Fuzz!, ceiling: CCNode!) -> Bool {
+        ball.physicsBody.velocity = ccp(ball.physicsBody.velocity.x,0)
+        return true
     }
     //Triggers the game over scenario when the fuzz object hits the ground
     func ccPhysicsCollisionBegin(pair: CCPhysicsCollisionPair!, ball: Fuzz!, level: CCNode!) -> Bool {

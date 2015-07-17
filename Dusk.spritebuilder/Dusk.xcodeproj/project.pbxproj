@@ -95,6 +95,7 @@
 		BC5399DC1A44DCC90063F482 /* JavaKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC5399D71A44DCC90063F482 /* JavaKit.framework */; };
 		E716D3911B58671000A26818 /* Mushroom.swift in Sources */ = {isa = PBXBuildFile; fileRef = E716D3901B58671000A26818 /* Mushroom.swift */; };
 		E716D3931B5966B700A26818 /* GameMusic.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = E716D3921B5966B700A26818 /* GameMusic.mp3 */; };
+		E716D3971B599F5F00A26818 /* Leaf.swift in Sources */ = {isa = PBXBuildFile; fileRef = E716D3961B599F5F00A26818 /* Leaf.swift */; };
 		E76DC44C1B546EDC00E9EBD2 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = E76DC44B1B546EDC00E9EBD2 /* Settings.swift */; };
 		E799B97A1B4DCDE000B7A790 /* Tutorial.swift in Sources */ = {isa = PBXBuildFile; fileRef = E799B9791B4DCDE000B7A790 /* Tutorial.swift */; };
 		E7E6D32D1B449519008B16ED /* Gameplay.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7E6D32C1B449519008B16ED /* Gameplay.swift */; };
@@ -220,6 +221,7 @@
 		D352B48019EC608A00829775 /* MetalShaders */ = {isa = PBXFileReference; lastKnownFileType = folder; name = MetalShaders; path = Source/MetalShaders; sourceTree = "<group>"; };
 		E716D3901B58671000A26818 /* Mushroom.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Mushroom.swift; sourceTree = "<group>"; };
 		E716D3921B5966B700A26818 /* GameMusic.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = GameMusic.mp3; path = ../../../../../Desktop/Sound/GameMusic.mp3; sourceTree = "<group>"; };
+		E716D3961B599F5F00A26818 /* Leaf.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Leaf.swift; sourceTree = "<group>"; };
 		E76DC44B1B546EDC00E9EBD2 /* Settings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		E799B9791B4DCDE000B7A790 /* Tutorial.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tutorial.swift; sourceTree = "<group>"; };
 		E7E6D32C1B449519008B16ED /* Gameplay.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Gameplay.swift; sourceTree = "<group>"; };
@@ -485,6 +487,7 @@
 		B77F1B2517B978D7009739AE = {
 			isa = PBXGroup;
 			children = (
+				E716D3961B599F5F00A26818 /* Leaf.swift */,
 				B737893C1807616C0076A88C /* Source */,
 				B77F1B4617B978D7009739AE /* Resources */,
 				9222E2B918734FF800A246C7 /* libs */,
@@ -848,6 +851,7 @@
 				E716D3911B58671000A26818 /* Mushroom.swift in Sources */,
 				E76DC44C1B546EDC00E9EBD2 /* Settings.swift in Sources */,
 				B73789871807631A0076A88C /* main.m in Sources */,
+				E716D3971B599F5F00A26818 /* Leaf.swift in Sources */,
 				7A046D7919E84ED5004C4763 /* MainScene.swift in Sources */,
 				E7E6D32D1B449519008B16ED /* Gameplay.swift in Sources */,
 				E7E761511B4EF38000FCACDD /* Sapling.swift in Sources */,

@@ -1,5 +1,8 @@
 import Foundation
 class MainScene: CCNode {
+    weak var titlePhysicsNode: CCPhysicsNode!
+    var leaf: Leaf?
+    
     func didLoadFromCCB(){
         OALSimpleAudio.sharedInstance().playBg("GameMusic.mp3")
         OALSimpleAudio.sharedInstance().playBgWithLoop(true)
@@ -14,5 +17,9 @@ class MainScene: CCNode {
             let gameplayScene = CCBReader.loadAsScene("Gameplay")
             CCDirector.sharedDirector().presentScene(gameplayScene)
         }
+    }
+    override func update(delta: CCTime) {
+        leaf = CCBReader.load("Leaf") as! Leaf?
+        var xLeaf = Int(CCRANDOM_0_1() * 300 - 150)
     }
 }
