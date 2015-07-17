@@ -3,7 +3,7 @@ class MainScene: CCNode {
     func didLoadFromCCB(){
         OALSimpleAudio.sharedInstance().playBg("GameMusic.mp3")
         OALSimpleAudio.sharedInstance().playBgWithLoop(true)
-        
+        OALSimpleAudio.sharedInstance().preloadEffect("Sound/Wind.wav")
         //OALSimpleAudio.sharedInstance().playEffect("Sound/Wind.wav")
     }
     func start(){

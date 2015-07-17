@@ -138,6 +138,7 @@ class Gameplay: CCNode, CCPhysicsCollisionDelegate {
     }
     //Causes the game to end
     func triggerGameOver(){
+        OALSimpleAudio.sharedInstance().playEffect("Sound/Wind.wav")
         let defaults = NSUserDefaults.standardUserDefaults()
         var highscore: Int
         var highscoreE: Int = defaults.integerForKey("highscoreE")
@@ -325,27 +326,24 @@ class Gameplay: CCNode, CCPhysicsCollisionDelegate {
         }
         let defaults = NSUserDefaults.standardUserDefaults()
         var currentHighscore: Int
-        if whichMode.theMode == .Easy{
-            currentHighscore = defaults.integerForKey("highscoreE")
-            modeButton.title = "Slow"
-        } else{
-            if whichMode.theMode == .Medium{
+        switch whichMode.theMode{
+            case .Easy:
+                currentHighscore = defaults.integerForKey("highscoreE")
+                modeButton.title = "Slow"
+            case .Medium:
                 currentHighscore = defaults.integerForKey("highscoreM")
                 modeButton.title = "Normal"
-            } else{
-                if whichMode.theMode == .Hard{
-                    currentHighscore = defaults.integerForKey("highscoreH")
-                    modeButton.title = "Fast"
-                } else{
-                    if whichMode.theMode == .Insane{
-                        currentHighscore = defaults.integerForKey("highscoreI")
-                        modeButton.title = "Frenzy"
-                    } else{
-                            currentHighscore = defaults.integerForKey("highscoreW")
-                            modeButton.title = "Why :("
-                    }
-                }
-            }
+            case .Hard:
+                currentHighscore = defaults.integerForKey("highscoreH")
+                modeButton.title = "Fast"
+            case .Insane:
+                currentHighscore = defaults.integerForKey("highscoreI")
+                modeButton.title = "Frenzy"
+            case .Why:
+                currentHighscore = defaults.integerForKey("highscoreW")
+                modeButton.title = "Why :("
+        default:
+                println("Error in game difficulty")
         }
         highscoreLabel.string = "\(currentHighscore)"
     }
