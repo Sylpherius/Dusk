@@ -6,6 +6,8 @@
 //  Copyright (c) 2015 Apportable. All rights reserved.
 //
 
+//7/16/15 - The day I got absolutely nothing done
+
 import UIKit
 
 enum FuzzColor {
@@ -34,10 +36,6 @@ class Gameplay: CCNode, CCPhysicsCollisionDelegate {
     weak var theSecond: CCSprite!
     weak var theBG: CCSprite!
     weak var theSky: CCSprite!
-    weak var bButton: CCButton!
-    weak var yButton: CCButton!
-    weak var rButton: CCButton!
-    weak var gButton: CCButton!
     weak var settingsButton: CCButton!
     weak var settingsIcon: CCSprite!
     weak var modeButton: CCButton!
@@ -248,10 +246,6 @@ class Gameplay: CCNode, CCPhysicsCollisionDelegate {
     func didLoadFromCCB(){
         userInteractionEnabled = true
         multipleTouchEnabled = true
-        bButton.exclusiveTouch = false
-        gButton.exclusiveTouch = false
-        rButton.exclusiveTouch = false
-        yButton.exclusiveTouch = false
         gamePhysicsNode.collisionDelegate = self
         self.animationManager.runAnimationsForSequenceNamed("Beginning")
         updateHighscore()
@@ -355,65 +349,11 @@ class Gameplay: CCNode, CCPhysicsCollisionDelegate {
         }
         highscoreLabel.string = "\(currentHighscore)"
     }
-    func pressBlue(){
+    func mushroomTapped(type: FuzzColor){
         if gameOver == false{
             for fuzz in fuzzies {
                 currentFuzz = fuzz
-                if fuzz.fuzzColor == .Blue {
-                    changeColor()
-                    bothFuzz = true
-                }
-            }
-            if bothFuzz == false{
-                for fuzz in fuzzies {
-                    fuzz.white()
-                    gameOver = true
-                }
-            }
-            bothFuzz = false
-        }
-    }
-    func pressGreen(){
-        if gameOver == false{
-            for fuzz in fuzzies {
-                currentFuzz = fuzz
-                if fuzz.fuzzColor == .Green {
-                    changeColor()
-                    bothFuzz = true
-                }
-            }
-            if bothFuzz == false{
-                for fuzz in fuzzies {
-                    fuzz.white()
-                    gameOver = true
-                }
-            }
-            bothFuzz = false
-        }
-    }
-    func pressRed(){
-        if gameOver == false{
-            for fuzz in fuzzies {
-                currentFuzz = fuzz
-                if fuzz.fuzzColor == .Red {
-                    changeColor()
-                    bothFuzz = true
-                }
-            }
-            if bothFuzz == false{
-                for fuzz in fuzzies {
-                    fuzz.white()
-                    gameOver = true
-                }
-            }
-            bothFuzz = false
-        }
-    }
-    func pressYellow(){
-        if gameOver == false{
-            for fuzz in fuzzies {
-                currentFuzz = fuzz
-                if fuzz.fuzzColor == .Yellow {
+                if type == fuzz.fuzzColor{
                     changeColor()
                     bothFuzz = true
                 }
