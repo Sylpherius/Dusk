@@ -1178,7 +1178,7 @@
 									<key>name</key>
 									<string>opacity</string>
 									<key>time</key>
-									<real>1.5</real>
+									<real>2.4666666984558105</real>
 									<key>type</key>
 									<integer>10</integer>
 									<key>value</key>
@@ -1193,7 +1193,7 @@
 									<key>name</key>
 									<string>opacity</string>
 									<key>time</key>
-									<real>2</real>
+									<real>2.9666666984558105</real>
 									<key>type</key>
 									<integer>10</integer>
 									<key>value</key>
@@ -1332,7 +1332,7 @@
 						<key>type</key>
 						<string>Float</string>
 						<key>value</key>
-						<real>0.0</real>
+						<real>1</real>
 					</dict>
 					<dict>
 						<key>name</key>
@@ -1344,7 +1344,7 @@
 							<real>1</real>
 							<real>1</real>
 							<real>1</real>
-							<real>0.0</real>
+							<real>1</real>
 						</array>
 					</dict>
 					<dict>
@@ -1529,11 +1529,11 @@
 			<key>chainedSequenceId</key>
 			<integer>0</integer>
 			<key>length</key>
-			<real>2</real>
+			<real>3</real>
 			<key>name</key>
 			<string>Headphones</string>
 			<key>offset</key>
-			<real>0.0</real>
+			<real>0.734375</real>
 			<key>position</key>
 			<real>2</real>
 			<key>resolution</key>
