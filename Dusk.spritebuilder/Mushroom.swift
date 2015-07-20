@@ -10,7 +10,7 @@ import Foundation
 
 class Mushroom: CCSprite {
     var type: FuzzColor = .White
-    var mushroomType: String = "Red"
+    var mushroomType: String = ""
     
     weak var gamePlay: Gameplay!
     

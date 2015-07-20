@@ -8,29 +8,28 @@
 
 import UIKit
 
-class Tutorial: CCNode {
-    weak var nextTut1: CCSprite!
-    weak var nextTut2: CCSprite!
-    weak var nextTut3: CCSprite!
-    weak var nextTut4: CCLabelTTF!
-    weak var nextTut5: CCLabelTTF!
-    weak var nextTut6: CCLabelTTF!
-    var touches = 0
+class Tutorial: CCNode, CCPhysicsCollisionDelegate {
+    weak var tut1Fuzz: CCSprite!
+    weak var tut1Mush: CCSprite!
+    weak var tut1Tap: CCLabelTTF!
+    weak var gamePhysicsNode: CCPhysicsNode!
+    var tut1Over = false
     
-    func didLoadFromCCB() {
-        userInteractionEnabled = true
+    func didLoadFromCCB(){
+        gamePhysicsNode.collisionDelegate = self
     }
-    override func touchBegan(touch: CCTouch!, withEvent event: CCTouchEvent!) {
-        if touches != 0{
-            let gameplayScene = CCBReader.loadAsScene("Gameplay")
-            CCDirector.sharedDirector().presentScene(gameplayScene)
+    override func update(delta: CCTime) {
+        if tut1Over == false{
+            tut1Fuzz.physicsBody.applyImpulse(ccp(0,-2))
         }
-        nextTut1.visible = true
-        nextTut2.visible = true
-        nextTut3.visible = true
-        nextTut4.visible = true
-        nextTut5.visible = true
-        nextTut6.visible = true
-        touches++
+    }
+    func mushroomTapped(type: FuzzColor){
+        tut1Fuzz.physicsBody.velocity = ccp(0,200)
+    }
+    func ccPhysicsCollisionBegin(pair: CCPhysicsCollisionPair!, fuzz: CCNode!, ground: CCNode!) -> Bool {
+        tut1Over = true
+        tut1Fuzz.removeFromParent()
+        tut1Mush.removeFromParent()
+        return true
     }
 }

@@ -16,7 +16,7 @@
 	<key>currentResolution</key>
 	<integer>0</integer>
 	<key>currentSequenceId</key>
-	<integer>2</integer>
+	<integer>0</integer>
 	<key>docDimensionsType</key>
 	<integer>0</integer>
 	<key>fileType</key>
@@ -1529,6 +1529,8 @@
 						<string>rMushroom.ccb</string>
 					</dict>
 				</array>
+				<key>seqExpanded</key>
+				<true/>
 			</dict>
 			<dict>
 				<key>UUID</key>
@@ -3343,7 +3345,7 @@
 						<key>type</key>
 						<string>Float</string>
 						<key>value</key>
-						<real>0.80000001192092896</real>
+						<real>1</real>
 					</dict>
 					<dict>
 						<key>name</key>
@@ -3355,7 +3357,7 @@
 							<real>1</real>
 							<real>1</real>
 							<real>1</real>
-							<real>0.80000001192092896</real>
+							<real>1</real>
 						</array>
 					</dict>
 					<dict>
@@ -4279,20 +4281,7 @@
 						<key>type</key>
 						<string>Float</string>
 						<key>value</key>
-						<real>0.30000001192092896</real>
-					</dict>
-					<dict>
-						<key>name</key>
-						<string>color</string>
-						<key>type</key>
-						<string>Color3</string>
-						<key>value</key>
-						<array>
-							<real>1</real>
-							<real>1</real>
-							<real>1</real>
-							<real>0.30000001192092896</real>
-						</array>
+						<real>1</real>
 					</dict>
 					<dict>
 						<key>name</key>
