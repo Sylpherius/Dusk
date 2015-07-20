@@ -1047,6 +1047,8 @@
 						<string>bMushroom.ccb</string>
 					</dict>
 				</array>
+				<key>seqExpanded</key>
+				<true/>
 			</dict>
 			<dict>
 				<key>UUID</key>
@@ -1075,7 +1077,7 @@
 									<integer>3</integer>
 									<key>value</key>
 									<array>
-										<real>0.39198246598243713</real>
+										<real>0.38999998569488525</real>
 										<real>0.20000000298023224</real>
 									</array>
 								</dict>
@@ -1095,7 +1097,7 @@
 									<integer>3</integer>
 									<key>value</key>
 									<array>
-										<real>0.39198246598243713</real>
+										<real>0.38999998569488525</real>
 										<real>0.19499999284744263</real>
 									</array>
 								</dict>
@@ -1113,7 +1115,7 @@
 									<integer>3</integer>
 									<key>value</key>
 									<array>
-										<real>0.39198246598243713</real>
+										<real>0.38999998569488525</real>
 										<real>0.20000000298023224</real>
 									</array>
 								</dict>
@@ -1254,7 +1256,7 @@
 						<string>Position</string>
 						<key>value</key>
 						<array>
-							<real>0.39198246598243713</real>
+							<real>0.38999998569488525</real>
 							<real>0.20000000298023224</real>
 							<integer>0</integer>
 							<integer>2</integer>
@@ -1288,6 +1290,10 @@
 						<string>gMushroom.ccb</string>
 					</dict>
 				</array>
+				<key>selected</key>
+				<true/>
+				<key>seqExpanded</key>
+				<true/>
 			</dict>
 			<dict>
 				<key>UUID</key>
@@ -2511,8 +2517,6 @@
 								</array>
 							</dict>
 						</array>
-						<key>selected</key>
-						<true/>
 					</dict>
 					<dict>
 						<key>UUID</key>
@@ -6026,7 +6030,7 @@
 			<key>offset</key>
 			<real>0.0</real>
 			<key>position</key>
-			<real>0.0</real>
+			<real>2</real>
 			<key>resolution</key>
 			<real>30</real>
 			<key>scale</key>
