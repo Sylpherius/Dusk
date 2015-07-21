@@ -1,18 +1,18 @@
 //
-//  TutorialMushroom.swift
+//  TutorialMushroom2.swift
 //  Dusk
 //
-//  Created by Alan on 7/20/15.
+//  Created by Alan on 7/21/15.
 //  Copyright (c) 2015 Apportable. All rights reserved.
 //
 
 import UIKit
 
-class TutorialMushroom: CCSprite {
+class TutorialMushroom2: CCSprite {
     var type: FuzzColor = .White
     var mushroomType: String = "red"
     
-    weak var tutorial: Tutorial!
+    weak var tutorial2: Tutorial2!
     
     func didLoadFromCCB() {
         self.userInteractionEnabled = true
@@ -29,11 +29,11 @@ class TutorialMushroom: CCSprite {
         default:
             println("No Color")
         }
-        tutorial = self.parent as? Tutorial
+        tutorial2 = self.parent as? Tutorial2
     }
     
     override func touchBegan(touch: CCTouch!, withEvent event: CCTouchEvent!) {
-        tutorial.mushroomTapped(type)
+        tutorial2.mushroomTapped(type)
     }
 
 }
