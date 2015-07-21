@@ -97,7 +97,7 @@
 						<key>value</key>
 						<array>
 							<real>1</real>
-							<real>0.86000001430511475</real>
+							<real>1</real>
 							<false/>
 							<integer>0</integer>
 						</array>
@@ -180,10 +180,10 @@
 						<key>value</key>
 						<array>
 							<real>0.5</real>
-							<real>220.40908813476562</real>
+							<real>0.68877840042114258</real>
 							<integer>0</integer>
 							<integer>2</integer>
-							<integer>0</integer>
+							<integer>2</integer>
 						</array>
 					</dict>
 					<dict>
@@ -472,8 +472,6 @@
 						</array>
 					</dict>
 				</array>
-				<key>selected</key>
-				<true/>
 			</dict>
 			<dict>
 				<key>UUID</key>
@@ -507,11 +505,11 @@
 						<string>Position</string>
 						<key>value</key>
 						<array>
-							<real>284</real>
-							<real>160</real>
+							<real>0.5</real>
+							<real>0.5</real>
 							<integer>0</integer>
-							<integer>0</integer>
-							<integer>0</integer>
+							<integer>2</integer>
+							<integer>2</integer>
 						</array>
 					</dict>
 					<dict>
@@ -833,11 +831,11 @@
 						<string>Position</string>
 						<key>value</key>
 						<array>
-							<real>284</real>
-							<real>160</real>
+							<real>0.5</real>
+							<real>0.5</real>
 							<integer>0</integer>
-							<integer>0</integer>
-							<integer>0</integer>
+							<integer>2</integer>
+							<integer>2</integer>
 						</array>
 					</dict>
 					<dict>
@@ -942,10 +940,10 @@
 						<key>value</key>
 						<array>
 							<real>0.5</real>
-							<real>160</real>
+							<real>0.5</real>
 							<integer>0</integer>
 							<integer>2</integer>
-							<integer>0</integer>
+							<integer>2</integer>
 						</array>
 					</dict>
 					<dict>
@@ -1050,10 +1048,10 @@
 						<key>value</key>
 						<array>
 							<real>0.5</real>
-							<real>22.66832160949707</real>
+							<real>0.070838503539562225</real>
 							<integer>0</integer>
 							<integer>2</integer>
-							<integer>0</integer>
+							<integer>2</integer>
 						</array>
 					</dict>
 					<dict>
@@ -1342,6 +1340,8 @@
 						</array>
 					</dict>
 				</array>
+				<key>selected</key>
+				<true/>
 			</dict>
 		</array>
 		<key>customClass</key>
