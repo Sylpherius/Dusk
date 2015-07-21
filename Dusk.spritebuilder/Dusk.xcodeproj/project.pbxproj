@@ -458,6 +458,7 @@
 			children = (
 				7A40362019DDEF0D007B6E8F /* Platforms */,
 				7A046D7519E84C36004C4763 /* MainScene.swift */,
+				E716D3961B599F5F00A26818 /* Leaf.swift */,
 				E7E6D32C1B449519008B16ED /* Gameplay.swift */,
 				E76DC44B1B546EDC00E9EBD2 /* Settings.swift */,
 				E7E761501B4EF38000FCACDD /* Sapling.swift */,
@@ -496,7 +497,6 @@
 		B77F1B2517B978D7009739AE = {
 			isa = PBXGroup;
 			children = (
-				E716D3961B599F5F00A26818 /* Leaf.swift */,
 				B737893C1807616C0076A88C /* Source */,
 				B77F1B4617B978D7009739AE /* Resources */,
 				9222E2B918734FF800A246C7 /* libs */,

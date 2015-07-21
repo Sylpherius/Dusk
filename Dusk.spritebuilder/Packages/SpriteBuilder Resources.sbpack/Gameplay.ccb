@@ -1290,8 +1290,6 @@
 						<string>gMushroom.ccb</string>
 					</dict>
 				</array>
-				<key>selected</key>
-				<true/>
 				<key>seqExpanded</key>
 				<true/>
 			</dict>
@@ -3415,7 +3413,7 @@
 						<key>value</key>
 						<array>
 							<real>284</real>
-							<real>167.61308288574219</real>
+							<real>160</real>
 							<integer>0</integer>
 							<integer>0</integer>
 							<integer>0</integer>
@@ -3929,8 +3927,8 @@
 						<string>Position</string>
 						<key>value</key>
 						<array>
-							<real>0.5</real>
-							<real>0.40156251192092896</real>
+							<real>0.29507619142532349</real>
+							<real>0.35260447859764099</real>
 							<integer>0</integer>
 							<integer>2</integer>
 							<integer>2</integer>
@@ -4614,8 +4612,8 @@
 						<string>Position</string>
 						<key>value</key>
 						<array>
-							<real>284</real>
-							<real>210.83001708984375</real>
+							<real>167.603271484375</real>
+							<real>197.71119689941406</real>
 							<integer>0</integer>
 							<integer>0</integer>
 							<integer>0</integer>
@@ -4839,8 +4837,8 @@
 						<string>Position</string>
 						<key>value</key>
 						<array>
-							<real>167.603271484375</real>
-							<real>139.39999389648438</real>
+							<real>284</real>
+							<real>226.28498840332031</real>
 							<integer>0</integer>
 							<integer>0</integer>
 							<integer>0</integer>
@@ -5354,8 +5352,8 @@
 						<string>Position</string>
 						<key>value</key>
 						<array>
-							<real>167.603271484375</real>
-							<real>139.39999389648438</real>
+							<real>284</real>
+							<real>226.28498840332031</real>
 							<integer>0</integer>
 							<integer>0</integer>
 							<integer>0</integer>
@@ -5480,8 +5478,8 @@
 						<string>Position</string>
 						<key>value</key>
 						<array>
-							<real>167.603271484375</real>
-							<real>202.83001708984375</real>
+							<real>164.76687622070312</real>
+							<real>160</real>
 							<integer>0</integer>
 							<integer>0</integer>
 							<integer>0</integer>
@@ -5815,7 +5813,7 @@
 						<key>value</key>
 						<array>
 							<real>167.603271484375</real>
-							<real>202.83001708984375</real>
+							<real>158.39309692382812</real>
 							<integer>0</integer>
 							<integer>0</integer>
 							<integer>0</integer>
@@ -5839,8 +5837,8 @@
 						<string>ScaleLock</string>
 						<key>value</key>
 						<array>
-							<real>1.189842700958252</real>
-							<real>1.5520251989364624</real>
+							<real>1.0125820636749268</real>
+							<real>1.4654471874237061</real>
 							<false/>
 							<integer>0</integer>
 						</array>
@@ -5889,6 +5887,8 @@
 						<array/>
 					</dict>
 				</array>
+				<key>selected</key>
+				<true/>
 			</dict>
 		</array>
 		<key>customClass</key>
