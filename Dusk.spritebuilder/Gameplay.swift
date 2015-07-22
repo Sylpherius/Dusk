@@ -41,7 +41,9 @@ class Gameplay: CCNode, CCPhysicsCollisionDelegate {
     weak var settingsIcon: CCSprite!
     weak var modeButton: CCButton!
     weak var modeArrows: CCSprite!
-    //weak var tester: Fuzz!
+    weak var mirageText: CCLabelTTF!
+    weak var pauseButton: CCButton!
+    weak var pauseIcon: CCSprite!
     var sapling: Sapling?
     var fuzzies: [Fuzz] = []
     var gameOver = false
@@ -84,12 +86,14 @@ class Gameplay: CCNode, CCPhysicsCollisionDelegate {
                             modeWord = "MIRAGE"
                             modeButton.title = "\(modeWord)"
                             whichMode.mirageOn = true
+                            mirageText.visible = true
                         } else{
                             if whichMode.theMode == .Mirage{
                                 whichMode.theMode = .Easy
                                 modeWord = "Slow"
                                 modeButton.title = "\(modeWord)"
                                 whichMode.mirageOn = false
+                                mirageText.visible = false
                             }
                         }
                     }
@@ -210,6 +214,11 @@ class Gameplay: CCNode, CCPhysicsCollisionDelegate {
         CCDirector.sharedDirector().presentScene(gameplayScene)
         points = 0
     }
+    //Pauses the game
+    func pause(){
+        let pauseScene = CCBReader.loadAsScene("Pause")
+        CCDirector.sharedDirector().pushScene(pauseScene)
+    }
     //Sends the user to the settings (pushes the settings scene on)
     func settings(){
         let settingsScene = CCBReader.loadAsScene("Settings")
@@ -221,6 +230,8 @@ class Gameplay: CCNode, CCPhysicsCollisionDelegate {
     }
     //Triggers the game over scenario when the fuzz object hits the ground
     func ccPhysicsCollisionBegin(pair: CCPhysicsCollisionPair!, ball: Fuzz!, level: CCNode!) -> Bool {
+        pauseButton.visible = false
+        pauseIcon.visible = false
         if oneGameOver == false{
             triggerGameOver()
             gameOver = true
@@ -308,6 +319,7 @@ class Gameplay: CCNode, CCPhysicsCollisionDelegate {
         } else {
             currentFuzz.yellow()
         }
+        //All of the things needed for MIRAGE mode
         if whichMode.mirageOn == true{
             println("Mirage Works")
             mirageFuzz = CCBReader.load("MirageFuzz") as! Fuzz?
@@ -332,6 +344,14 @@ class Gameplay: CCNode, CCPhysicsCollisionDelegate {
         }
     }
     func ccPhysicsCollisionBegin(pair: CCPhysicsCollisionPair!, mFuzz: Fuzz!, level: CCNode!) -> Bool {
+        mFuzz.removeFromParent()
+        return true
+    }
+    func ccPhysicsCollisionBegin(pair: CCPhysicsCollisionPair!, mFuzz: Fuzz!, wall: CCNode!) -> Bool {
+        mFuzz.removeFromParent()
+        return true
+    }
+    func ccPhysicsCollisionBegin(pair: CCPhysicsCollisionPair!, mFuzz: Fuzz!, ceiling: CCNode!) -> Bool {
         mFuzz.removeFromParent()
         return true
     }
