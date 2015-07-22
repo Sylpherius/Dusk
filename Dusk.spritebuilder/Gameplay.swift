@@ -44,6 +44,7 @@ class Gameplay: CCNode, CCPhysicsCollisionDelegate {
     weak var mirageText: CCLabelTTF!
     weak var pauseButton: CCButton!
     weak var pauseIcon: CCSprite!
+    weak var black: CCSprite!
     var sapling: Sapling?
     var fuzzies: [Fuzz] = []
     var gameOver = false
@@ -58,6 +59,7 @@ class Gameplay: CCNode, CCPhysicsCollisionDelegate {
     var mode: Mode = whichMode.theMode
     var modeWord = ""
     var mirageFuzz: Fuzz?
+    var blackWarning = false
     
     //Changes the game difficulty
     func modes(){
@@ -103,27 +105,27 @@ class Gameplay: CCNode, CCPhysicsCollisionDelegate {
     }
     //Implements the feature that slowly adds color to the background
     func addColors(){
-        if points >= 10 && once == 0{
+        if points >= 5 && once == 0{
             theGrass.animationManager.runAnimationsForSequenceNamed("Untitled Timeline")
             once++
         }
-        if points >= 25 && once == 1{
+        if points >= 10 && once == 1{
             theTree.animationManager.runAnimationsForSequenceNamed("Untitled Timeline")
             once++
         }
-        if points >= 40 && once == 2{
+        if points >= 20 && once == 2{
             thePlants.animationManager.runAnimationsForSequenceNamed("Untitled Timeline")
             once++
         }
-        if points >= 70 && once == 3{
+        if points >= 30 && once == 3{
             theSecond.animationManager.runAnimationsForSequenceNamed("Untitled Timeline")
             once++
         }
-        if points >= 100 && once == 4{
+        if points >= 50 && once == 4{
             theBG.animationManager.runAnimationsForSequenceNamed("Untitled Timeline")
             once++
         }
-        if points >= 150 && once == 5{
+        if points >= 100 && once == 5{
             theSky.animationManager.runAnimationsForSequenceNamed("Untitled Timeline")
             once++
         }
@@ -230,6 +232,7 @@ class Gameplay: CCNode, CCPhysicsCollisionDelegate {
     }
     //Triggers the game over scenario when the fuzz object hits the ground
     func ccPhysicsCollisionBegin(pair: CCPhysicsCollisionPair!, ball: Fuzz!, level: CCNode!) -> Bool {
+        black.visible = false
         pauseButton.visible = false
         pauseIcon.visible = false
         if oneGameOver == false{
@@ -321,7 +324,6 @@ class Gameplay: CCNode, CCPhysicsCollisionDelegate {
         }
         //All of the things needed for MIRAGE mode
         if whichMode.mirageOn == true{
-            println("Mirage Works")
             mirageFuzz = CCBReader.load("MirageFuzz") as! Fuzz?
             if let mirageFuzz = mirageFuzz {
                 var randX = CGFloat(CCRANDOM_0_1() * 100 - 50)
@@ -437,9 +439,14 @@ class Gameplay: CCNode, CCPhysicsCollisionDelegate {
                 }
             }
             if bothFuzz == false{
-                for fuzz in fuzzies {
-                    fuzz.white()
-                    gameOver = true
+                if blackWarning == false{
+                    black.visible = true
+                    blackWarning = true
+                } else {
+                    for fuzz in fuzzies {
+                        fuzz.white()
+                        gameOver = true
+                    }
                 }
             }
             bothFuzz = false
