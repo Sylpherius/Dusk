@@ -14,7 +14,7 @@ enum FuzzColor {
     case Blue, Green, Red, Yellow, White
 }
 enum Mode {
-    case Easy, Medium, Hard, Insane, Why, Mirage
+    case Easy, Medium, Hard, Insane, Why, Mirage, Calm
 }
 enum Themes {
     case Normal, Autumn, Dusk, Midnight
@@ -50,6 +50,7 @@ class Gameplay: CCNode, CCPhysicsCollisionDelegate {
     weak var pauseIcon: CCSprite!
     weak var black: CCSprite!
     weak var themeButton: CCButton!
+    weak var calmText: CCLabelTTF!
     var sapling: Sapling?
     var fuzzies: [Fuzz] = []
     var gameOver = false
@@ -116,13 +117,21 @@ class Gameplay: CCNode, CCPhysicsCollisionDelegate {
                             mirageText.visible = true
                         } else{
                             if whichMode.theMode == .Mirage{
-                                whichMode.theMode = .Easy
-                                modeWord = "Slow"
+                                whichMode.theMode = .Calm
+                                modeWord = "CALM"
                                 modeButton.title = "\(modeWord)"
                                 whichMode.mirageOn = false
                                 mirageText.visible = false
+                                calmText.visible = true
+                            } else{
+                                if whichMode.theMode == .Calm{
+                                    whichMode.theMode = .Easy
+                                    modeWord = "Slow"
+                                    modeButton.title = "\(modeWord)"
+                                    calmText.visible = false
+                                }
                             }
-                        }
+                        } 
                     }
                 }
             }
@@ -154,7 +163,7 @@ class Gameplay: CCNode, CCPhysicsCollisionDelegate {
             }
             once++
         }
-        if points >= 20 && once == 2{
+        if points >= 15 && once == 2{
             if whichMode.theme == .Normal{
                 thePlants.animationManager.runAnimationsForSequenceNamed("Color")
             }
@@ -166,7 +175,7 @@ class Gameplay: CCNode, CCPhysicsCollisionDelegate {
             }
             once++
         }
-        if points >= 40 && once == 3{
+        if points >= 25 && once == 3{
             if whichMode.theme == .Normal{
                 theSecond.animationManager.runAnimationsForSequenceNamed("Color")
             }
@@ -178,7 +187,7 @@ class Gameplay: CCNode, CCPhysicsCollisionDelegate {
             }
             once++
         }
-        if points >= 65 && once == 4{
+        if points >= 40 && once == 4{
             if whichMode.theme == .Normal{
                 theBG.animationManager.runAnimationsForSequenceNamed("Color")
             }
@@ -190,7 +199,7 @@ class Gameplay: CCNode, CCPhysicsCollisionDelegate {
             }
             once++
         }
-        if points >= 100 && once == 5{
+        if points >= 75 && once == 5{
             if whichMode.theme == .Normal{
                 theSky.animationManager.runAnimationsForSequenceNamed("Color")
             }
@@ -223,8 +232,10 @@ class Gameplay: CCNode, CCPhysicsCollisionDelegate {
             newHighscore = NSUserDefaults.standardUserDefaults().integerForKey("highscoreI")
         } else if whichMode.theMode == .Why{
             newHighscore = NSUserDefaults.standardUserDefaults().integerForKey("highscoreW")
-        } else {
+        } else if whichMode.theMode == .Mirage{
             newHighscore = NSUserDefaults.standardUserDefaults().integerForKey("highscoreMIRAGE")
+        } else{
+            newHighscore = NSUserDefaults.standardUserDefaults().integerForKey("HighscoreC")
         }
         highscoreLabel.string = "\(newHighscore)"
     }
@@ -238,6 +249,7 @@ class Gameplay: CCNode, CCPhysicsCollisionDelegate {
         var highscoreI: Int = defaults.integerForKey("highscoreI")
         var highscoreW: Int = defaults.integerForKey("highscoreW")
         var highscoreMIRAGE: Int = defaults.integerForKey("highscoreMIRAGE")
+        var highscoreC: Int = defaults.integerForKey("highscoreC")
         if whichMode.theMode == .Easy{
             highscore = highscoreE
         } else if whichMode.theMode == .Medium{
@@ -248,8 +260,10 @@ class Gameplay: CCNode, CCPhysicsCollisionDelegate {
             highscore = highscoreI
         } else if whichMode.theMode == .Why{
             highscore = highscoreW
-        } else {
+        } else if whichMode.theMode == .Mirage{
             highscore = highscoreMIRAGE
+        } else{
+            highscore = highscoreC
         }
         if self.points > highscore {
             if whichMode.theMode == .Easy{
@@ -267,8 +281,11 @@ class Gameplay: CCNode, CCPhysicsCollisionDelegate {
             } else if whichMode.theMode == .Why{
                 defaults.setObject(Int(self.points), forKey: "highscoreW")
                 defaults.synchronize()
-            } else {
+            } else if whichMode.theMode == .Mirage{
                 defaults.setObject(Int(self.points), forKey: "highscoreMIRAGE")
+                defaults.synchronize()
+            } else{
+                defaults.setObject(Int(self.points), forKey: "highscoreC")
                 defaults.synchronize()
             }
             updateHighscore()
@@ -377,8 +394,10 @@ class Gameplay: CCNode, CCPhysicsCollisionDelegate {
             currentFuzz.physicsBody.velocity = ccp(0,490)
         } else if whichMode.theMode == .Why{
             currentFuzz.physicsBody.velocity = ccp(0,560)
-        } else {
+        } else if whichMode.theMode == .Mirage{
             currentFuzz.physicsBody.velocity = ccp(0,250)
+        } else{
+            currentFuzz.physicsBody.velocity = ccp(0,170)
         }
         currentFuzz.physicsBody.velocity = ccp(horizMove, currentFuzz.physicsBody.velocity.y)
         //updates the score
@@ -452,6 +471,9 @@ class Gameplay: CCNode, CCPhysicsCollisionDelegate {
                 if mode == .Mirage{
                     fuzz.physicsBody.applyImpulse(ccp(0,-3))
                 }
+                if mode == .Calm{
+                    fuzz.physicsBody.applyImpulse(ccp(0,-1))
+                }
             }
         }
         if fuzzies.count == 1{
@@ -472,6 +494,9 @@ class Gameplay: CCNode, CCPhysicsCollisionDelegate {
             }
             if mode == .Mirage{
                 fuzzies[0].physicsBody.applyImpulse(ccp(0,-5))
+            }
+            if mode == .Calm{
+                fuzzies[0].physicsBody.applyImpulse(ccp(0,-2))
             }
         }
         if firstTap {
@@ -498,6 +523,9 @@ class Gameplay: CCNode, CCPhysicsCollisionDelegate {
             case .Mirage:
                 currentHighscore = defaults.integerForKey("highscoreMIRAGE")
                 modeButton.title = "MIRAGE"
+            case .Calm:
+                currentHighscore = defaults.integerForKey("highscoreC")
+                modeButton.title = "CALM"
         default:
             println("Error in game difficulty")
         }
@@ -515,6 +543,7 @@ class Gameplay: CCNode, CCPhysicsCollisionDelegate {
     }
     func mushroomTapped(type: FuzzColor){
         if firstFirst{
+        // ^ gets rid of the blackout bug
             if gameOver == false{
                 for fuzz in fuzzies {
                     currentFuzz = fuzz
