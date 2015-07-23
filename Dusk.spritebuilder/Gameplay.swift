@@ -17,7 +17,7 @@ enum Mode {
     case Easy, Medium, Hard, Insane, Why, Mirage
 }
 enum Themes {
-    case Normal, Autumn
+    case Normal, Autumn, Dusk, Midnight
 }
 struct whichMode {
     static var theMode: Mode = .Easy
@@ -75,9 +75,15 @@ class Gameplay: CCNode, CCPhysicsCollisionDelegate {
             themeButton.title = "\(themeWord)"
         } else{
             if whichMode.theme == .Autumn {
-                whichMode.theme = .Normal
-                themeWord = "Normal"
+                whichMode.theme = .Midnight
+                themeWord = "Midnight"
                 themeButton.title = "\(themeWord)"
+            } else{
+                if whichMode.theme == .Midnight {
+                    whichMode.theme = .Normal
+                    themeWord = "Normal"
+                    themeButton.title = "\(themeWord)"
+                }
             }
         }
     }
@@ -131,6 +137,9 @@ class Gameplay: CCNode, CCPhysicsCollisionDelegate {
             if whichMode.theme == .Autumn{
                 theGrass.animationManager.runAnimationsForSequenceNamed("Color2")
             }
+            if whichMode.theme == .Midnight{
+                theGrass.animationManager.runAnimationsForSequenceNamed("Color3")
+            }
             once++
         }
         if points >= 10 && once == 1{
@@ -139,6 +148,9 @@ class Gameplay: CCNode, CCPhysicsCollisionDelegate {
             }
             if whichMode.theme == .Autumn{
                 theTree.animationManager.runAnimationsForSequenceNamed("Color2")
+            }
+            if whichMode.theme == .Midnight{
+                theTree.animationManager.runAnimationsForSequenceNamed("Color3")
             }
             once++
         }
@@ -149,23 +161,32 @@ class Gameplay: CCNode, CCPhysicsCollisionDelegate {
             if whichMode.theme == .Autumn{
                 thePlants.animationManager.runAnimationsForSequenceNamed("Color2")
             }
+            if whichMode.theme == .Midnight{
+                thePlants.animationManager.runAnimationsForSequenceNamed("Color3")
+            }
             once++
         }
-        if points >= 30 && once == 3{
+        if points >= 40 && once == 3{
             if whichMode.theme == .Normal{
                 theSecond.animationManager.runAnimationsForSequenceNamed("Color")
             }
             if whichMode.theme == .Autumn{
                 theSecond.animationManager.runAnimationsForSequenceNamed("Color2")
             }
+            if whichMode.theme == .Midnight{
+                theSecond.animationManager.runAnimationsForSequenceNamed("Color3")
+            }
             once++
         }
-        if points >= 50 && once == 4{
+        if points >= 65 && once == 4{
             if whichMode.theme == .Normal{
                 theBG.animationManager.runAnimationsForSequenceNamed("Color")
             }
             if whichMode.theme == .Autumn{
                 theBG.animationManager.runAnimationsForSequenceNamed("Color2")
+            }
+            if whichMode.theme == .Midnight{
+                theBG.animationManager.runAnimationsForSequenceNamed("Color3")
             }
             once++
         }
@@ -175,6 +196,9 @@ class Gameplay: CCNode, CCPhysicsCollisionDelegate {
             }
             if whichMode.theme == .Autumn{
                 theSky.animationManager.runAnimationsForSequenceNamed("Color2")
+            }
+            if whichMode.theme == .Midnight{
+                theSky.animationManager.runAnimationsForSequenceNamed("Color3")
             }
             once++
         }
@@ -482,32 +506,36 @@ class Gameplay: CCNode, CCPhysicsCollisionDelegate {
                 themeButton.title = "Normal"
             case .Autumn:
                 themeButton.title = "Autumn"
+            case .Midnight:
+                themeButton.title = "Midnight"
         default:
             println("Error in game theme")
         }
         highscoreLabel.string = "\(currentHighscore)"
     }
     func mushroomTapped(type: FuzzColor){
-        if gameOver == false{
-            for fuzz in fuzzies {
-                currentFuzz = fuzz
-                if type == fuzz.fuzzColor{
-                    changeColor()
-                    bothFuzz = true
-                }
-            }
-            if bothFuzz == false{
-                if blackWarning == false{
-                    black.visible = true
-                    blackWarning = true
-                } else {
-                    for fuzz in fuzzies {
-                        fuzz.white()
-                        gameOver = true
+        if firstFirst{
+            if gameOver == false{
+                for fuzz in fuzzies {
+                    currentFuzz = fuzz
+                    if type == fuzz.fuzzColor{
+                        changeColor()
+                        bothFuzz = true
                     }
                 }
+                if bothFuzz == false{
+                    if blackWarning == false{
+                        black.visible = true
+                        blackWarning = true
+                    } else {
+                        for fuzz in fuzzies {
+                            fuzz.white()
+                            gameOver = true
+                        }
+                    }
+                }
+                bothFuzz = false
             }
-            bothFuzz = false
         }
     }
 }
