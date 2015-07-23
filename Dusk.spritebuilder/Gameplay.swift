@@ -16,10 +16,14 @@ enum FuzzColor {
 enum Mode {
     case Easy, Medium, Hard, Insane, Why, Mirage
 }
+enum Themes {
+    case Normal, Autumn
+}
 struct whichMode {
     static var theMode: Mode = .Easy
     static var soundIsOn = true
     static var mirageOn = false
+    static var theme: Themes = .Normal
 }
 class Gameplay: CCNode, CCPhysicsCollisionDelegate {
     weak var fuzz1: Fuzz!
@@ -45,6 +49,7 @@ class Gameplay: CCNode, CCPhysicsCollisionDelegate {
     weak var pauseButton: CCButton!
     weak var pauseIcon: CCSprite!
     weak var black: CCSprite!
+    weak var themeButton: CCButton!
     var sapling: Sapling?
     var fuzzies: [Fuzz] = []
     var gameOver = false
@@ -62,6 +67,15 @@ class Gameplay: CCNode, CCPhysicsCollisionDelegate {
     var blackWarning = false
     
     //Changes the game difficulty
+    func themes(){
+        if whichMode.theme == .Normal {
+            whichMode.theme = .Autumn
+        } else{
+            if whichMode.theme == .Autumn {
+                whichMode.theme = .Normal
+            }
+        }
+    }
     func modes(){
         if whichMode.theMode == .Easy{
             whichMode.theMode = .Medium
@@ -106,27 +120,57 @@ class Gameplay: CCNode, CCPhysicsCollisionDelegate {
     //Implements the feature that slowly adds color to the background
     func addColors(){
         if points >= 5 && once == 0{
-            theGrass.animationManager.runAnimationsForSequenceNamed("Untitled Timeline")
+            if whichMode.theme == .Normal{
+                theGrass.animationManager.runAnimationsForSequenceNamed("Color")
+            }
+            if whichMode.theme == .Autumn{
+                theGrass.animationManager.runAnimationsForSequenceNamed("Color2")
+            }
             once++
         }
         if points >= 10 && once == 1{
-            theTree.animationManager.runAnimationsForSequenceNamed("Untitled Timeline")
+            if whichMode.theme == .Normal{
+                theTree.animationManager.runAnimationsForSequenceNamed("Color")
+            }
+            if whichMode.theme == .Autumn{
+                theTree.animationManager.runAnimationsForSequenceNamed("Color2")
+            }
             once++
         }
         if points >= 20 && once == 2{
-            thePlants.animationManager.runAnimationsForSequenceNamed("Untitled Timeline")
+            if whichMode.theme == .Normal{
+                thePlants.animationManager.runAnimationsForSequenceNamed("Color")
+            }
+            if whichMode.theme == .Autumn{
+                thePlants.animationManager.runAnimationsForSequenceNamed("Color2")
+            }
             once++
         }
         if points >= 30 && once == 3{
-            theSecond.animationManager.runAnimationsForSequenceNamed("Untitled Timeline")
+            if whichMode.theme == .Normal{
+                theSecond.animationManager.runAnimationsForSequenceNamed("Color")
+            }
+            if whichMode.theme == .Autumn{
+                theSecond.animationManager.runAnimationsForSequenceNamed("Color2")
+            }
             once++
         }
         if points >= 50 && once == 4{
-            theBG.animationManager.runAnimationsForSequenceNamed("Untitled Timeline")
+            if whichMode.theme == .Normal{
+                theBG.animationManager.runAnimationsForSequenceNamed("Color")
+            }
+            if whichMode.theme == .Autumn{
+                theBG.animationManager.runAnimationsForSequenceNamed("Color2")
+            }
             once++
         }
         if points >= 100 && once == 5{
-            theSky.animationManager.runAnimationsForSequenceNamed("Untitled Timeline")
+            if whichMode.theme == .Normal{
+                theSky.animationManager.runAnimationsForSequenceNamed("Color")
+            }
+            if whichMode.theme == .Autumn{
+                theSky.animationManager.runAnimationsForSequenceNamed("Color2")
+            }
             once++
         }
     }
@@ -208,6 +252,7 @@ class Gameplay: CCNode, CCPhysicsCollisionDelegate {
         settingsButton.visible = true
         modeButton.visible = true
         modeArrows.visible = true
+        themeButton.visible = true
         self.animationManager.runAnimationsForSequenceNamed("FadeIn")
     }
     //Restarts the scene
