@@ -44,7 +44,7 @@ class Gameplay: CCNode, CCPhysicsCollisionDelegate {
     weak var settingsButton: CCButton!
     weak var settingsIcon: CCSprite!
     weak var modeButton: CCButton!
-    weak var modeArrows: CCSprite!
+    weak var themeText: CCLabelTTF!
     weak var mirageText: CCLabelTTF!
     weak var pauseButton: CCButton!
     weak var pauseIcon: CCSprite!
@@ -63,6 +63,7 @@ class Gameplay: CCNode, CCPhysicsCollisionDelegate {
     var once = 0
     var mode: Mode = whichMode.theMode
     var modeWord = ""
+    var themeWord = ""
     var mirageFuzz: Fuzz?
     var blackWarning = false
     
@@ -70,9 +71,13 @@ class Gameplay: CCNode, CCPhysicsCollisionDelegate {
     func themes(){
         if whichMode.theme == .Normal {
             whichMode.theme = .Autumn
+            themeWord = "Autumn"
+            themeButton.title = "\(themeWord)"
         } else{
             if whichMode.theme == .Autumn {
                 whichMode.theme = .Normal
+                themeWord = "Normal"
+                themeButton.title = "\(themeWord)"
             }
         }
     }
@@ -251,7 +256,7 @@ class Gameplay: CCNode, CCPhysicsCollisionDelegate {
         settingsIcon.visible = true
         settingsButton.visible = true
         modeButton.visible = true
-        modeArrows.visible = true
+        themeText.visible = true
         themeButton.visible = true
         self.animationManager.runAnimationsForSequenceNamed("FadeIn")
     }
@@ -470,7 +475,15 @@ class Gameplay: CCNode, CCPhysicsCollisionDelegate {
                 currentHighscore = defaults.integerForKey("highscoreMIRAGE")
                 modeButton.title = "MIRAGE"
         default:
-                println("Error in game difficulty")
+            println("Error in game difficulty")
+        }
+        switch whichMode.theme{
+            case .Normal:
+                themeButton.title = "Normal"
+            case .Autumn:
+                themeButton.title = "Autumn"
+        default:
+            println("Error in game theme")
         }
         highscoreLabel.string = "\(currentHighscore)"
     }
