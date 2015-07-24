@@ -94,12 +94,12 @@
 		BC5399DB1A44DCC90063F482 /* JavaFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC5399D61A44DCC90063F482 /* JavaFoundation.framework */; };
 		BC5399DC1A44DCC90063F482 /* JavaKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC5399D71A44DCC90063F482 /* JavaKit.framework */; };
 		E716D3911B58671000A26818 /* Mushroom.swift in Sources */ = {isa = PBXBuildFile; fileRef = E716D3901B58671000A26818 /* Mushroom.swift */; };
-		E716D3931B5966B700A26818 /* GameMusic.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = E716D3921B5966B700A26818 /* GameMusic.mp3 */; };
 		E716D3971B599F5F00A26818 /* Leaf.swift in Sources */ = {isa = PBXBuildFile; fileRef = E716D3961B599F5F00A26818 /* Leaf.swift */; };
 		E716D3991B5D693A00A26818 /* TutorialMushroom.swift in Sources */ = {isa = PBXBuildFile; fileRef = E716D3981B5D693A00A26818 /* TutorialMushroom.swift */; };
 		E716D3A71B5EA9DE00A26818 /* Tutorial2.swift in Sources */ = {isa = PBXBuildFile; fileRef = E716D3A61B5EA9DE00A26818 /* Tutorial2.swift */; };
 		E716D3A91B5EB07C00A26818 /* TutorialMushroom2.swift in Sources */ = {isa = PBXBuildFile; fileRef = E716D3A81B5EB07C00A26818 /* TutorialMushroom2.swift */; };
 		E716D3BD1B603B4400A26818 /* Pause.swift in Sources */ = {isa = PBXBuildFile; fileRef = E716D3BC1B603B4400A26818 /* Pause.swift */; };
+		E716D3C11B629B3B00A26818 /* GameMusic.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = E716D3C01B629B3B00A26818 /* GameMusic.mp3 */; };
 		E76DC44C1B546EDC00E9EBD2 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = E76DC44B1B546EDC00E9EBD2 /* Settings.swift */; };
 		E799B97A1B4DCDE000B7A790 /* Tutorial.swift in Sources */ = {isa = PBXBuildFile; fileRef = E799B9791B4DCDE000B7A790 /* Tutorial.swift */; };
 		E7E6D32D1B449519008B16ED /* Gameplay.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7E6D32C1B449519008B16ED /* Gameplay.swift */; };
@@ -224,12 +224,12 @@
 		BC5399D71A44DCC90063F482 /* JavaKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaKit.framework; path = "../../../../Library/Application Support/Developer/Shared/Xcode/Platforms/Android.platform/Developer/SDKs/SBAndroid.sdk/System/Library/Frameworks/JavaKit.framework"; sourceTree = "<group>"; };
 		D352B48019EC608A00829775 /* MetalShaders */ = {isa = PBXFileReference; lastKnownFileType = folder; name = MetalShaders; path = Source/MetalShaders; sourceTree = "<group>"; };
 		E716D3901B58671000A26818 /* Mushroom.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Mushroom.swift; sourceTree = "<group>"; };
-		E716D3921B5966B700A26818 /* GameMusic.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = GameMusic.mp3; path = ../../../../../Desktop/Sound/GameMusic.mp3; sourceTree = "<group>"; };
 		E716D3961B599F5F00A26818 /* Leaf.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Leaf.swift; sourceTree = "<group>"; };
 		E716D3981B5D693A00A26818 /* TutorialMushroom.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TutorialMushroom.swift; sourceTree = "<group>"; };
 		E716D3A61B5EA9DE00A26818 /* Tutorial2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tutorial2.swift; sourceTree = "<group>"; };
 		E716D3A81B5EB07C00A26818 /* TutorialMushroom2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TutorialMushroom2.swift; sourceTree = "<group>"; };
 		E716D3BC1B603B4400A26818 /* Pause.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Pause.swift; sourceTree = "<group>"; };
+		E716D3C01B629B3B00A26818 /* GameMusic.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = GameMusic.mp3; path = ../../../../../Downloads/GameMusic.mp3; sourceTree = "<group>"; };
 		E76DC44B1B546EDC00E9EBD2 /* Settings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		E799B9791B4DCDE000B7A790 /* Tutorial.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tutorial.swift; sourceTree = "<group>"; };
 		E7E6D32C1B449519008B16ED /* Gameplay.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Gameplay.swift; sourceTree = "<group>"; };
@@ -575,7 +575,7 @@
 		E799B95E1B4C474A00B7A790 /* Audio */ = {
 			isa = PBXGroup;
 			children = (
-				E716D3921B5966B700A26818 /* GameMusic.mp3 */,
+				E716D3C01B629B3B00A26818 /* GameMusic.mp3 */,
 			);
 			name = Audio;
 			sourceTree = "<group>";
@@ -771,11 +771,11 @@
 			files = (
 				B71F5919188484E7003F4D28 /* Settings.png in Resources */,
 				B7378978180762440076A88C /* Default@2x.png in Resources */,
+				E716D3C11B629B3B00A26818 /* GameMusic.mp3 in Resources */,
 				B71F5914188484E7003F4D28 /* iPad@2x.png in Resources */,
 				B71F5913188484E7003F4D28 /* iPad.png in Resources */,
 				B71F5912188484E7003F4D28 /* iPad-old@2x.png in Resources */,
 				B71F5916188484E7003F4D28 /* iPhone-old@2x.png in Resources */,
-				E716D3931B5966B700A26818 /* GameMusic.mp3 in Resources */,
 				B737893B180761570076A88C /* Published-iOS in Resources */,
 				B71F591A188484E7003F4D28 /* Settings@2x.png in Resources */,
 				B7378976180762440076A88C /* Default-Landscape~ipad.png in Resources */,

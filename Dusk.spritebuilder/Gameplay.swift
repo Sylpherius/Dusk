@@ -17,7 +17,7 @@ enum Mode {
     case Easy, Medium, Hard, Insane, Why, Mirage, Calm
 }
 enum Themes {
-    case Normal, Autumn, Dusk, Midnight
+    case Normal, Autumn, Midnight, Faerie
 }
 struct whichMode {
     static var theMode: Mode = .Easy
@@ -81,9 +81,15 @@ class Gameplay: CCNode, CCPhysicsCollisionDelegate {
                 themeButton.title = "\(themeWord)"
             } else{
                 if whichMode.theme == .Midnight {
-                    whichMode.theme = .Normal
-                    themeWord = "Normal"
+                    whichMode.theme = .Faerie
+                    themeWord = "Faerie"
                     themeButton.title = "\(themeWord)"
+                } else{
+                    if whichMode.theme == .Faerie {
+                        whichMode.theme = .Normal
+                        themeWord = "Normal"
+                        themeButton.title = "\(themeWord)"
+                    }
                 }
             }
         }
@@ -149,6 +155,9 @@ class Gameplay: CCNode, CCPhysicsCollisionDelegate {
             if whichMode.theme == .Midnight{
                 theGrass.animationManager.runAnimationsForSequenceNamed("Color3")
             }
+            if whichMode.theme == .Faerie{
+                theGrass.animationManager.runAnimationsForSequenceNamed("Color4")
+            }
             once++
         }
         if points >= 10 && once == 1{
@@ -160,6 +169,9 @@ class Gameplay: CCNode, CCPhysicsCollisionDelegate {
             }
             if whichMode.theme == .Midnight{
                 theTree.animationManager.runAnimationsForSequenceNamed("Color3")
+            }
+            if whichMode.theme == .Faerie{
+                theTree.animationManager.runAnimationsForSequenceNamed("Color4")
             }
             once++
         }
@@ -173,6 +185,9 @@ class Gameplay: CCNode, CCPhysicsCollisionDelegate {
             if whichMode.theme == .Midnight{
                 thePlants.animationManager.runAnimationsForSequenceNamed("Color3")
             }
+            if whichMode.theme == .Faerie{
+                thePlants.animationManager.runAnimationsForSequenceNamed("Color4")
+            }
             once++
         }
         if points >= 25 && once == 3{
@@ -184,6 +199,9 @@ class Gameplay: CCNode, CCPhysicsCollisionDelegate {
             }
             if whichMode.theme == .Midnight{
                 theSecond.animationManager.runAnimationsForSequenceNamed("Color3")
+            }
+            if whichMode.theme == .Faerie{
+                theSecond.animationManager.runAnimationsForSequenceNamed("Color4")
             }
             once++
         }
@@ -197,6 +215,9 @@ class Gameplay: CCNode, CCPhysicsCollisionDelegate {
             if whichMode.theme == .Midnight{
                 theBG.animationManager.runAnimationsForSequenceNamed("Color3")
             }
+            if whichMode.theme == .Faerie{
+                theBG.animationManager.runAnimationsForSequenceNamed("Color4")
+            }
             once++
         }
         if points >= 75 && once == 5{
@@ -208,6 +229,9 @@ class Gameplay: CCNode, CCPhysicsCollisionDelegate {
             }
             if whichMode.theme == .Midnight{
                 theSky.animationManager.runAnimationsForSequenceNamed("Color3")
+            }
+            if whichMode.theme == .Faerie{
+                theSky.animationManager.runAnimationsForSequenceNamed("Color4")
             }
             once++
         }
@@ -536,6 +560,8 @@ class Gameplay: CCNode, CCPhysicsCollisionDelegate {
                 themeButton.title = "Autumn"
             case .Midnight:
                 themeButton.title = "Midnight"
+            case .Faerie:
+                themeButton.title = "Faerie"
         default:
             println("Error in game theme")
         }
