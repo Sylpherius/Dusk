@@ -420,7 +420,7 @@ class Gameplay: CCNode, CCPhysicsCollisionDelegate {
         } else if whichMode.theMode == .Why{
             currentFuzz.physicsBody.velocity = ccp(0,630)
         } else if whichMode.theMode == .Mirage{
-            currentFuzz.physicsBody.velocity = ccp(0,250)
+            currentFuzz.physicsBody.velocity = ccp(0,270)
         } else{
             currentFuzz.physicsBody.velocity = ccp(0,170)
         }
@@ -509,7 +509,7 @@ class Gameplay: CCNode, CCPhysicsCollisionDelegate {
                     fuzz.physicsBody.applyImpulse(ccp(0,-20))
                 }
                 if mode == .Mirage{
-                    fuzz.physicsBody.applyImpulse(ccp(0,-3))
+                    fuzz.physicsBody.applyImpulse(ccp(0,-4))
                 }
                 if mode == .Calm{
                     fuzz.physicsBody.applyImpulse(ccp(0,-1))
