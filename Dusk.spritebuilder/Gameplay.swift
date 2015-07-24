@@ -418,7 +418,7 @@ class Gameplay: CCNode, CCPhysicsCollisionDelegate {
         } else if whichMode.theMode == .Insane{
             currentFuzz.physicsBody.velocity = ccp(0,490)
         } else if whichMode.theMode == .Why{
-            currentFuzz.physicsBody.velocity = ccp(0,560)
+            currentFuzz.physicsBody.velocity = ccp(0,630)
         } else if whichMode.theMode == .Mirage{
             currentFuzz.physicsBody.velocity = ccp(0,250)
         } else{
@@ -506,7 +506,7 @@ class Gameplay: CCNode, CCPhysicsCollisionDelegate {
                     fuzz.physicsBody.applyImpulse(ccp(0,-11))
                 }
                 if mode == .Why{
-                    fuzz.physicsBody.applyImpulse(ccp(0,-15))
+                    fuzz.physicsBody.applyImpulse(ccp(0,-20))
                 }
                 if mode == .Mirage{
                     fuzz.physicsBody.applyImpulse(ccp(0,-3))
