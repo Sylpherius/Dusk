@@ -67,6 +67,7 @@ class Gameplay: CCNode, CCPhysicsCollisionDelegate {
     var themeWord = ""
     var mirageFuzz: Fuzz?
     var blackWarning = false
+    var mirageBug: CCTime = 0
     
     //Changes the game difficulty
     func themes(){
@@ -463,18 +464,33 @@ class Gameplay: CCNode, CCPhysicsCollisionDelegate {
         }
     }
     func ccPhysicsCollisionBegin(pair: CCPhysicsCollisionPair!, mFuzz: Fuzz!, level: CCNode!) -> Bool {
-        mFuzz.removeFromParent()
+        let delay = 1.0 * Double(NSEC_PER_SEC)
+        let time = dispatch_time(DISPATCH_TIME_NOW, Int64(delay))
+        dispatch_after(time, dispatch_get_main_queue()) {
+            mFuzz.removeFromParent()
+        }
         return true
     }
     func ccPhysicsCollisionBegin(pair: CCPhysicsCollisionPair!, mFuzz: Fuzz!, wall: CCNode!) -> Bool {
-        mFuzz.removeFromParent()
+        let delay = 1.0 * Double(NSEC_PER_SEC)
+        let time = dispatch_time(DISPATCH_TIME_NOW, Int64(delay))
+        dispatch_after(time, dispatch_get_main_queue()) {
+            mFuzz.removeFromParent()
+        }
         return true
     }
     func ccPhysicsCollisionBegin(pair: CCPhysicsCollisionPair!, mFuzz: Fuzz!, ceiling: CCNode!) -> Bool {
-        mFuzz.removeFromParent()
+        let delay = 1.0 * Double(NSEC_PER_SEC)
+        let time = dispatch_time(DISPATCH_TIME_NOW, Int64(delay))
+        dispatch_after(time, dispatch_get_main_queue()) {
+            mFuzz.removeFromParent()
+        }
         return true
     }
     override func update(delta: CCTime) {
+        if whichMode.mirageOn && gameOver == false{
+            self.mirageBug += delta
+        }
         if fuzzies.count == 2 {
             for fuzz in fuzzies {
                 if mode == .Easy{
