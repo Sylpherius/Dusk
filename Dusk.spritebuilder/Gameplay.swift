@@ -51,6 +51,7 @@ class Gameplay: CCNode, CCPhysicsCollisionDelegate {
     weak var black: CCSprite!
     weak var themeButton: CCButton!
     weak var calmText: CCLabelTTF!
+    weak var modeText: CCLabelTTF!
     var sapling: Sapling?
     var fuzzies: [Fuzz] = []
     var gameOver = false
@@ -325,6 +326,7 @@ class Gameplay: CCNode, CCPhysicsCollisionDelegate {
         settingsButton.visible = true
         modeButton.visible = true
         themeText.visible = true
+        modeText.visible = true
         themeButton.visible = true
         self.animationManager.runAnimationsForSequenceNamed("FadeIn")
     }
