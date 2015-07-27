@@ -26,6 +26,12 @@ class Mushroom: CCSprite {
                 type = .Green
             case "yellow":
                 type = .Yellow
+            case "teal":
+                type = .Teal
+            case "purple":
+                type = .Purple
+            case "brown":
+                type = .Brown
         default:
             println("No Color")
         }

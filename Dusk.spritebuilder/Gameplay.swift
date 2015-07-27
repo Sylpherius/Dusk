@@ -11,10 +11,10 @@
 import UIKit
 
 enum FuzzColor {
-    case Blue, Green, Red, Yellow, White
+    case Blue, Green, Red, Yellow, White, Teal, Purple, Brown
 }
 enum Mode {
-    case Easy, Medium, Hard, Insane, Why, Mirage, Calm
+    case Easy, Medium, Hard, Insane, Why, Mirage, Calm, Sorry
 }
 enum Themes {
     case Normal, Autumn, Midnight, Faerie
@@ -24,6 +24,7 @@ struct whichMode {
     static var soundIsOn = true
     static var mirageOn = false
     static var theme: Themes = .Normal
+    static var sorryOn = false
 }
 class Gameplay: CCNode, CCPhysicsCollisionDelegate {
     weak var fuzz1: Fuzz!
@@ -52,6 +53,10 @@ class Gameplay: CCNode, CCPhysicsCollisionDelegate {
     weak var themeButton: CCButton!
     weak var calmText: CCLabelTTF!
     weak var modeText: CCLabelTTF!
+    weak var sorryText: CCLabelTTF!
+    weak var brownMush: Mushroom!
+    weak var purpleMush: Mushroom!
+    weak var tealMush: Mushroom!
     var sapling: Sapling?
     var fuzzies: [Fuzz] = []
     var gameOver = false
@@ -135,10 +140,20 @@ class Gameplay: CCNode, CCPhysicsCollisionDelegate {
                                 calmText.visible = true
                             } else{
                                 if whichMode.theMode == .Calm{
-                                    whichMode.theMode = .Easy
-                                    modeWord = "Slow"
+                                    whichMode.theMode = .Sorry
+                                    modeWord = "SORRY"
                                     modeButton.title = "\(modeWord)"
                                     calmText.visible = false
+                                    whichMode.sorryOn = true
+                                    sorryText.visible = true
+                                } else{
+                                    if whichMode.theMode == .Sorry{
+                                        whichMode.theMode = .Easy
+                                        modeWord = "Slow"
+                                        modeButton.title = "\(modeWord)"
+                                        whichMode.sorryOn = false
+                                        sorryText.visible = false
+                                    }
                                 }
                             }
                         } 
@@ -262,8 +277,10 @@ class Gameplay: CCNode, CCPhysicsCollisionDelegate {
             newHighscore = NSUserDefaults.standardUserDefaults().integerForKey("highscoreW")
         } else if whichMode.theMode == .Mirage{
             newHighscore = NSUserDefaults.standardUserDefaults().integerForKey("highscoreMIRAGE")
-        } else{
+        } else if whichMode.theMode == .Calm{
             newHighscore = NSUserDefaults.standardUserDefaults().integerForKey("HighscoreC")
+        } else{
+            newHighscore = NSUserDefaults.standardUserDefaults().integerForKey("HighscoreS")
         }
         highscoreLabel.string = "\(newHighscore)"
     }
@@ -278,6 +295,7 @@ class Gameplay: CCNode, CCPhysicsCollisionDelegate {
         var highscoreW: Int = defaults.integerForKey("highscoreW")
         var highscoreMIRAGE: Int = defaults.integerForKey("highscoreMIRAGE")
         var highscoreC: Int = defaults.integerForKey("highscoreC")
+        var highscoreS: Int = defaults.integerForKey("highscoreS")
         if whichMode.theMode == .Easy{
             highscore = highscoreE
         } else if whichMode.theMode == .Medium{
@@ -290,8 +308,10 @@ class Gameplay: CCNode, CCPhysicsCollisionDelegate {
             highscore = highscoreW
         } else if whichMode.theMode == .Mirage{
             highscore = highscoreMIRAGE
-        } else{
+        } else if whichMode.theMode == .Calm{
             highscore = highscoreC
+        } else{
+            highscore = highscoreS
         }
         if self.points > highscore {
             if whichMode.theMode == .Easy{
@@ -312,8 +332,11 @@ class Gameplay: CCNode, CCPhysicsCollisionDelegate {
             } else if whichMode.theMode == .Mirage{
                 defaults.setObject(Int(self.points), forKey: "highscoreMIRAGE")
                 defaults.synchronize()
-            } else{
+            } else if whichMode.theMode == .Calm{
                 defaults.setObject(Int(self.points), forKey: "highscoreC")
+                defaults.synchronize()
+            } else{
+                defaults.setObject(Int(self.points), forKey: "highscoreS")
                 defaults.synchronize()
             }
             updateHighscore()
@@ -401,6 +424,11 @@ class Gameplay: CCNode, CCPhysicsCollisionDelegate {
     }
     //Loads in things at the very beginning
     func didLoadFromCCB(){
+        if whichMode.sorryOn == true{
+            brownMush.visible = true
+            purpleMush.visible = true
+            tealMush.visible = true
+        }
         userInteractionEnabled = true
         multipleTouchEnabled = true
         gamePhysicsNode.collisionDelegate = self
@@ -410,6 +438,7 @@ class Gameplay: CCNode, CCPhysicsCollisionDelegate {
     //Changes the color of the fuzz object when the correct mushroom object is tapped and also adds in the jump
     func changeColor(){
         var whichColor = Int(CCRANDOM_0_1() * 4)
+        var sorryColor = Int(CCRANDOM_0_1() * 7)
         var whichMirage = Int(CCRANDOM_0_1() * 4)
         var horizMove = CGFloat(CCRANDOM_0_1() * 100 - 50)
         //applies the "bounce" the fuzz does
@@ -425,8 +454,10 @@ class Gameplay: CCNode, CCPhysicsCollisionDelegate {
             currentFuzz.physicsBody.velocity = ccp(0,630)
         } else if whichMode.theMode == .Mirage{
             currentFuzz.physicsBody.velocity = ccp(0,270)
-        } else{
+        } else if whichMode.theMode == .Calm{
             currentFuzz.physicsBody.velocity = ccp(0,170)
+        } else{
+            currentFuzz.physicsBody.velocity = ccp(0,250)
         }
         currentFuzz.physicsBody.velocity = ccp(horizMove, currentFuzz.physicsBody.velocity.y)
         //updates the score
@@ -436,14 +467,32 @@ class Gameplay: CCNode, CCPhysicsCollisionDelegate {
         restartScore.string = String(points)
         //changes the color of the fuzz
         addColors()
-        if whichColor == 0{
-            currentFuzz.blue()
-        } else if whichColor == 1{
-            currentFuzz.green()
-        } else if whichColor == 2{
-            currentFuzz.red()
-        } else {
-            currentFuzz.yellow()
+        if whichMode.sorryOn == false{
+            if whichColor == 0{
+                currentFuzz.blue()
+            } else if whichColor == 1{
+                currentFuzz.green()
+            } else if whichColor == 2{
+                currentFuzz.red()
+            } else {
+                currentFuzz.yellow()
+            }
+        } else{
+            if sorryColor == 0{
+                currentFuzz.blue()
+            } else if sorryColor == 1{
+                currentFuzz.green()
+            } else if sorryColor == 2{
+                currentFuzz.red()
+            } else if sorryColor == 3{
+                currentFuzz.yellow()
+            } else if sorryColor == 4{
+                currentFuzz.teal()
+            } else if sorryColor == 5{
+                currentFuzz.purple()
+            } else{
+                currentFuzz.brown()
+            }
         }
         //All of the things needed for MIRAGE mode
         if whichMode.mirageOn == true{
@@ -532,6 +581,9 @@ class Gameplay: CCNode, CCPhysicsCollisionDelegate {
                 if mode == .Calm{
                     fuzz.physicsBody.applyImpulse(ccp(0,-1))
                 }
+                if mode == .Sorry{
+                    fuzz.physicsBody.applyImpulse(ccp(0,-3))
+                }
             }
         }
         if fuzzies.count == 1{
@@ -555,6 +607,9 @@ class Gameplay: CCNode, CCPhysicsCollisionDelegate {
             }
             if mode == .Calm{
                 fuzzies[0].physicsBody.applyImpulse(ccp(0,-2))
+            }
+            if mode == .Sorry{
+                fuzzies[0].physicsBody.applyImpulse(ccp(0,-5))
             }
         }
         if firstTap {
@@ -584,6 +639,9 @@ class Gameplay: CCNode, CCPhysicsCollisionDelegate {
             case .Calm:
                 currentHighscore = defaults.integerForKey("highscoreC")
                 modeButton.title = "CALM"
+            case .Sorry:
+                currentHighscore = defaults.integerForKey("highscoreS")
+                modeButton.title = "SORRY"
         default:
             println("Error in game difficulty")
         }
