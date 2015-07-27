@@ -67,7 +67,9 @@ class Gameplay: CCNode, CCPhysicsCollisionDelegate {
     var themeWord = ""
     var mirageFuzz: Fuzz?
     var blackWarning = false
-    var mirageBug: CCTime = 0
+    var chancePoints = 0
+    var chanceTime: CCTime = 0
+    var chanceOnce = false
     
     //Changes the game difficulty
     func themes(){
@@ -427,6 +429,7 @@ class Gameplay: CCNode, CCPhysicsCollisionDelegate {
         currentFuzz.physicsBody.velocity = ccp(horizMove, currentFuzz.physicsBody.velocity.y)
         //updates the score
         points++
+        chancePoints++
         scoreLabel.string = String(points)
         restartScore.string = String(points)
         //changes the color of the fuzz
@@ -488,8 +491,21 @@ class Gameplay: CCNode, CCPhysicsCollisionDelegate {
         return true
     }
     override func update(delta: CCTime) {
-        if whichMode.mirageOn && gameOver == false{
-            self.mirageBug += delta
+        chanceTime += delta
+        if blackWarning == false{
+            chancePoints = 0
+            chanceTime = 0
+        } else if chancePoints >= 10{
+            if chanceOnce == false{
+                chanceTime = 0
+                black.animationManager.runAnimationsForSequenceNamed("FadeOut")
+                chanceOnce = true
+            }
+            if chanceTime >= 3{
+                chanceOnce = false
+                black.visible = false
+                blackWarning = false
+            }
         }
         if fuzzies.count == 2 {
             for fuzz in fuzzies {
@@ -596,6 +612,7 @@ class Gameplay: CCNode, CCPhysicsCollisionDelegate {
                 }
                 if bothFuzz == false{
                     if blackWarning == false{
+                        black.animationManager.runAnimationsForSequenceNamed("Default Timeline")
                         black.visible = true
                         blackWarning = true
                     } else {
