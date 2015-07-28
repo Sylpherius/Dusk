@@ -147,7 +147,7 @@ class Gameplay: CCNode, CCPhysicsCollisionDelegate {
                             } else{
                                 if whichMode.theMode == .Calm{
                                     whichMode.theMode = .Sorry
-                                    modeWord = "SORRY"
+                                    modeWord = "PRISM"
                                     modeButton.title = "\(modeWord)"
                                     calmText.visible = false
                                     whichMode.sorryOn = true
@@ -665,7 +665,7 @@ class Gameplay: CCNode, CCPhysicsCollisionDelegate {
                 modeButton.title = "CALM"
             case .Sorry:
                 currentHighscore = defaults.integerForKey("highscoreS")
-                modeButton.title = "SORRY"
+                modeButton.title = "PRISM"
         default:
             println("Error in game difficulty")
         }
