@@ -360,7 +360,7 @@
 						<key>value</key>
 						<array>
 							<string></string>
-							<string>Dusk Assets/Start Button Normal.png</string>
+							<string>Dusk Assets/Start Button Highlighted.png</string>
 						</array>
 					</dict>
 					<dict>
@@ -547,6 +547,8 @@
 						</array>
 					</dict>
 				</array>
+				<key>selected</key>
+				<true/>
 			</dict>
 			<dict>
 				<key>UUID</key>
@@ -1129,8 +1131,6 @@
 						<real>0.5</real>
 					</dict>
 				</array>
-				<key>selected</key>
-				<true/>
 			</dict>
 			<dict>
 				<key>UUID</key>

@@ -168,6 +168,9 @@ class Gameplay: CCNode, CCPhysicsCollisionDelegate {
             }
         }
     }
+    
+    //MARK:- Game Color Management
+    
     //Implements the feature that slowly adds color to the background
     func addColors(){
         if points >= 5 && once == 0{

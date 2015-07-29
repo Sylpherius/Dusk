@@ -14,7 +14,7 @@
 	<key>centeredOrigin</key>
 	<false/>
 	<key>currentResolution</key>
-	<integer>0</integer>
+	<integer>1</integer>
 	<key>currentSequenceId</key>
 	<integer>1</integer>
 	<key>docDimensionsType</key>
@@ -4193,7 +4193,7 @@
 						<key>value</key>
 						<array>
 							<string></string>
-							<string>Dusk Assets/Start Button Normal.png</string>
+							<string>Dusk Assets/Start Button Highlighted.png</string>
 						</array>
 					</dict>
 					<dict>
@@ -4380,6 +4380,8 @@
 						</array>
 					</dict>
 				</array>
+				<key>selected</key>
+				<true/>
 			</dict>
 			<dict>
 				<key>UUID</key>
@@ -6785,8 +6787,6 @@ good luck~</string>
 						</array>
 					</dict>
 				</array>
-				<key>selected</key>
-				<true/>
 			</dict>
 			<dict>
 				<key>UUID</key>
