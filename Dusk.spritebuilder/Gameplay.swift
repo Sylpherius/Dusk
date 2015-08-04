@@ -17,7 +17,7 @@ enum Mode {
     case Easy, Medium, Hard, Insane, Why, Mirage, Calm, Sorry
 }
 enum Themes {
-    case Normal, Autumn, Midnight, Faerie, Celestial
+    case Normal, Autumn, Midnight, Faerie, Celestial, Blood
 }
 struct whichMode {
     static var theMode: Mode = .Easy
@@ -25,6 +25,8 @@ struct whichMode {
     static var mirageOn = false
     static var theme: Themes = .Normal
     static var sorryOn = false
+    static var easterBlood = false
+    static var eyeball = false
 }
 class Gameplay: CCNode, CCPhysicsCollisionDelegate {
     weak var fuzz1: Fuzz!
@@ -100,9 +102,23 @@ class Gameplay: CCNode, CCPhysicsCollisionDelegate {
                         themeButton.title = "\(themeWord)"
                     } else{
                         if whichMode.theme == .Celestial {
-                            whichMode.theme = .Normal
-                            themeWord = "Normal"
-                            themeButton.title = "\(themeWord)"
+                            if whichMode.easterBlood == false{
+                                whichMode.theme = .Normal
+                                themeWord = "Normal"
+                                themeButton.title = "\(themeWord)"
+                            } else{
+                                whichMode.eyeball = true
+                                whichMode.theme = .Blood
+                                themeWord = "Blood"
+                                themeButton.title = "\(themeWord)"
+                            }
+                        } else{
+                            if whichMode.theme == .Blood{
+                                whichMode.eyeball = false
+                                whichMode.theme = .Normal
+                                themeWord = "Normal"
+                                themeButton.title = "\(themeWord)"
+                            }
                         }
                     }
                 }
@@ -189,6 +205,9 @@ class Gameplay: CCNode, CCPhysicsCollisionDelegate {
             if whichMode.theme == .Celestial{
                 theGrass.animationManager.runAnimationsForSequenceNamed("Color5")
             }
+            if whichMode.theme == .Blood{
+                theGrass.animationManager.runAnimationsForSequenceNamed("Blood")
+            }
             once++
         }
         if points >= 10 && once == 1{
@@ -206,6 +225,9 @@ class Gameplay: CCNode, CCPhysicsCollisionDelegate {
             }
             if whichMode.theme == .Celestial{
                 theTree.animationManager.runAnimationsForSequenceNamed("Color5")
+            }
+            if whichMode.theme == .Blood{
+                theTree.animationManager.runAnimationsForSequenceNamed("Blood")
             }
             once++
         }
@@ -225,6 +247,9 @@ class Gameplay: CCNode, CCPhysicsCollisionDelegate {
             if whichMode.theme == .Celestial{
                 thePlants.animationManager.runAnimationsForSequenceNamed("Color5")
             }
+            if whichMode.theme == .Blood{
+                thePlants.animationManager.runAnimationsForSequenceNamed("Blood")
+            }
             once++
         }
         if points >= 25 && once == 3{
@@ -242,6 +267,9 @@ class Gameplay: CCNode, CCPhysicsCollisionDelegate {
             }
             if whichMode.theme == .Celestial{
                 theBG.animationManager.runAnimationsForSequenceNamed("Color5")
+            }
+            if whichMode.theme == .Blood{
+                theBG.animationManager.runAnimationsForSequenceNamed("Blood")
             }
             once++
         }
@@ -261,6 +289,9 @@ class Gameplay: CCNode, CCPhysicsCollisionDelegate {
             if whichMode.theme == .Celestial{
                 theSecond.animationManager.runAnimationsForSequenceNamed("Color5")
             }
+            if whichMode.theme == .Blood{
+                theSecond.animationManager.runAnimationsForSequenceNamed("Blood")
+            }
             once++
         }
         if points >= 75 && once == 5{
@@ -278,6 +309,9 @@ class Gameplay: CCNode, CCPhysicsCollisionDelegate {
             }
             if whichMode.theme == .Celestial{
                 theSky.animationManager.runAnimationsForSequenceNamed("Color5")
+            }
+            if whichMode.theme == .Blood{
+                theSky.animationManager.runAnimationsForSequenceNamed("Blood")
             }
             once++
         }
@@ -460,6 +494,10 @@ class Gameplay: CCNode, CCPhysicsCollisionDelegate {
         multipleTouchEnabled = true
         gamePhysicsNode.collisionDelegate = self
         self.animationManager.runAnimationsForSequenceNamed("Beginning")
+        if whichMode.eyeball == true{
+            fuzz1.animationManager.runAnimationsForSequenceNamed("eye")
+            fuzz2.animationManager.runAnimationsForSequenceNamed("eye")
+        }
         updateHighscore()
     }
     //Changes the color of the fuzz object when the correct mushroom object is tapped and also adds in the jump
@@ -683,6 +721,8 @@ class Gameplay: CCNode, CCPhysicsCollisionDelegate {
                 themeButton.title = "Faerie"
             case .Celestial:
                 themeButton.title = "Celestial"
+            case .Blood:
+                themeButton.title = "Blood"
         default:
             println("Error in game theme")
         }

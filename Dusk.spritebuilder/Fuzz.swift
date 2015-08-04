@@ -12,35 +12,67 @@ class Fuzz: CCSprite {
     var touchGround = false
     var fuzzColor: FuzzColor = .White
     func blue(){
-        self.animationManager.runAnimationsForSequenceNamed("turnBlue")
+        if whichMode.eyeball == true{
+            self.animationManager.runAnimationsForSequenceNamed("eyeBlue")
+        } else{
+            self.animationManager.runAnimationsForSequenceNamed("turnBlue")
+        }
         fuzzColor = .Blue
     }
     func green(){
-        self.animationManager.runAnimationsForSequenceNamed("turnGreen")
+        if whichMode.eyeball == true{
+            self.animationManager.runAnimationsForSequenceNamed("eyeGreen")
+        } else{
+            self.animationManager.runAnimationsForSequenceNamed("turnGreen")
+        }
         fuzzColor = .Green
     }
     func red(){
-        self.animationManager.runAnimationsForSequenceNamed("turnRed")
+        if whichMode.eyeball == true{
+            self.animationManager.runAnimationsForSequenceNamed("eyeRed")
+        } else{
+            self.animationManager.runAnimationsForSequenceNamed("turnRed")
+        }
         fuzzColor = .Red
     }
     func yellow(){
-        self.animationManager.runAnimationsForSequenceNamed("turnYellow")
+        if whichMode.eyeball == true{
+            self.animationManager.runAnimationsForSequenceNamed("eyeYellow")
+        } else{
+            self.animationManager.runAnimationsForSequenceNamed("turnYellow")
+        }
         fuzzColor = .Yellow
     }
     func white(){
-        self.animationManager.runAnimationsForSequenceNamed("turnWhite")
+        if whichMode.eyeball == true{
+            self.animationManager.runAnimationsForSequenceNamed("eye")
+        } else{
+            self.animationManager.runAnimationsForSequenceNamed("turnWhite")
+        }
         fuzzColor = .White
     }
     func teal(){
-        self.animationManager.runAnimationsForSequenceNamed("turnTeal")
+        if whichMode.eyeball == true{
+            self.animationManager.runAnimationsForSequenceNamed("eyeTeal")
+        } else{
+            self.animationManager.runAnimationsForSequenceNamed("turnTeal")
+        }
         fuzzColor = .Teal
     }
     func purple(){
-        self.animationManager.runAnimationsForSequenceNamed("turnPurple")
+        if whichMode.eyeball == true{
+            self.animationManager.runAnimationsForSequenceNamed("eyePurple")
+        } else{
+            self.animationManager.runAnimationsForSequenceNamed("turnPurple")
+        }
         fuzzColor = .Purple
     }
     func brown(){
-        self.animationManager.runAnimationsForSequenceNamed("turnBrown")
+        if whichMode.eyeball == true{
+            self.animationManager.runAnimationsForSequenceNamed("eyeBrown")
+        } else{
+            self.animationManager.runAnimationsForSequenceNamed("turnBrown")
+        }
         fuzzColor = .Brown
     }
     func getColor(var givenFuzz: Fuzz) -> FuzzColor{

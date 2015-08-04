@@ -10,6 +10,25 @@ import UIKit
 
 class Settings: CCNode {
     weak var soundOn: CCSprite!
+    var blood = 0
+    
+    func b1(){
+        blood = 1
+    }
+    func b2(){
+        if blood == 1{
+            blood++
+        } else{
+            blood = 0
+        }
+    }
+    func b3(){
+        if blood == 2{
+            whichMode.easterBlood = true
+        } else{
+            blood = 0
+        }
+    }
     func back(){
         CCDirector.sharedDirector().popScene()
     }
