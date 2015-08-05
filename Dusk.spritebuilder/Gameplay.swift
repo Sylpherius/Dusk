@@ -80,8 +80,6 @@ class Gameplay: CCNode, CCPhysicsCollisionDelegate {
     var chanceTime: CCTime = 0
     var chanceOnce = false
     
-    let mixpanel = Mixpanel()
-    
     
     //Changes the game difficulty
     func themes(){
@@ -407,6 +405,7 @@ class Gameplay: CCNode, CCPhysicsCollisionDelegate {
     }
     //Sends the user to the settings (pushes the settings scene on)
     func settings(){
+        Mixpanel.sharedInstance().track("Settings Pressed")
         let settingsScene = CCBReader.loadAsScene("Settings")
         CCDirector.sharedDirector().pushScene(settingsScene)
     }
@@ -466,9 +465,49 @@ class Gameplay: CCNode, CCPhysicsCollisionDelegate {
     //Loads in things at the very beginning
     func didLoadFromCCB(){
         if whichMode.sorryOn == true{
+            Mixpanel.sharedInstance().track("Other Modes Used", properties: ["Mode" : "Prism"])
             brownMush.visible = true
             purpleMush.visible = true
             tealMush.visible = true
+        }
+        if whichMode.theMode == .Calm{
+            Mixpanel.sharedInstance().track("Other Modes Used", properties: ["Mode" : "Calm"])
+        }
+        if whichMode.theMode == .Mirage{
+            Mixpanel.sharedInstance().track("Other Modes Used", properties: ["Mode" : "Mirage"])
+        }
+        if whichMode.theMode == .Medium{
+            Mixpanel.sharedInstance().track("Other Modes Used", properties: ["Mode" : "Normal"])
+        }
+        if whichMode.theMode == .Hard{
+            Mixpanel.sharedInstance().track("Other Modes Used", properties: ["Mode" : "Fast"])
+        }
+        if whichMode.theMode == .Insane{
+            Mixpanel.sharedInstance().track("Other Modes Used", properties: ["Mode" : "Frenzy"])
+        }
+        if whichMode.theMode == .Why{
+            Mixpanel.sharedInstance().track("Other Modes Used", properties: ["Mode" : "Why :("])
+        }
+        if whichMode.theMode == .Easy{
+            Mixpanel.sharedInstance().track("Other Modes Used", properties: ["Mode" : "Slow"])
+        }
+        if whichMode.theme == .Normal{
+            Mixpanel.sharedInstance().track("Other Modes used", properties: ["Theme" : "Normal"])
+        }
+        if whichMode.theme == .Autumn{
+            Mixpanel.sharedInstance().track("Other Modes used", properties: ["Theme" : "Autumn"])
+        }
+        if whichMode.theme == .Midnight{
+            Mixpanel.sharedInstance().track("Other Modes used", properties: ["Theme" : "Midnight"])
+        }
+        if whichMode.theme == .Faerie{
+            Mixpanel.sharedInstance().track("Other Modes used", properties: ["Theme" : "Faerie"])
+        }
+        if whichMode.theme == .Celestial{
+            Mixpanel.sharedInstance().track("Other Modes used", properties: ["Theme" : "Celestial"])
+        }
+        if whichMode.theme == .Blood{
+            Mixpanel.sharedInstance().track("Other Modes used", properties: ["Theme" : "Horror"])
         }
         userInteractionEnabled = true
         multipleTouchEnabled = true
@@ -561,7 +600,7 @@ class Gameplay: CCNode, CCPhysicsCollisionDelegate {
                 }
             }
         }
-    }
+        }
     //The bottom 3 functions are made to make the mirageFuzz disappear when it leaves the screen.
     func ccPhysicsCollisionBegin(pair: CCPhysicsCollisionPair!, mFuzz: Fuzz!, level: CCNode!) -> Bool {
         let delay = 1.0 * Double(NSEC_PER_SEC)

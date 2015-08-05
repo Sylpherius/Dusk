@@ -12,7 +12,6 @@ import Mixpanel
 class Settings: CCNode {
     weak var soundOn: CCSprite!
     var blood = 0
-    let mixpanel = Mixpanel()
     var mixOnce = false
     
     func b1(){
@@ -27,7 +26,7 @@ class Settings: CCNode {
     }
     func b3(){
         if mixOnce == false{
-            mixpanel.track("Easter Egg Found", properties: ["#" : 1])
+            Mixpanel.sharedInstance().track("Easter Egg Found", properties: ["#" : 1])
             mixOnce = true
         }
         if blood == 2{
@@ -60,6 +59,7 @@ class Settings: CCNode {
         }
     }
     func tutorial(){
+        Mixpanel.sharedInstance().track("Tutorial Rewatched")
         let tutorialScene = CCBReader.loadAsScene("Tutorial")
         CCDirector.sharedDirector().presentScene(tutorialScene)
     }

@@ -356,8 +356,8 @@
 		7A40362119DDF08C007B6E8F /* iOS */ = {
 			isa = PBXGroup;
 			children = (
-				B737893D1807617C0076A88C /* AppDelegate.h */,
 				B737893E1807617C0076A88C /* AppDelegate.m */,
+				B737893D1807617C0076A88C /* AppDelegate.h */,
 			);
 			name = iOS;
 			sourceTree = "<group>";
