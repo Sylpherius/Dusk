@@ -9,6 +9,7 @@
 //7/16/15 - The day I got absolutely nothing done
 
 import UIKit
+import Mixpanel
 
 enum FuzzColor {
     case Blue, Green, Red, Yellow, White, Teal, Purple, Brown
@@ -79,50 +80,43 @@ class Gameplay: CCNode, CCPhysicsCollisionDelegate {
     var chanceTime: CCTime = 0
     var chanceOnce = false
     
+    let mixpanel = Mixpanel()
+    
+    
     //Changes the game difficulty
     func themes(){
         if whichMode.theme == .Normal {
             whichMode.theme = .Autumn
             themeWord = "Autumn"
             themeButton.title = "\(themeWord)"
-        } else{
-            if whichMode.theme == .Autumn {
-                whichMode.theme = .Midnight
-                themeWord = "Midnight"
+        } else if whichMode.theme == .Autumn {
+            whichMode.theme = .Midnight
+            themeWord = "Midnight"
+            themeButton.title = "\(themeWord)"
+        } else if whichMode.theme == .Midnight {
+            whichMode.theme = .Faerie
+            themeWord = "Faerie"
+            themeButton.title = "\(themeWord)"
+        } else if whichMode.theme == .Faerie {
+            whichMode.theme = .Celestial
+            themeWord = "Celestial"
+            themeButton.title = "\(themeWord)"
+        } else if whichMode.theme == .Celestial {
+            if whichMode.easterBlood == false{
+                whichMode.theme = .Normal
+                themeWord = "Normal"
                 themeButton.title = "\(themeWord)"
             } else{
-                if whichMode.theme == .Midnight {
-                    whichMode.theme = .Faerie
-                    themeWord = "Faerie"
-                    themeButton.title = "\(themeWord)"
-                } else{
-                    if whichMode.theme == .Faerie {
-                        whichMode.theme = .Celestial
-                        themeWord = "Celestial"
-                        themeButton.title = "\(themeWord)"
-                    } else{
-                        if whichMode.theme == .Celestial {
-                            if whichMode.easterBlood == false{
-                                whichMode.theme = .Normal
-                                themeWord = "Normal"
-                                themeButton.title = "\(themeWord)"
-                            } else{
-                                whichMode.eyeball = true
-                                whichMode.theme = .Blood
-                                themeWord = "Blood"
-                                themeButton.title = "\(themeWord)"
-                            }
-                        } else{
-                            if whichMode.theme == .Blood{
-                                whichMode.eyeball = false
-                                whichMode.theme = .Normal
-                                themeWord = "Normal"
-                                themeButton.title = "\(themeWord)"
-                            }
-                        }
-                    }
-                }
+                whichMode.eyeball = true
+                whichMode.theme = .Blood
+                themeWord = "Horror"
+                themeButton.title = "\(themeWord)"
             }
+        } else if whichMode.theme == .Blood{
+                    whichMode.eyeball = false
+                    whichMode.theme = .Normal
+                    themeWord = "Normal"
+                    themeButton.title = "\(themeWord)"
         }
     }
     func modes(){
@@ -130,58 +124,44 @@ class Gameplay: CCNode, CCPhysicsCollisionDelegate {
             whichMode.theMode = .Medium
             modeWord = "Normal"
             modeButton.title = "\(modeWord)"
-        } else{
-            if whichMode.theMode == .Medium{
-                whichMode.theMode = .Hard
-                modeWord = "Fast"
-                modeButton.title = "\(modeWord)"
-            } else{
-                if whichMode.theMode == .Hard{
-                    whichMode.theMode = .Insane
-                    modeWord = "Frenzy"
-                    modeButton.title = "\(modeWord)"
-                } else{
-                    if whichMode.theMode == .Insane{
-                        whichMode.theMode = .Why
-                        modeWord = "Why :("
-                        modeButton.title = "\(modeWord)"
-                    } else{
-                        if whichMode.theMode == .Why{
-                            whichMode.theMode = .Mirage
-                            modeWord = "MIRAGE"
-                            modeButton.title = "\(modeWord)"
-                            whichMode.mirageOn = true
-                            mirageText.visible = true
-                        } else{
-                            if whichMode.theMode == .Mirage{
-                                whichMode.theMode = .Calm
-                                modeWord = "CALM"
-                                modeButton.title = "\(modeWord)"
-                                whichMode.mirageOn = false
-                                mirageText.visible = false
-                                calmText.visible = true
-                            } else{
-                                if whichMode.theMode == .Calm{
-                                    whichMode.theMode = .Sorry
-                                    modeWord = "PRISM"
-                                    modeButton.title = "\(modeWord)"
-                                    calmText.visible = false
-                                    whichMode.sorryOn = true
-                                    sorryText.visible = true
-                                } else{
-                                    if whichMode.theMode == .Sorry{
-                                        whichMode.theMode = .Easy
-                                        modeWord = "Slow"
-                                        modeButton.title = "\(modeWord)"
-                                        whichMode.sorryOn = false
-                                        sorryText.visible = false
-                                    }
-                                }
-                            }
-                        } 
-                    }
-                }
-            }
+        } else if whichMode.theMode == .Medium{
+            whichMode.theMode = .Hard
+            modeWord = "Fast"
+            modeButton.title = "\(modeWord)"
+        } else if whichMode.theMode == .Hard{
+            whichMode.theMode = .Insane
+            modeWord = "Frenzy"
+            modeButton.title = "\(modeWord)"
+        } else if whichMode.theMode == .Insane{
+            whichMode.theMode = .Why
+            modeWord = "Why :("
+            modeButton.title = "\(modeWord)"
+        } else if whichMode.theMode == .Why{
+            whichMode.theMode = .Mirage
+            modeWord = "MIRAGE"
+            modeButton.title = "\(modeWord)"
+            whichMode.mirageOn = true
+            mirageText.visible = true
+        } else if whichMode.theMode == .Mirage{
+            whichMode.theMode = .Calm
+            modeWord = "CALM"
+            modeButton.title = "\(modeWord)"
+            whichMode.mirageOn = false
+            mirageText.visible = false
+            calmText.visible = true
+        } else if whichMode.theMode == .Calm{
+            whichMode.theMode = .Sorry
+            modeWord = "PRISM"
+            modeButton.title = "\(modeWord)"
+            calmText.visible = false
+            whichMode.sorryOn = true
+            sorryText.visible = true
+        } else if whichMode.theMode == .Sorry{
+            whichMode.theMode = .Easy
+            modeWord = "Slow"
+            modeButton.title = "\(modeWord)"
+            whichMode.sorryOn = false
+            sorryText.visible = false
         }
     }
     
@@ -582,6 +562,7 @@ class Gameplay: CCNode, CCPhysicsCollisionDelegate {
             }
         }
     }
+    //The bottom 3 functions are made to make the mirageFuzz disappear when it leaves the screen.
     func ccPhysicsCollisionBegin(pair: CCPhysicsCollisionPair!, mFuzz: Fuzz!, level: CCNode!) -> Bool {
         let delay = 1.0 * Double(NSEC_PER_SEC)
         let time = dispatch_time(DISPATCH_TIME_NOW, Int64(delay))
@@ -722,7 +703,7 @@ class Gameplay: CCNode, CCPhysicsCollisionDelegate {
             case .Celestial:
                 themeButton.title = "Celestial"
             case .Blood:
-                themeButton.title = "Blood"
+                themeButton.title = "Horror"
         default:
             println("Error in game theme")
         }

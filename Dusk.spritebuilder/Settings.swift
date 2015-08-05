@@ -7,10 +7,13 @@
 //
 
 import UIKit
+import Mixpanel
 
 class Settings: CCNode {
     weak var soundOn: CCSprite!
     var blood = 0
+    let mixpanel = Mixpanel()
+    var mixOnce = false
     
     func b1(){
         blood = 1
@@ -23,6 +26,10 @@ class Settings: CCNode {
         }
     }
     func b3(){
+        if mixOnce == false{
+            mixpanel.track("Easter Egg Found", properties: ["#" : 1])
+            mixOnce = true
+        }
         if blood == 2{
             whichMode.easterBlood = true
         } else{
