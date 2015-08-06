@@ -72,92 +72,61 @@ class Gameplay: CCNode, CCPhysicsCollisionDelegate {
     var whichFuzz = 0
     var once = 0
     var mode: Mode = whichMode.theMode
-    var modeWord = ""
-    var themeWord = ""
     var mirageFuzz: Fuzz?
     var blackWarning = false
     var chancePoints = 0
     var chanceTime: CCTime = 0
     var chanceOnce = false
+    var theme: String = ""
     
     
     //Changes the game difficulty
     func themes(){
         if whichMode.theme == .Normal {
             whichMode.theme = .Autumn
-            themeWord = "Autumn"
-            themeButton.title = "\(themeWord)"
         } else if whichMode.theme == .Autumn {
             whichMode.theme = .Midnight
-            themeWord = "Midnight"
-            themeButton.title = "\(themeWord)"
         } else if whichMode.theme == .Midnight {
             whichMode.theme = .Faerie
-            themeWord = "Faerie"
-            themeButton.title = "\(themeWord)"
         } else if whichMode.theme == .Faerie {
             whichMode.theme = .Celestial
-            themeWord = "Celestial"
-            themeButton.title = "\(themeWord)"
         } else if whichMode.theme == .Celestial {
             if whichMode.easterBlood == false{
                 whichMode.theme = .Normal
-                themeWord = "Normal"
-                themeButton.title = "\(themeWord)"
             } else{
                 whichMode.eyeball = true
                 whichMode.theme = .Blood
-                themeWord = "Horror"
-                themeButton.title = "\(themeWord)"
             }
         } else if whichMode.theme == .Blood{
                     whichMode.eyeball = false
                     whichMode.theme = .Normal
-                    themeWord = "Normal"
-                    themeButton.title = "\(themeWord)"
         }
     }
     func modes(){
         if whichMode.theMode == .Easy{
             whichMode.theMode = .Medium
-            modeWord = "Normal"
-            modeButton.title = "\(modeWord)"
         } else if whichMode.theMode == .Medium{
             whichMode.theMode = .Hard
-            modeWord = "Fast"
-            modeButton.title = "\(modeWord)"
         } else if whichMode.theMode == .Hard{
             whichMode.theMode = .Insane
-            modeWord = "Frenzy"
-            modeButton.title = "\(modeWord)"
         } else if whichMode.theMode == .Insane{
             whichMode.theMode = .Why
-            modeWord = "Why :("
-            modeButton.title = "\(modeWord)"
         } else if whichMode.theMode == .Why{
             whichMode.theMode = .Mirage
-            modeWord = "MIRAGE"
-            modeButton.title = "\(modeWord)"
             whichMode.mirageOn = true
             mirageText.visible = true
         } else if whichMode.theMode == .Mirage{
             whichMode.theMode = .Calm
-            modeWord = "CALM"
-            modeButton.title = "\(modeWord)"
             whichMode.mirageOn = false
             mirageText.visible = false
             calmText.visible = true
         } else if whichMode.theMode == .Calm{
             whichMode.theMode = .Sorry
-            modeWord = "PRISM"
-            modeButton.title = "\(modeWord)"
             calmText.visible = false
             whichMode.sorryOn = true
             sorryText.visible = true
         } else if whichMode.theMode == .Sorry{
             whichMode.theMode = .Easy
-            modeWord = "Slow"
-            modeButton.title = "\(modeWord)"
             whichMode.sorryOn = false
             sorryText.visible = false
         }
@@ -167,130 +136,47 @@ class Gameplay: CCNode, CCPhysicsCollisionDelegate {
     
     //Implements the feature that slowly adds color to the background
     func addColors(){
+        if whichMode.theme == .Normal{
+            theme = "Normal"
+        } else if whichMode.theme == .Autumn{
+            theme = "Autumn"
+        } else if whichMode.theme == .Midnight{
+            theme = "Midnight"
+        } else if whichMode.theme == .Faerie{
+            theme = "Faerie"
+        } else if whichMode.theme == .Celestial{
+            theme = "Celestial"
+        } else if whichMode.theme == .Blood{
+            theme = "Blood"
+        }
         if points >= 5 && once == 0{
-            if whichMode.theme == .Normal{
-                theGrass.animationManager.runAnimationsForSequenceNamed("Color")
-            }
-            if whichMode.theme == .Autumn{
-                theGrass.animationManager.runAnimationsForSequenceNamed("Color2")
-            }
-            if whichMode.theme == .Midnight{
-                theGrass.animationManager.runAnimationsForSequenceNamed("Color3")
-            }
-            if whichMode.theme == .Faerie{
-                theGrass.animationManager.runAnimationsForSequenceNamed("Color4")
-            }
-            if whichMode.theme == .Celestial{
-                theGrass.animationManager.runAnimationsForSequenceNamed("Color5")
-            }
-            if whichMode.theme == .Blood{
-                theGrass.animationManager.runAnimationsForSequenceNamed("Blood")
-            }
+            theGrass.animationManager.runAnimationsForSequenceNamed("\(theme)")
+            Mixpanel.sharedInstance().track("Color Checkpoint", properties: ["#" : 1])
             once++
         }
         if points >= 10 && once == 1{
-            if whichMode.theme == .Normal{
-                theTree.animationManager.runAnimationsForSequenceNamed("Color")
-            }
-            if whichMode.theme == .Autumn{
-                theTree.animationManager.runAnimationsForSequenceNamed("Color2")
-            }
-            if whichMode.theme == .Midnight{
-                theTree.animationManager.runAnimationsForSequenceNamed("Color3")
-            }
-            if whichMode.theme == .Faerie{
-                theTree.animationManager.runAnimationsForSequenceNamed("Color4")
-            }
-            if whichMode.theme == .Celestial{
-                theTree.animationManager.runAnimationsForSequenceNamed("Color5")
-            }
-            if whichMode.theme == .Blood{
-                theTree.animationManager.runAnimationsForSequenceNamed("Blood")
-            }
+            theTree.animationManager.runAnimationsForSequenceNamed("\(theme)")
+            Mixpanel.sharedInstance().track("Color Checkpoint", properties: ["#" : 2])
             once++
         }
         if points >= 15 && once == 2{
-            if whichMode.theme == .Normal{
-                thePlants.animationManager.runAnimationsForSequenceNamed("Color")
-            }
-            if whichMode.theme == .Autumn{
-                thePlants.animationManager.runAnimationsForSequenceNamed("Color2")
-            }
-            if whichMode.theme == .Midnight{
-                thePlants.animationManager.runAnimationsForSequenceNamed("Color3")
-            }
-            if whichMode.theme == .Faerie{
-                thePlants.animationManager.runAnimationsForSequenceNamed("Color4")
-            }
-            if whichMode.theme == .Celestial{
-                thePlants.animationManager.runAnimationsForSequenceNamed("Color5")
-            }
-            if whichMode.theme == .Blood{
-                thePlants.animationManager.runAnimationsForSequenceNamed("Blood")
-            }
+            thePlants.animationManager.runAnimationsForSequenceNamed("\(theme)")
+            Mixpanel.sharedInstance().track("Color Checkpoint", properties: ["#" : 3])
             once++
         }
         if points >= 25 && once == 3{
-            if whichMode.theme == .Normal{
-                theBG.animationManager.runAnimationsForSequenceNamed("Color")
-            }
-            if whichMode.theme == .Autumn{
-                theBG.animationManager.runAnimationsForSequenceNamed("Color2")
-            }
-            if whichMode.theme == .Midnight{
-                theBG.animationManager.runAnimationsForSequenceNamed("Color3")
-            }
-            if whichMode.theme == .Faerie{
-                theBG.animationManager.runAnimationsForSequenceNamed("Color4")
-            }
-            if whichMode.theme == .Celestial{
-                theBG.animationManager.runAnimationsForSequenceNamed("Color5")
-            }
-            if whichMode.theme == .Blood{
-                theBG.animationManager.runAnimationsForSequenceNamed("Blood")
-            }
+            theBG.animationManager.runAnimationsForSequenceNamed("\(theme)")
+            Mixpanel.sharedInstance().track("Color Checkpoint", properties: ["#" : 4])
             once++
         }
         if points >= 40 && once == 4{
-            if whichMode.theme == .Normal{
-                theSecond.animationManager.runAnimationsForSequenceNamed("Color")
-            }
-            if whichMode.theme == .Autumn{
-                theSecond.animationManager.runAnimationsForSequenceNamed("Color2")
-            }
-            if whichMode.theme == .Midnight{
-                theSecond.animationManager.runAnimationsForSequenceNamed("Color3")
-            }
-            if whichMode.theme == .Faerie{
-                theSecond.animationManager.runAnimationsForSequenceNamed("Color4")
-            }
-            if whichMode.theme == .Celestial{
-                theSecond.animationManager.runAnimationsForSequenceNamed("Color5")
-            }
-            if whichMode.theme == .Blood{
-                theSecond.animationManager.runAnimationsForSequenceNamed("Blood")
-            }
+            theSecond.animationManager.runAnimationsForSequenceNamed("\(theme)")
+            Mixpanel.sharedInstance().track("Color Checkpoint", properties: ["#" : 5])
             once++
         }
         if points >= 75 && once == 5{
-            if whichMode.theme == .Normal{
-                theSky.animationManager.runAnimationsForSequenceNamed("Color")
-            }
-            if whichMode.theme == .Autumn{
-                theSky.animationManager.runAnimationsForSequenceNamed("Color2")
-            }
-            if whichMode.theme == .Midnight{
-                theSky.animationManager.runAnimationsForSequenceNamed("Color3")
-            }
-            if whichMode.theme == .Faerie{
-                theSky.animationManager.runAnimationsForSequenceNamed("Color4")
-            }
-            if whichMode.theme == .Celestial{
-                theSky.animationManager.runAnimationsForSequenceNamed("Color5")
-            }
-            if whichMode.theme == .Blood{
-                theSky.animationManager.runAnimationsForSequenceNamed("Blood")
-            }
+            theSky.animationManager.runAnimationsForSequenceNamed("\(theme)")
+            Mixpanel.sharedInstance().track("Color Checkpoint", properties: ["#" : 6])
             once++
         }
     }
@@ -492,22 +378,22 @@ class Gameplay: CCNode, CCPhysicsCollisionDelegate {
             Mixpanel.sharedInstance().track("Other Modes Used", properties: ["Mode" : "Slow"])
         }
         if whichMode.theme == .Normal{
-            Mixpanel.sharedInstance().track("Other Modes used", properties: ["Theme" : "Normal"])
+            Mixpanel.sharedInstance().track("Other Modes Used", properties: ["Theme" : "Normal"])
         }
         if whichMode.theme == .Autumn{
-            Mixpanel.sharedInstance().track("Other Modes used", properties: ["Theme" : "Autumn"])
+            Mixpanel.sharedInstance().track("Other Modes Used", properties: ["Theme" : "Autumn"])
         }
         if whichMode.theme == .Midnight{
-            Mixpanel.sharedInstance().track("Other Modes used", properties: ["Theme" : "Midnight"])
+            Mixpanel.sharedInstance().track("Other Modes Used", properties: ["Theme" : "Midnight"])
         }
         if whichMode.theme == .Faerie{
-            Mixpanel.sharedInstance().track("Other Modes used", properties: ["Theme" : "Faerie"])
+            Mixpanel.sharedInstance().track("Other Modes Used", properties: ["Theme" : "Faerie"])
         }
         if whichMode.theme == .Celestial{
-            Mixpanel.sharedInstance().track("Other Modes used", properties: ["Theme" : "Celestial"])
+            Mixpanel.sharedInstance().track("Other Modes Used", properties: ["Theme" : "Celestial"])
         }
         if whichMode.theme == .Blood{
-            Mixpanel.sharedInstance().track("Other Modes used", properties: ["Theme" : "Horror"])
+            Mixpanel.sharedInstance().track("Other Modes Used", properties: ["Theme" : "Horror"])
         }
         userInteractionEnabled = true
         multipleTouchEnabled = true

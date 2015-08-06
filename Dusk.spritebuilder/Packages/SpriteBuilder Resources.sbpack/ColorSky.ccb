@@ -16,7 +16,7 @@
 	<key>currentResolution</key>
 	<integer>0</integer>
 	<key>currentSequenceId</key>
-	<integer>6</integer>
+	<integer>0</integer>
 	<key>docDimensionsType</key>
 	<integer>0</integer>
 	<key>fileType</key>
@@ -2205,7 +2205,7 @@
 			<key>length</key>
 			<real>2</real>
 			<key>name</key>
-			<string>Color</string>
+			<string>Normal</string>
 			<key>offset</key>
 			<real>0.0</real>
 			<key>position</key>
@@ -2241,7 +2241,7 @@
 			<key>length</key>
 			<real>2</real>
 			<key>name</key>
-			<string>Color2</string>
+			<string>Autumn</string>
 			<key>offset</key>
 			<real>0.0</real>
 			<key>position</key>
@@ -2277,7 +2277,7 @@
 			<key>length</key>
 			<real>2</real>
 			<key>name</key>
-			<string>Color3</string>
+			<string>Midnight</string>
 			<key>offset</key>
 			<real>0.0</real>
 			<key>position</key>
@@ -2313,7 +2313,7 @@
 			<key>length</key>
 			<real>2</real>
 			<key>name</key>
-			<string>Color4</string>
+			<string>Faerie</string>
 			<key>offset</key>
 			<real>0.0</real>
 			<key>position</key>
@@ -2349,7 +2349,7 @@
 			<key>length</key>
 			<real>2</real>
 			<key>name</key>
-			<string>Color5</string>
+			<string>Celestial</string>
 			<key>offset</key>
 			<real>0.0</real>
 			<key>position</key>
