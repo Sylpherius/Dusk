@@ -60,6 +60,7 @@ class Gameplay: CCNode, CCPhysicsCollisionDelegate {
     weak var brownMush: Mushroom!
     weak var purpleMush: Mushroom!
     weak var tealMush: Mushroom!
+    weak var horrorParticles: CCParticleSpiral!
     var sapling: Sapling?
     var fuzzies: [Fuzz] = []
     var gameOver = false
@@ -172,6 +173,9 @@ class Gameplay: CCNode, CCPhysicsCollisionDelegate {
         if points >= 40 && once == 4{
             theSecond.animationManager.runAnimationsForSequenceNamed("\(theme)")
             Mixpanel.sharedInstance().track("Color Checkpoint", properties: ["#" : 5])
+            if theme == "Blood"{
+                horrorParticles.visible = true
+            }
             once++
         }
         if points >= 75 && once == 5{
