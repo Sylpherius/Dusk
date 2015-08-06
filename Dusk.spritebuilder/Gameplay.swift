@@ -356,6 +356,7 @@ class Gameplay: CCNode, CCPhysicsCollisionDelegate {
             purpleMush.visible = true
             tealMush.visible = true
         }
+        //Mixpanel tracking for all the different modes
         if whichMode.theMode == .Calm{
             Mixpanel.sharedInstance().track("Other Modes Used", properties: ["Mode" : "Calm"])
         }
