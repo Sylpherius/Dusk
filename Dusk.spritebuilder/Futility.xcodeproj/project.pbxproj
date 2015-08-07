@@ -106,6 +106,7 @@
 		E7E761511B4EF38000FCACDD /* Sapling.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7E761501B4EF38000FCACDD /* Sapling.swift */; };
 		E7EAA8A21B44510800595727 /* Fuzz.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7EAA8A11B44510800595727 /* Fuzz.swift */; };
 		E7EDCFDE1B6AA9B200C0B5F8 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E7EDCFDD1B6AA9B200C0B5F8 /* Images.xcassets */; };
+		E7F661751B7546E9009C89ED /* Egg.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7F661741B7546E9009C89ED /* Egg.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -238,6 +239,7 @@
 		E7E761501B4EF38000FCACDD /* Sapling.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Sapling.swift; sourceTree = "<group>"; };
 		E7EAA8A11B44510800595727 /* Fuzz.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Fuzz.swift; sourceTree = "<group>"; };
 		E7EDCFDD1B6AA9B200C0B5F8 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		E7F661741B7546E9009C89ED /* Egg.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Egg.swift; sourceTree = "<group>"; };
 		EFCCB62E5C2DF4DDD038C922 /* Pods-Futility iOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Futility iOS.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Futility iOS/Pods-Futility iOS.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -479,6 +481,7 @@
 				E716D3BC1B603B4400A26818 /* Pause.swift */,
 				E76DC44B1B546EDC00E9EBD2 /* Settings.swift */,
 				E7E761501B4EF38000FCACDD /* Sapling.swift */,
+				E7F661741B7546E9009C89ED /* Egg.swift */,
 				E799B9791B4DCDE000B7A790 /* Tutorial.swift */,
 				E716D3A61B5EA9DE00A26818 /* Tutorial2.swift */,
 				E716D3981B5D693A00A26818 /* TutorialMushroom.swift */,
@@ -924,6 +927,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E7EAA8A21B44510800595727 /* Fuzz.swift in Sources */,
+				E7F661751B7546E9009C89ED /* Egg.swift in Sources */,
 				E716D3991B5D693A00A26818 /* TutorialMushroom.swift in Sources */,
 				E799B97A1B4DCDE000B7A790 /* Tutorial.swift in Sources */,
 				E716D3911B58671000A26818 /* Mushroom.swift in Sources */,

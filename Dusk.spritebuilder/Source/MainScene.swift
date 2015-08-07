@@ -1,4 +1,6 @@
 import Foundation
+import Mixpanel
+
 class MainScene: CCNode {
     
     func didLoadFromCCB(){
@@ -13,5 +15,10 @@ class MainScene: CCNode {
             let gameplayScene = CCBReader.loadAsScene("Gameplay")
             CCDirector.sharedDirector().presentScene(gameplayScene)
         }
+    }
+    func egg(){
+        Mixpanel.sharedInstance().track("Easter Egg Found", properties: ["#" : 2])
+        let eggScene = CCBReader.loadAsScene("Egg")
+        CCDirector.sharedDirector().pushScene(eggScene)
     }
 }
